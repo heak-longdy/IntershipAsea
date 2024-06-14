@@ -1,0 +1,96 @@
+.wb-header {
+    position       : sticky;
+    top            : 0;
+    left           : 0;
+    z-index        : 99;
+    width          : 100%;
+    height         : 3.5rem;
+    pointer-events : none;
+    justify-content: center;
+    display        : flex;
+
+    .header {
+        display                : flex;
+        justify-content        : flex-start;
+        align-items            : center;
+        pointer-events         : auto;
+        background-color       : var(--header-bg);
+        border-radius          : 1.75rem;
+        border-top-left-radius : 0 !important;
+        border-top-right-radius: 0 !important;
+        box-shadow             : 0 0.125rem 0.5rem 0 rgba(0, 0, 0, 0.03), 0 0.125rem 2rem -0.5rem rgba(23, 43, 61, 0.2);
+        height                 : 100%;
+        max-width              : 63rem;
+        width                  : 58rem;
+        padding                : 0 1rem;
+
+        .h-left {
+            display: flex;
+            flex   : 1;
+
+            .logo {
+                display     : flex;
+                align-items : center;
+                margin-right: 35px;
+                cursor      : pointer;
+
+                i.bx {
+                    font-size   : 25px;
+                    margin-right: 5px;
+                    color       : #545454;
+
+                }
+
+                label {
+                    font-size: 22px;
+                    color    : #545454;
+                    cursor   : pointer;
+                }
+            }
+
+            .h-item {
+                display     : flex;
+                align-items : center;
+                margin-right: 35px;
+                cursor      : pointer;
+
+                i.bx {
+                    font-size    : 16px;
+                    margin-right : 5px;
+                    color        : #fff;
+                    padding      : 7px;
+                    border-radius: 50%;
+
+                    &.yellow {
+                        background-color: #f9bd3b;
+                        background-image: linear-gradient(180deg, #FEDE4A 0%, #F8B035 100%);
+                        box-shadow      : 0 0.25rem 0.5rem 0 rgba(251, 205, 66, .3);
+
+                    }
+
+                    &.blue {
+                        background-color: #9248e1;
+                        background-image: linear-gradient(180deg, #9B54E8 0%, #7126C1 100%);
+                        box-shadow      : 0 0.25rem 0.5rem 0 rgba(146, 72, 225, .3);
+                    }
+                    &.red{
+                        background-color: #fb614a;
+                        background-image: linear-gradient(180deg,#FF715C 0%,#F74A2F 100%);
+                        box-shadow: 0 0.25rem 0.5rem 0 rgba(255,89,64,.3);
+                    }
+
+                }
+
+                label {
+                    font-size: 14px;
+                    color    : #545454;
+                    cursor   : pointer;
+                }
+
+            }
+        }
+
+        .h-right {}
+
+    }
+}
