@@ -16,7 +16,7 @@ li {
 /* SIDEBAR */
 #sidebar {
     position          : fixed;
-    max-width         : $pathLeftRightLayout;
+    max-width         : $widthSlideBar;
     width             : 100%;
     background        : var(--light);
     top               : 0;
@@ -45,6 +45,10 @@ li {
     // background-color             : #051e34;
     background-color                : rgb(255, 255, 255);
     border-right                    : 1px solid rgb(229, 234, 239);
+
+    background-color: rgb(9 8 8 / 91%);
+    border-right: 1px solid rgb(229, 234, 239);
+    color: #fff;
 
     ul {
         margin-bottom: 0;
@@ -145,7 +149,7 @@ li {
 }
 
 #sidebar.hide:hover {
-    max-width: $pathLeftRightLayout;
+    max-width: $widthSlideBar;
 }
 
 #sidebar::-webkit-scrollbar {
@@ -163,7 +167,8 @@ li {
     // height: $rightHeightHeader;
     font-weight         : 700;
     // color            : var(--blue);
-    color               : $sidebar-color;
+    // color               : $sidebar-color;
+    color: #fff;
     position            : sticky;
     top                 : 0;
     left                : 0;
@@ -409,8 +414,8 @@ li {
     background-position                         : 100% 100%;
     border-radius                               : 0;
     transition                                  : all .3s ease !important;
-    color                                       : $sidebar-color;
-    border-top                                  : 1px solid $sidebar-color-border;
+    // color                                       : $sidebar-color;
+    // border-top                                  : 1px solid $sidebar-color-border;
 
     &:hover {
         // background         : -webkit-gradient(linear, left top, right top, color-stop(50%, #f94345), color-stop(0, #fff));
@@ -485,7 +490,7 @@ li {
             }
 
             li {
-                background-color: rgb(255, 255, 255);
+                background-color: unset !important;
                 transition      : background-color .15s ease;
 
                 &:first-child {

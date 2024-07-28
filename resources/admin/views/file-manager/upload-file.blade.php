@@ -108,7 +108,7 @@
                             } else {
                                 this.resetBreadcrumb();
                                 this.getData();
-                            }
+                            } 
                             this.onClose();
                         }
                     }, 1000);

@@ -32,7 +32,7 @@ mix.browserSync("127.0.0.1:8000");
  |--------------------------------------------------------------------------
 */
 
-// mix
-//   .ts("resources/website/ts/app.js", "public/website/js")
-//   .ts("resources/website/ts/body.js", "public/website/js")
-//   .sass("resources/website/sass/app.scss", "public/website/css");
+mix
+  .ts("resources/website/ts/app.js", "public/website/js")
+  .ts("resources/website/ts/body.js", "public/website/js")
+  .sass("resources/website/sass/app.scss", "public/website/css");

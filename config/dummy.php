@@ -2,8 +2,8 @@
 
 return [
     'status' => [
-        'active' => 1,
-        'inactive' => 2,
+        '1'=>'Active',
+        '2' => 'Disable',
     ],
     'user' => [
         'role' => [

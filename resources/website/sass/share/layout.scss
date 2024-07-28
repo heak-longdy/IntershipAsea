@@ -69,12 +69,17 @@ $fontFamily : 'Poppins', sans-serif;
 
 .wb-container {
 
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
 
     .headerBg {
-        background-color: #3bb375;
+        // background-color: #3bb375;
         z-index         : 2;
         position        : fixed;
-        background-image: linear-gradient(0deg, #3BB375 0%, #289B7F 100%);
+        // background-image: linear-gradient(0deg, #3BB375 0%, #289B7F 100%);
         height          : 310px;
         top             : 0;
         width           : 100%;
@@ -87,7 +92,7 @@ $fontFamily : 'Poppins', sans-serif;
             width              : 100%;
             z-index            : -1;
             opacity            : .4;
-            background-image   : url('../../../../public/images/green_cloud.svg');
+            // background-image   : url('../../../../public/images/green_cloud.svg');
             background-size    : 2560px auto;
             background-repeat  : repeat-y;
             background-position: 50% 100%;
@@ -99,7 +104,7 @@ $fontFamily : 'Poppins', sans-serif;
         background-color: #f3ecd3;
         z-index         : 1;
         position        : fixed;
-        background-image: linear-gradient(0deg, #fcfaf3 0%, #f3ecd3 100%);
+        // background-image: linear-gradient(0deg, #fcfaf3 0%, #f3ecd3 100%);
         top             : 0;
         width           : 100%;
         height          : 100%;
@@ -112,7 +117,7 @@ $fontFamily : 'Poppins', sans-serif;
             width              : 100%;
             z-index            : -1;
             opacity            : .4;
-            background-image   : url('../../../../public/images/green_cloud.svg');
+            // background-image   : url('../../../../public/images/green_cloud.svg');
             background-size    : 2560px auto;
             background-repeat  : repeat-y;
             background-position: 50% 100%;
@@ -124,6 +129,8 @@ $fontFamily : 'Poppins', sans-serif;
     .container-wrapper {
         position: relative;
         z-index : 5;
-        height  : 100vh;
+        height  : 100%;
+        width: 1000px;
+        width: 100%;
     }
 }

@@ -24,20 +24,9 @@ use App\Http\Controllers\Admin\BarberController;
 use App\Http\Controllers\Admin\CustomerPointController;
 use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Admin\DiscountController;
-use App\Http\Controllers\Admin\Inventory\StockInController;
-use App\Http\Controllers\Admin\Inventory\StockMovementController;
-use App\Http\Controllers\Admin\Inventory\StockOnHandController;
-use App\Http\Controllers\Admin\Inventory\StockOutController;
-use App\Http\Controllers\Admin\Inventory\StockTransferController;
-use App\Http\Controllers\Admin\InventoryController;
-use App\Http\Controllers\Admin\PromotionController;
-use App\Http\Controllers\Admin\RewardController;
-use App\Http\Controllers\Admin\PointSettingController;
-use App\Http\Controllers\Admin\ReportTransactionController;
-use App\Http\Controllers\Admin\BrandController;
-use App\Http\Controllers\Admin\BrandSettingController;
-use App\Http\Controllers\Admin\ReportSummaryController;
-use App\Http\Controllers\Admin\SupplierController;
+use App\Http\Controllers\Admin\JobController;
+use App\Http\Controllers\Admin\PartnerController;
+use App\Http\Controllers\Admin\PositionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,6 +58,30 @@ Route::middleware(['AdminGuard'])
         });
 
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+        //Position
+        Route::group([
+            'prefix' => 'position',
+            'as'     => 'position-'
+        ], function () {
+            Route::get('list/{status?}', [PositionController::class, 'index'])->name('list');
+            Route::get('create', [PositionController::class, 'onCreate'])->name('create');
+            Route::get('edit/{id?}', [PositionController::class, 'onEdit'])->name('edit');
+            Route::post('save/{id?}', [PositionController::class, 'onSave'])->name('save');
+            Route::match(['get', 'post'], 'status/{id}/{status}', [PositionController::class, 'onUpdateStatus'])->name('status');
+        });
+
+        //Job
+        Route::group([
+            'prefix' => 'job',
+            'as'     => 'job-'
+        ], function () {
+            Route::get('list/{status?}', [JobController::class, 'index'])->name('list');
+            Route::get('create', [JobController::class, 'onCreate'])->name('create');
+            Route::get('edit/{id?}', [JobController::class, 'onEdit'])->name('edit');
+            Route::post('save/{id?}', [JobController::class, 'onSave'])->name('save');
+            Route::match(['get', 'post'], 'status/{id}/{status}', [JobController::class, 'onUpdateStatus'])->name('status');
+        });
 
         // User
         Route::prefix('user')
@@ -276,6 +289,18 @@ Route::middleware(['AdminGuard'])
             //Route::match(['get', 'post'], 'status/{id}/{status}', [UomController::class, 'onUpdateStatus'])->name('status');
         });
 
+         //Partner
+        Route::group([
+            'prefix' => 'partner',
+            'as'     => 'partner-'
+        ], function () {
+            Route::get('list/{status?}', [PartnerController::class, 'index'])->name('list');
+            Route::get('create', [PartnerController::class, 'onCreate'])->name('create');
+            Route::get('edit/{id?}', [PartnerController::class, 'onEdit'])->name('edit');
+            Route::post('save/{id?}', [PartnerController::class, 'onSave'])->name('save');
+            Route::match(['get', 'post'], 'status/{id}/{status}', [PartnerController::class, 'onUpdateStatus'])->name('status');
+        });
+
 
         //Setting
         Route::group([
@@ -344,14 +369,4 @@ Route::middleware(['AdminGuard'])
 Route::get('clear-cache', function () {
     Artisan::call('optimize:clear');
     return "Cache is cleared";
-});
-
-Route::group(['prefix' => 'geo-api'], function () {
-    Route::get('district/{id}', [Admin\Api\GeoController::class, 'getDistrict']);
-    Route::get('commune/{id}', [Admin\Api\GeoController::class, 'getCommune']);
-    Route::get('village/{id}', [Admin\Api\GeoController::class, 'getVillage']);
-});
-
-Route::group(['prefix' => 'setting-api'], function () {
-    Route::get('check-phone', [Admin\Api\SettingController::class, 'checkUserPhoneExit'])->name('setting.api.check.phone');
 });

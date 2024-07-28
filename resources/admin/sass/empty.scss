@@ -47,10 +47,21 @@
             button {
                 border-radius: $border-radius;
                 @include btn('create');
-                border    : unset;
-                color     : #fff;
-                margin-top: 10px;
+                border       : unset;
+                color        : #fff;
+                margin-top   : 10px;
+                background   : #3C91E6;
+                border       : unset;
+                color        : #fff;
+                margin-top   : 10px;
+                height       : 42px;
+                border-radius: 10px !important;
+                padding      : 0 10px !important;
 
+                i.bx {
+                    font-size   : 24px;
+                    margin-right: 5px;
+                }
 
                 span {
                     font-size: 13px;

@@ -574,10 +574,18 @@ nav .divider {
             }
 
             button {
-                border-radius: $border-radius !important;
+                // border-radius: $border-radius !important;
+                border-radius: 10px !important;
                 @include btn();
-                margin-left: 5px;
-                color      : #333;
+                margin-left  : 5px;
+                color        : #333;
+                border-radius: 10px !important;
+                padding      : 0 10px !important;
+
+                i.bx {
+                    font-size   : 24px;
+                    margin-right: 5px;
+                }
 
                 &.btn-create {
                     @include btn("create");
@@ -592,12 +600,16 @@ nav .divider {
                 }
 
                 &.btnSearch {
-                    min-width    : auto !important;
-                    cursor       : pointer;
-                    border       : 1px solid rgba(51, 51, 51, 0.2);
-                    background   : #fff !important;
-                    border-radius: 10px !important;
-                    padding      : 0 12px;
+                    min-width      : auto !important;
+                    cursor         : pointer;
+                    border         : 1px solid rgba(51, 51, 51, 0.2);
+                    background     : #fff !important;
+                    border-radius  : 10px !important;
+                    padding        : 0 12px;
+                    width          : 45px;
+                    height         : 100%;
+                    display        : flex;
+                    justify-content: center;
 
 
                     i,
@@ -687,4 +699,7 @@ nav .divider {
     .category-content-gp .select2 .select2-selection {
         border-radius: 10px !important;
     }
+}
+.box-shadow-bottom{
+    box-shadow: 0 3px 3px 0 rgb(181 181 181 / 13%);
 }

@@ -3,13 +3,16 @@
 <a href="#" class="brand">
     {{-- <i class='bx bxl-squarespace icon'></i> --}}
     <i class='bx bxl-product-hunt icon bx-tada'></i>
-    <span>System</span>
+    <span id="clear-storage-button">System</span>
     {{-- <nav><i class='bx bx-menu toggle-sidebar'></i></nav> --}}
 </a>
 <ul class="side-menu">
     <li class="li">
         <a href="{{ route('admin-dashboard') }}" class="overView {{ routeActive('admin/dashboard') ? 'active' : '' }}">
-            <div class="div"><i class='bx bxl-stack-overflow icon'></i> Dashboard</div>
+            <div class="div">
+            {{-- <i class='bx bxl-stack-overflow icon'></i> --}}
+            <i class='bx bxs-dashboard icon'></i>
+             Dashboard</div>
             <div class="iRight">
                 <i class='bx bx-cog bx-tada-hover'></i>
             </div>

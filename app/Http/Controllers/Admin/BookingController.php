@@ -26,13 +26,13 @@ use Carbon\Carbon;
 class BookingController extends Controller
 {
     protected $layout = 'admin::pages.booking.';
-    function __construct()
-    {
-        $this->middleware('permission:booking-view', ['only' => ['index']]);
-        $this->middleware('permission:booking-create', ['only' => ['onCreate', 'onSave']]);
-        $this->middleware('permission:booking-update', ['only' => ['onEdit', 'onSave', 'onUpdateStatus', 'restore']]);
-        $this->middleware('permission:booking-delete', ['only' => ['delete', 'restore', 'destroy']]);
-    }
+    // function __construct()
+    // {
+    //     $this->middleware('permission:booking-view', ['only' => ['index']]);
+    //     $this->middleware('permission:booking-create', ['only' => ['onCreate', 'onSave']]);
+    //     $this->middleware('permission:booking-update', ['only' => ['onEdit', 'onSave', 'onUpdateStatus', 'restore']]);
+    //     $this->middleware('permission:booking-delete', ['only' => ['delete', 'restore', 'destroy']]);
+    // }
     public function index(Request $req)
     {
         $data['status'] = $req->status;

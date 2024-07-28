@@ -115,6 +115,9 @@ return [
         //Slide
         'createSlide' => 'Create Slide',
         'importCreateSlide' => 'Import Slide',
+        //Position
+        'createPosition' => 'Create Position',
+        'importCreatePosition' => 'Import Position',
         //blogSlide
         'createBlogSlide' => 'Create Blog Slide',
         'importCreateBlogSlide' => 'Import Blog Slide',
@@ -336,7 +339,7 @@ return [
         ],
         'image' => [
             'label' => 'Image',
-            'placeholder' => 'Enter image',
+            'placeholder' => 'Browser file to upload.',
         ],
         'address' => [
             'label' => 'Address',

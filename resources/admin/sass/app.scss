@@ -43,9 +43,9 @@ sans-serif;
 
 @import "../package/mdbootstrap/css/mdb.min.css";
 @import "../package/animate.css";
-// @import "../package/quill.snow.css";
+@import "../package/quill.snow.css";
 @import "../package/jquery-ui/jquery-ui.css";
-// @import "@fancyapps/ui/dist/fancybox.css";
+@import "@fancyapps/ui/dist/fancybox.css";
 @import "./variable.scss";
 @import "./function.scss";
 @import "./font.scss";
@@ -143,6 +143,8 @@ sans-serif;
 @import "./scroller.scss";
 
 @import "./pagination.scss";
+
+@import "./select2.scss";
 
 // @import './swal.scss';
 

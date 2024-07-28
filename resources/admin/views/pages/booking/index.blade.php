@@ -37,6 +37,9 @@
                             <input type="text" name="to_date" placeholder="To Date" value="{!! $lastMonthDay ? $lastMonthDay : request('to_date') !!}"
                                 id="to_date" autocomplete="off">
                         </div>
+                        <div class="form-row">
+                            <input type="text" name="timepicker" placeholder="From Date" value="" id="timepicker" autocomplete="off">
+                        </div>
                         <button mat-flat-button type="submit" class="btn-create bg-success">
                             <i data-feather="search"></i>
                             <span>Search</span>
@@ -166,6 +169,17 @@
                     onSelect: function(selected) {
                         $("#from_date").datepicker("option", "maxDate", selected)
                     }
+                });
+                $('#timepicker').timepicker({
+                    'timeFormat': 'H:i',
+                    'interval': 30, // Interval between selectable times (in minutes)
+                    'minTime': '0:00am',
+                    'maxTime': '11:59pm',
+                    'defaultTime': 'now',
+                    'startTime': '00:00',
+                    'dynamic': false,
+                    'dropdown': true,
+                    'scrollbar': true
                 });
             });
         </script>

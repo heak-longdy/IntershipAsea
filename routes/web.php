@@ -20,6 +20,7 @@ Route::prefix('/')
 ->name('/')
 ->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('index');
+    Route::post('/apply', [HomeController::class, 'apply'])->name('apply');
 });
 
 Route::get('/pusher', function () {
@@ -29,6 +30,8 @@ Route::get('/pusher', function () {
 Route::get('booking', [BookingController::class, 'export_booking'])->name('booking');
 
 Route::get('customer-export', [CustomerController::class, 'export_customer'])->name('customer-export');
+
+Route::post('/upload', [HomeController::class, 'upload'])->name('image.upload');
 
 // Route::group([
 //     'prefix' => 'payway',

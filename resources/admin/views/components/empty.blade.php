@@ -14,7 +14,7 @@
         (isset($permission) &&
             auth()->user()->can($permission))))
                 <button s-click-link="{!! url($url) !!}">
-                    <i data-feather="plus-circle"></i>
+                    <i class='bx bx-plus' ></i>
                     <span>{!! $button !!}</span>
                 </button>
             @endif

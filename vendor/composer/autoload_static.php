@@ -31,6 +31,7 @@ class ComposerStaticInitd036986f24178615f3fb33e59fb6f0d0
         'decc78cc4436b1292c6c0d151b19445c' => __DIR__ . '/..' . '/phpseclib/phpseclib/phpseclib/bootstrap.php',
         '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
         'e39a8b23c42d4e1452234d762b03835a' => __DIR__ . '/..' . '/ramsey/uuid/src/functions.php',
+        '97727b6b0f2834e612425988413c7612' => __DIR__ . '/..' . '/appslabke/lara-izitoast/lara-izitoast/src/helpers.php',
         '265b4faa2b3a9766332744949e83bf97' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Collections/helpers.php',
         'c7a3c339e7e14b60e06a2d7fcce9476b' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Events/functions.php',
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
@@ -157,6 +158,7 @@ class ComposerStaticInitd036986f24178615f3fb33e59fb6f0d0
             'Laravel\\Sail\\' => 13,
             'Laravel\\Passport\\Database\\Factories\\' => 36,
             'Laravel\\Passport\\' => 17,
+            'LaraIzitoast\\' => 13,
         ),
         'I' => 
         array (
@@ -416,8 +418,8 @@ class ComposerStaticInitd036986f24178615f3fb33e59fb6f0d0
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -489,8 +491,8 @@ class ComposerStaticInitd036986f24178615f3fb33e59fb6f0d0
         ),
         'League\\Uri\\' => 
         array (
-            0 => __DIR__ . '/..' . '/league/uri-interfaces/src',
-            1 => __DIR__ . '/..' . '/league/uri/src',
+            0 => __DIR__ . '/..' . '/league/uri/src',
+            1 => __DIR__ . '/..' . '/league/uri-interfaces/src',
         ),
         'League\\OAuth2\\Server\\' => 
         array (
@@ -547,6 +549,10 @@ class ComposerStaticInitd036986f24178615f3fb33e59fb6f0d0
         'Laravel\\Passport\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/passport/src',
+        ),
+        'LaraIzitoast\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/appslabke/lara-izitoast/lara-izitoast/src',
         ),
         'Illuminate\\Support\\' => 
         array (
@@ -718,6 +724,9 @@ class ComposerStaticInitd036986f24178615f3fb33e59fb6f0d0
         'App\\Exports\\StoreExport' => __DIR__ . '/../..' . '/app/Exports/StoreExport.php',
         'App\\Functions\\DateFormat' => __DIR__ . '/../..' . '/app/Functions/DateFormat.php',
         'App\\Functions\\Messaging' => __DIR__ . '/../..' . '/app/Functions/Messaging.php',
+        'App\\Helper\\DateFormat' => __DIR__ . '/../..' . '/app/Helper/DateFormat.php',
+        'App\\Helper\\Menu' => __DIR__ . '/../..' . '/app/Helper/Menu.php',
+        'App\\Helper\\Messaging' => __DIR__ . '/../..' . '/app/Helper/Messaging.php',
         'App\\Http\\Controllers\\Admin\\AuthController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/AuthController.php',
         'App\\Http\\Controllers\\Admin\\BarberController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/BarberController.php',
         'App\\Http\\Controllers\\Admin\\BookingController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/BookingController.php',
@@ -725,6 +734,7 @@ class ComposerStaticInitd036986f24178615f3fb33e59fb6f0d0
         'App\\Http\\Controllers\\Admin\\BrandSettingController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/BrandSettingController.php',
         'App\\Http\\Controllers\\Admin\\CategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/CategoryController.php',
         'App\\Http\\Controllers\\Admin\\ContactController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/ContactController.php',
+        'App\\Http\\Controllers\\Admin\\CurrencyController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/CurrencyController.php',
         'App\\Http\\Controllers\\Admin\\CustomerController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/CustomerController.php',
         'App\\Http\\Controllers\\Admin\\CustomerPointController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/CustomerPointController.php',
         'App\\Http\\Controllers\\Admin\\DashboardController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/DashboardController.php',
@@ -737,9 +747,11 @@ class ComposerStaticInitd036986f24178615f3fb33e59fb6f0d0
         'App\\Http\\Controllers\\Admin\\Inventory\\StockTransferController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Inventory/StockTransferController.php',
         'App\\Http\\Controllers\\Admin\\PageController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/PageController.php',
         'App\\Http\\Controllers\\Admin\\PointSettingController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/PointSettingController.php',
+        'App\\Http\\Controllers\\Admin\\PositionController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/PositionController.php',
         'App\\Http\\Controllers\\Admin\\ProductController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/ProductController.php',
         'App\\Http\\Controllers\\Admin\\PromotionController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/PromotionController.php',
         'App\\Http\\Controllers\\Admin\\ReportController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/ReportController.php',
+        'App\\Http\\Controllers\\Admin\\ReportSummaryController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/ReportSummaryController.php',
         'App\\Http\\Controllers\\Admin\\ReportTransactionController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/ReportTransactionController.php',
         'App\\Http\\Controllers\\Admin\\RewardController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/RewardController.php',
         'App\\Http\\Controllers\\Admin\\SelectController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/SelectController.php',
@@ -747,6 +759,7 @@ class ComposerStaticInitd036986f24178615f3fb33e59fb6f0d0
         'App\\Http\\Controllers\\Admin\\SettingController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/SettingController.php',
         'App\\Http\\Controllers\\Admin\\ShopController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/ShopController.php',
         'App\\Http\\Controllers\\Admin\\SlideController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/SlideController.php',
+        'App\\Http\\Controllers\\Admin\\SupplierController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/SupplierController.php',
         'App\\Http\\Controllers\\Admin\\UomController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/UomController.php',
         'App\\Http\\Controllers\\Admin\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/UserController.php',
         'App\\Http\\Controllers\\Admin\\WalletHistoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/WalletHistoryController.php',
@@ -761,6 +774,7 @@ class ComposerStaticInitd036986f24178615f3fb33e59fb6f0d0
         'App\\Http\\Controllers\\Api\\WalletController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/WalletController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\PaywayController' => __DIR__ . '/../..' . '/app/Http/Controllers/PaywayController.php',
+        'App\\Http\\Controllers\\website\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/website/HomeController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\AdminGuard' => __DIR__ . '/../..' . '/app/Http/Middleware/AdminGuard.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
@@ -775,8 +789,14 @@ class ComposerStaticInitd036986f24178615f3fb33e59fb6f0d0
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Http\\Requests\\Admin\\BookingRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Admin/BookingRequest.php',
         'App\\Http\\Requests\\Admin\\PageRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Admin/PageRequest.php',
+        'App\\Http\\Requests\\Admin\\PermissionRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Admin/PermissionRequest.php',
+        'App\\Http\\Requests\\Admin\\PositionRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Admin/PositionRequest.php',
+        'App\\Http\\Requests\\Admin\\PromotionRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Admin/PromotionRequest.php',
         'App\\Http\\Requests\\Admin\\ResetPasswordRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Admin/ResetPasswordRequest.php',
         'App\\Http\\Requests\\Admin\\SlideRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Admin/SlideRequest.php',
+        'App\\Http\\Requests\\Admin\\UserRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Admin/UserRequest.php',
+        'App\\Imports\\CustomerPointImport' => __DIR__ . '/../..' . '/app/Imports/CustomerPointImport.php',
+        'App\\Mail\\JobApplicationReceived' => __DIR__ . '/../..' . '/app/Mail/JobApplicationReceived.php',
         'App\\Mail\\sendContact' => __DIR__ . '/../..' . '/app/Mail/sendContact.php',
         'App\\Mail\\sendOTP' => __DIR__ . '/../..' . '/app/Mail/sendOTP.php',
         'App\\Models\\Barber' => __DIR__ . '/../..' . '/app/Models/Barber.php',
@@ -788,6 +808,7 @@ class ComposerStaticInitd036986f24178615f3fb33e59fb6f0d0
         'App\\Models\\CommissionHistory' => __DIR__ . '/../..' . '/app/Models/CommissionHistory.php',
         'App\\Models\\Contact' => __DIR__ . '/../..' . '/app/Models/Contact.php',
         'App\\Models\\Country' => __DIR__ . '/../..' . '/app/Models/Country.php',
+        'App\\Models\\Currency' => __DIR__ . '/../..' . '/app/Models/Currency.php',
         'App\\Models\\Customer' => __DIR__ . '/../..' . '/app/Models/Customer.php',
         'App\\Models\\CustomerDiscount' => __DIR__ . '/../..' . '/app/Models/CustomerDiscount.php',
         'App\\Models\\CustomerPoint' => __DIR__ . '/../..' . '/app/Models/CustomerPoint.php',
@@ -804,6 +825,7 @@ class ComposerStaticInitd036986f24178615f3fb33e59fb6f0d0
         'App\\Models\\Permission' => __DIR__ . '/../..' . '/app/Models/Permission.php',
         'App\\Models\\PointHistory' => __DIR__ . '/../..' . '/app/Models/PointHistory.php',
         'App\\Models\\PointSetting' => __DIR__ . '/../..' . '/app/Models/PointSetting.php',
+        'App\\Models\\Position' => __DIR__ . '/../..' . '/app/Models/Position.php',
         'App\\Models\\Product' => __DIR__ . '/../..' . '/app/Models/Product.php',
         'App\\Models\\Promotion' => __DIR__ . '/../..' . '/app/Models/Promotion.php',
         'App\\Models\\Reward' => __DIR__ . '/../..' . '/app/Models/Reward.php',
@@ -818,10 +840,13 @@ class ComposerStaticInitd036986f24178615f3fb33e59fb6f0d0
         'App\\Models\\StockOnHand' => __DIR__ . '/../..' . '/app/Models/StockOnHand.php',
         'App\\Models\\StockOut' => __DIR__ . '/../..' . '/app/Models/StockOut.php',
         'App\\Models\\StockTransfer' => __DIR__ . '/../..' . '/app/Models/StockTransfer.php',
+        'App\\Models\\StockType' => __DIR__ . '/../..' . '/app/Models/StockType.php',
+        'App\\Models\\Supplier' => __DIR__ . '/../..' . '/app/Models/Supplier.php',
         'App\\Models\\Type' => __DIR__ . '/../..' . '/app/Models/Type.php',
         'App\\Models\\UOM' => __DIR__ . '/../..' . '/app/Models/UOM.php',
         'App\\Models\\UploadFile' => __DIR__ . '/../..' . '/app/Models/UploadFile.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
+        'App\\Models\\UserCurrency' => __DIR__ . '/../..' . '/app/Models/UserCurrency.php',
         'App\\Models\\WalletHistory' => __DIR__ . '/../..' . '/app/Models/WalletHistory.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
@@ -1045,6 +1070,8 @@ class ComposerStaticInitd036986f24178615f3fb33e59fb6f0d0
         'Database\\Seeders\\OrderSeeder' => __DIR__ . '/../..' . '/database/seeders/OrderSeeder.php',
         'Database\\Seeders\\PaymentMethodSeeder' => __DIR__ . '/../..' . '/database/seeders/PaymentMethodSeeder.php',
         'Database\\Seeders\\PermissionSeeder' => __DIR__ . '/../..' . '/database/seeders/PermissionSeeder.php',
+        'Database\\Seeders\\StockTypeSeeder' => __DIR__ . '/../..' . '/database/seeders/StockTypeSeeder.php',
+        'Database\\Seeders\\SupplierSeeder' => __DIR__ . '/../..' . '/database/seeders/SupplierSeeder.php',
         'Database\\Seeders\\UserSeeder' => __DIR__ . '/../..' . '/database/seeders/UserSeeder.php',
         'DeepCopy\\DeepCopy' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/DeepCopy.php',
         'DeepCopy\\Exception\\CloneException' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Exception/CloneException.php',
@@ -3677,6 +3704,8 @@ class ComposerStaticInitd036986f24178615f3fb33e59fb6f0d0
         'Illuminate\\View\\ViewFinderInterface' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewFinderInterface.php',
         'Illuminate\\View\\ViewName' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewName.php',
         'Illuminate\\View\\ViewServiceProvider' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewServiceProvider.php',
+        'LaraIzitoast\\LaraIzitoastServiceProvider' => __DIR__ . '/..' . '/appslabke/lara-izitoast/lara-izitoast/src/LaraIzitoastServiceProvider.php',
+        'LaraIzitoast\\Toaster' => __DIR__ . '/..' . '/appslabke/lara-izitoast/lara-izitoast/src/Toaster.php',
         'Laravel\\Passport\\ApiTokenCookieFactory' => __DIR__ . '/..' . '/laravel/passport/src/ApiTokenCookieFactory.php',
         'Laravel\\Passport\\AuthCode' => __DIR__ . '/..' . '/laravel/passport/src/AuthCode.php',
         'Laravel\\Passport\\Bridge\\AccessToken' => __DIR__ . '/..' . '/laravel/passport/src/Bridge/AccessToken.php',

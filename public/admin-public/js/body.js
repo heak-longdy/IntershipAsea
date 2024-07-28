@@ -160,7 +160,6 @@ MenuDropDown.forEach(function (item) {
 
 var menu_activeDom = document.querySelector("#sidebar .side-menu .li .active"); // const menu_activeDom = document.querySelector("#sidebar .side-menu .navItemSiderbarGroup .navSidber li.active")
 
-console.log(menu_activeDom, 'navSidber');
 var menu_listDom = document.getElementsByClassName("side-menu")[0];
 menu_listDom === null || menu_listDom === void 0 ? void 0 : menu_listDom.scrollTo({
   top: (menu_activeDom === null || menu_activeDom === void 0 ? void 0 : menu_activeDom.offsetTop) - (menu_listDom === null || menu_listDom === void 0 ? void 0 : menu_listDom.clientHeight) / 2,

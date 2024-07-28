@@ -1,8 +1,9 @@
-$wb:"wb";
+$wb  :"wb";
+$padd:0;
 
 .#{$wb} {
     &-home-layout {
-        padding: 50px 120px;
+        padding: $padd;
     }
 }
 

@@ -1,5 +1,152 @@
 @extends('admin::shared.layout')
 @section('layout')
+    <style>
+        .timepicker-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.timepicker-input input {
+  font-size: 24px;
+  padding: 10px 20px;
+  border: none;
+  text-align: center;
+  width: 200px;
+}
+
+.timepicker-clock {
+  width: 200px;
+  height: 200px;
+  border: 10px solid #e0e0e0;
+  border-radius: 50%;
+  position: relative;
+  margin: 20px 0;
+}
+
+.clock-face {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.clock-hand {
+  position: absolute;
+  background-color: #4285F4;
+  width: 4px;
+  height: 80px;
+  border-radius: 2px;
+  transform-origin: bottom center;
+  left: 50%;
+  bottom: 50%;
+  transform: translateX(-50%);
+}
+
+.timepicker-ampm {
+  display: flex;
+  gap: 10px;
+}
+
+.timepicker-ampm button {
+  background-color: #4285F4;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* 2 */
+/* Custom Flatpickr Styles */
+
+.flatpickr-time {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.flatpickr-time .flatpickr-hour,
+.flatpickr-time .flatpickr-minute,
+.flatpickr-time .flatpickr-second,
+.flatpickr-time {
+  font-size: 1.1em;
+  padding: 0 5px;
+  color: #333;
+}
+
+ .flatpickr-am-pm {
+  font-size: 1.1em;
+  margin: 0 5px;
+  color: #333;
+}
+
+.flatpickr-time input {
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+  background-color: #f7f7f7;
+  color: #333;
+  font-size: 1.2em;
+  margin: 0 2px;
+}
+
+.flatpickr-time input:focus {
+  outline: none;
+  box-shadow: 0 0 3px 2px rgba(0, 150, 136, 0.3);
+}
+
+.flatpickr-time .flatpickr-am-pm {
+  cursor: pointer;
+}
+
+.flatpickr-time .flatpickr-am-pm:hover {
+  color: #009688;
+}
+
+/* Arrow buttons for time increment/decrement */
+.flatpickr-time .flatpickr-time-segment > span.arrowUp,
+.flatpickr-time .flatpickr-time-segment > span.arrowDown {
+  width: 20px;
+  height: 20px;
+  display: block;
+  background-color: #f7f7f7;
+  border-radius: 5px;
+  line-height: 20px;
+  text-align: center;
+  color: #333;
+  cursor: pointer;
+  margin: 5px 2px;
+}
+
+.flatpickr-time .flatpickr-time-segment > span.arrowUp:hover,
+.flatpickr-time .flatpickr-time-segment > span.arrowDown:hover {
+  background-color: #009688;
+  color: #fff;
+}
+.flatpickr-calendar.hasTime {
+    max-width: fit-content !important;
+}
+.flatpickr-time{
+    padding: 10px 0 !important;
+    box-shadow:none !important;
+    border: 0 !important;
+}
+.flatpickr-time .numInputWrapper{
+    width: 70px !important;
+    height: 40px;
+}
+    </style>
     @include('admin::shared.header', ['header_name' => 'Booking Management'])
     <div class="content-wrapper" x-data="xBookingData" id="app">
         <div class="header">
@@ -55,6 +202,17 @@
                                 id="to_date" autocomplete="off">
                             <i data-feather="calendar"></i>
                         </div>
+                        <div class="form-row w80">
+                            <input type="text" name="timepicker" placeholder="From Date" value="" id="timepicker"
+                                autocomplete="off">
+                            <i data-feather="calendar"></i>
+                        </div>
+                        <div class="form-row w80">
+                            <input type="text" name="timepicker2" placeholder="From Date" value="" id="timepicker2"
+                                autocomplete="off">
+                            <i data-feather="calendar"></i>
+                        </div>
+                        
                         <button mat-flat-button type="submit" class="bg-success btnSearch">
                             <i data-feather="search" style="margin-right: 0;"></i>
                         </button>
@@ -77,7 +235,20 @@
             </div>
         </div>
         <div class="content-body">
-
+            <div class="timepicker-container">
+                <div class="timepicker-input">
+                  <input type="text" value="06:19 PM" readonly>
+                </div>
+                <div class="timepicker-clock">
+                  <div class="clock-face">
+                    <div class="clock-hand"></div>
+                  </div>
+                </div>
+                <div class="timepicker-ampm">
+                  <button class="am-btn">AM</button>
+                  <button class="pm-btn">PM</button>
+                </div>
+              </div>
             @include('admin::pages.booking.table')
         </div>
         <template x-if="exportLoading">
@@ -92,7 +263,31 @@
 @stop
 
 @section('script')
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
     <script lang="ts">
+
+
+    const timepickerInput = document.querySelector('.timepicker-input input');
+    const clockHand = document.querySelector('.clock-hand');
+    const amButton = document.querySelector('.am-btn');
+    const pmButton = document.querySelector('.pm-btn');
+
+    // Function to update timepicker input and clock hand
+    function updateTime(hour, ampm) {
+    const formattedHour = hour % 12 || 12;
+    timepickerInput.value = `${formattedHour}:00 ${ampm}`;
+    clockHand.style.transform = `rotate(${(hour * 30) + (ampm === 'PM' ? 180 : 0)}deg)`;
+    }
+
+    // Event listeners for AM/PM buttons
+    amButton.addEventListener('click', () => updateTime(6, 'AM'));
+    pmButton.addEventListener('click', () => updateTime(6, 'PM'));
+
         $("body").on("click", ".trash-btn", function() {
             let url = $(this).data('url');
             let id = url.split('/').pop();
@@ -163,6 +358,13 @@
                 onSelect: function(selected) {
                     $("#from_date").datepicker("option", "maxDate", selected)
                 }
+            });
+            $('#timepicker').timepicker({});
+            flatpickr("#timepicker2", {
+                enableTime: true,
+                noCalendar: true,
+                dateFormat: "H:i K",
+                minuteIncrement: 1
             });
         });
     </script>

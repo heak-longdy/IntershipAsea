@@ -1,5 +1,5 @@
 <template x-data="{}" x-if="$store?.page?.active">
-    <div class="dialog">
+    <div class="dialog" style="z-index: 9999;">
         <div class="dialog-container">
             <template x-if="$store.page.active == 'all_files'">
                 @include('admin::file-manager.all_files')

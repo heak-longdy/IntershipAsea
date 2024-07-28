@@ -8,7 +8,6 @@
             </div>
             
             <div class="content" id="content" x-data={} >
-                {{-- @include('admin::shared.header', ['header_name' => '']) --}}
                 @yield('layout')
                 @include('admin::components.confirm-dialog')
                 @include('admin::components.select-option')

@@ -360,10 +360,11 @@ $tableRadius:15px;
                     box-sizing: border-box;
 
                     img {
-                        width        : 100%;
+                        width        : 95%;
                         height       : 100%;
                         object-fit   : cover;
                         border-radius: $border-radius;
+                        border: 1px solid #bbbbbb2b;
                     }
 
                     &[data-fancybox] {

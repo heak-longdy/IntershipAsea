@@ -1,10 +1,10 @@
 $fm: "form";
 
 .#{$fm}-admin {
-    width        : 100%;
-    // height       : calc(100% - $heightHeaderSidebar);
-    height       : 100%;
-    overflow-y   : auto;
+    width           : 100%;
+    height          : calc(100% - $heightHeaderSidebar);
+    // height       : 100%;
+    overflow-y      : auto;
 
     .#{$fm}-bg {
         width     : 100%;
@@ -34,6 +34,7 @@ $fm: "form";
             h3 {
                 display    : flex;
                 align-items: center;
+                margin     : 10px 0;
 
                 svg {
                     margin-right: 10px;
@@ -44,10 +45,10 @@ $fm: "form";
 
         .#{$fm}-body {
             box-sizing   : border-box;
-            background   : #fff;
-            padding      : 40px;
+            // background   : #fff;
+            // padding      : 40px;
             border-radius: $border-radius;
-            box-shadow   : $form-shadow;
+            // box-shadow   : $form-shadow;
 
             .row-2 {
                 width          : 100%;
@@ -114,13 +115,13 @@ $fm: "form";
                 >input,
                 select {
                     background-color: #fff;
-                    border-radius   : 4px;
+                    border-radius   : 7px;
                     border          : 1px solid #d8dce5;
                     box-sizing      : border-box;
                     color           : #5a5e66;
                     display         : inline-block;
                     font-size       : 14px;
-                    height          : 40px;
+                    height          : 43px;
                     line-height     : 1;
                     outline         : 0;
                     padding         : 0 15px;
@@ -155,7 +156,7 @@ $fm: "form";
 
                 textarea {
                     background-color: #fff;
-                    border-radius   : 4px;
+                    border-radius   : 7px;
                     border          : 1px solid #d8dce5;
                     box-sizing      : border-box;
                     color           : #5a5e66;
@@ -308,9 +309,9 @@ $fm: "form";
                             box-shadow     : 0px 2px 8px -3px rgb(0 0 0 / 20%);
 
                             svg {
-                                width    : 20px;
-                                color    : red;
-                                height   : auto;
+                                width : 20px;
+                                color : red;
+                                height: auto;
                             }
                         }
 
@@ -345,19 +346,19 @@ $fm: "form";
             }
 
             .form-select-photo {
-                background-color   : #fff;
-                border             : 1px dashed #d9d9d9;
-                border-radius      : 6px;
-                box-sizing         : border-box;
-                width              : 100%;
-                height             : 300px;
-                text-align         : center;
-                position           : relative;
-                cursor             : pointer;
-                transition         : 0.2s;
-                position           : relative;
-                display            : inline-block;
-                padding            : 5px;
+                background-color: #fff;
+                border          : 1px dashed #d9d9d9;
+                border-radius   : 6px;
+                box-sizing      : border-box;
+                width           : 100%;
+                height          : 300px;
+                text-align      : center;
+                position        : relative;
+                cursor          : pointer;
+                transition      : 0.2s;
+                position        : relative;
+                display         : inline-block;
+                padding         : 5px;
 
                 input {
                     position: absolute;
@@ -479,18 +480,18 @@ $fm: "form";
             }
 
             .form-select-file {
-                background-color   : #fff;
-                border             : 1px dashed #d9d9d9;
-                border-radius      : 6px;
-                box-sizing         : border-box;
-                width              : 100%;
-                height             : 100px;
-                text-align         : center;
-                position           : relative;
-                cursor             : pointer;
-                transition         : 0.2s;
-                position           : relative;
-                display            : inline-block;
+                background-color: #fff;
+                border          : 1px dashed #d9d9d9;
+                border-radius   : 6px;
+                box-sizing      : border-box;
+                width           : 100%;
+                height          : 100px;
+                text-align      : center;
+                position        : relative;
+                cursor          : pointer;
+                transition      : 0.2s;
+                position        : relative;
+                display         : inline-block;
 
                 input {
                     position: absolute;
@@ -649,16 +650,17 @@ $fm: "form";
             .form-button {
                 width          : 100%;
                 display        : flex;
-                justify-content: flex-end;
+                justify-content: flex-start;
                 padding-top    : 10px;
+                grid-gap       : 10px;
 
                 .left {
                     display        : flex;
                     justify-content: flex-end;
 
                     button {
-                        margin      : 0;
-                        margin-right: 10px;
+                        margin         : 0;
+                        // margin-right: 10px;
                     }
                 }
 
@@ -675,7 +677,6 @@ $fm: "form";
                 }
 
                 button {
-                    margin-left  : 10px;
                     height       : 45px;
                     font-size    : 14px;
                     border-radius: $border-radius;
@@ -695,15 +696,17 @@ $fm: "form";
                     }
 
                     &[color="primary"] {
-                        color           : #fff;
-                        background-color: map-get($map: $btn, $key: "create");
-                        border          : none;
+                        color              : #fff;
+                        // background-color: map-get($map: $btn, $key: "create");
+                        background-color   : #3C91E6;
+                        border             : none;
                     }
 
                     &[color="danger"] {
-                        color           : #fff;
-                        background-color: map-get($map: $btn, $key: "delete");
-                        border          : none;
+                        color              : #fff;
+                        // background-color: map-get($map: $btn, $key: "delete");
+                        background-color   : #ff3838db;
+                        border             : none;
                     }
 
                     &.icon {
@@ -841,7 +844,8 @@ $fm: "form";
                     flex-direction: column;
 
                     .step-header {
-                        display   : flex;
+                        display: flex;
+
                         hr {
                             flex    : auto;
                             position: relative;
@@ -986,11 +990,11 @@ $fm: "form";
                     padding-left: 40px;
 
                     &.active {
-                        color              : #1d2129;
-                        background-color   : #ddd;
-                        border-color       : #ddd;
-                        font-size          : 16px;
-                        padding-left       : 15px;
+                        color           : #1d2129;
+                        background-color: #ddd;
+                        border-color    : #ddd;
+                        font-size       : 16px;
+                        padding-left    : 15px;
                     }
 
                     .form-check {
@@ -1026,11 +1030,11 @@ $fm: "form";
                 column-gap    : 15px;
 
                 .permission-item {
-                    background      : rgba(#000, 0.01);
-                    display         : flex;
-                    border-radius   : 8px;
-                    column-gap      : 10px;
-                    box-sizing      : border-box;
+                    background   : rgba(#000, 0.01);
+                    display      : flex;
+                    border-radius: 8px;
+                    column-gap   : 10px;
+                    box-sizing   : border-box;
 
                     .title {
                         min-width  : 300px;
@@ -1118,6 +1122,16 @@ $fm: "form";
 
             >* {
                 width: calc(100% / 2 - 10px);
+            }
+        }
+
+        .row-3 {
+            width          : 100%;
+            display        : flex;
+            justify-content: space-between;
+
+            >* {
+                width: calc(100% / 3 - 10px);
             }
         }
 
@@ -1354,15 +1368,15 @@ $fm: "form";
 }
 
 .pdfFIleinputGp {
-    height          : 40px;
-    position        : relative;
-    border          : 1px solid #d8dce5;
-    display         : flex;
-    align-items     : center;
-    width           : 100%;
-    padding         : 12px;
-    border-radius   : 4px;
-    cursor          : pointer;
+    height       : 40px;
+    position     : relative;
+    border       : 1px solid #d8dce5;
+    display      : flex;
+    align-items  : center;
+    width        : 100%;
+    padding      : 12px;
+    border-radius: 4px;
+    cursor       : pointer;
 }
 
 .filePdf {
@@ -1610,20 +1624,20 @@ $formBlockLabelWidth : 200px;
 
 //image
 .form-select-photo {
-    background-color   : #fff;
-    border             : 1px dashed #d9d9d9;
-    border-radius      : 25px;
-    box-sizing         : border-box;
-    width              : 100%;
-    height             : 260px;
-    text-align         : center;
-    position           : relative;
-    cursor             : pointer;
-    transition         : 0.2s;
-    position           : relative;
-    display            : inline-block;
-    padding            : 3px;
-    overflow           : hidden;
+    background-color: #fff;
+    border          : 1px dashed #d9d9d9;
+    border-radius   : 25px;
+    box-sizing      : border-box;
+    width           : 100%;
+    height          : 260px;
+    text-align      : center;
+    position        : relative;
+    cursor          : pointer;
+    transition      : 0.2s;
+    position        : relative;
+    display         : inline-block;
+    padding         : 3px;
+    overflow        : hidden;
 
 
     input {
@@ -1687,7 +1701,7 @@ $formBlockLabelWidth : 200px;
             line-height: 0;
 
             .bx {
-                font-size: 30px;
+                font-size: 60px;
             }
 
             svg {
@@ -1724,9 +1738,9 @@ $formBlockLabelWidth : 200px;
         }
 
         img {
-            width        : 100%;
-            height       : 100%;
-            object-fit   : cover;
+            width     : 100%;
+            height    : 100%;
+            object-fit: cover;
 
             &.img-contain {
                 object-fit: contain;

@@ -1,141 +1,153 @@
-// .paginationLayout {
-//     height       : 50px;
-//     margin-top   : 15px;
-//     border-radius: 20px;
-//     $pg          : "pagination";
-//     width        : 100%;
-
-//     &.pgHeader {
-//         margin-top: 0 !important;
-//     }
-
-//     .#{$pg} {
-//         width             : 100%;
-//         // height         : 100%;
-//         display           : flex;
-//         justify-content   : space-between;
-
-//         &-left {
-//             width      : fit-content;
-//             display    : flex;
-//             align-items: center;
-//             padding    : 0 20px;
-//             box-sizing : border-box;
-//             font-size  : 14px;
-//         }
-
-//         &-right {
-//             width: fit-content;
-
-//             .#{$pg}-wrapper {
-//                 display         : flex;
-//                 background      : #fff;
-//                 height          : 100%;
-//                 align-items     : center;
-//                 padding         : 8px 15px;
-//                 border-radius   : 20px;
-//                 box-sizing      : border-box;
-//                 // box-shadow   : $shadow;
-
-//                 .#{$pg}-item {
-//                     width          : fit-content;
-//                     min-width      : 30px;
-//                     padding        : 0 5px;
-//                     height         : 100%;
-//                     display        : flex;
-//                     align-items    : center;
-//                     justify-content: center;
-//                     margin         : 0 3px;
-//                     border-radius  : 5px;
-//                     cursor         : pointer;
-
-//                     &.active {
-//                         background: $primary;
-//                         color     : #fff;
-//                         cursor    : default;
-//                     }
-
-//                     &.disabled {
-//                         color : $container;
-//                         cursor: no-drop;
-//                     }
-
-//                     &:hover:not(.active) {
-//                         background: rgba($color: $menu-active, $alpha: 0.1);
-//                     }
-
-//                     i.bx {
-//                         font-size: 25px;
-//                     }
-
-//                     &.right {
-//                         border-radius: 50%;
-//                         width        : 25px;
-//                         height       : 25px;
-//                         min-width    : 25px;
-//                     }
-
-//                     &.left {
-//                         border-radius: 50%;
-//                         width        : 25px;
-//                         height       : 25px;
-//                         min-width    : 25px;
-//                     }
-//                 }
-//             }
-//         }
-//     }
-// }
-
-// .paginationHeader {
-//     display    : flex;
-//     align-items: center;
-
-//     .pagination-item {
-//         cursor: pointer;
-
-//         &.active {
-//             background: $primary;
-//             color     : #fff;
-//             cursor    : default;
-//         }
-
-//         &.disabled {
-//             color : $container;
-//             cursor: no-drop;
-//         }
-
-//         &:hover:not(.active) {
-//             background: rgba($color: $menu-active, $alpha: 0.1);
-//         }
-
-//         i.bx {
-//             font-size: 25px;
-//         }
-
-//         &.right {
-//             border-radius: 50%;
-//             width        : 25px;
-//             height       : 25px;
-//             min-width    : 25px;
-//         }
-
-//         &.left {
-//             border-radius: 50%;
-//             width        : 25px;
-//             height       : 25px;
-//             min-width    : 25px;
-//         }
-//     }
-// }
 .paginationLayout {
+    // height       : 50px;
+    height          : 90px;
+    // margin-top   : 15px;
+    border-radius   : 20px;
+    $pg             : "pagination";
+    width           : 100%;
+    display         : flex;
+    justify-content : flex-end;
+    align-items     : center;
+
+    &.pgHeader {
+        margin-top: 0 !important;
+    }
+
+    .#{$pg} {
+        width             : 100%;
+        // height         : 100%;
+        display           : flex;
+        justify-content   : space-between;
+
+        &-left {
+            width      : fit-content;
+            display    : flex;
+            align-items: center;
+            padding    : 0 20px;
+            box-sizing : border-box;
+            font-size  : 14px;
+        }
+
+        &-right {
+            width: fit-content;
+
+            .#{$pg}-wrapper {
+                display         : flex;
+                background      : #fff;
+                background      : unset;
+                height          : 100%;
+                align-items     : center;
+                padding         : 8px 0px;
+                border-radius   : 20px;
+                box-sizing      : border-box;
+                // box-shadow   : $shadow;
+
+                .#{$pg}-item {
+                    width          : fit-content;
+                    min-width      : 30px;
+                    min-width      : 30px;
+                    height         : 30px !important;
+                    padding        : 0 5px;
+                    height         : 100%;
+                    display        : flex;
+                    align-items    : center;
+                    justify-content: center;
+                    margin         : 0 3px;
+                    border-radius  : 50px;
+                    cursor         : pointer;
+
+                    &.active {
+                        background: $primary;
+                        color     : #fff;
+                        cursor    : default;
+                    }
+
+                    &.disabled {
+                        // color : $container;
+                        color:#4546473b;
+                        cursor: no-drop;
+                    }
+
+                    &:hover:not(.active) {
+                        background: rgba($color: $menu-active, $alpha: 0.1);
+                    }
+
+                    i.bx {
+                        font-size: 25px;
+                    }
+
+                    &.right {
+                        border-radius: 50%;
+                        width        : 35px;
+                        height       : 35px !important;
+                        min-width    : 35px;
+                    }
+
+                    &.left {
+                        border-radius: 50%;
+                        width        : 35px;
+                        height       : 35px !important;
+                        min-width    : 35px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.paginationHeader {
+    display    : flex;
+    align-items: center;
+
+    .pagination-item {
+        cursor: pointer;
+
+        &.active {
+            background: $primary;
+            color     : #fff;
+            cursor    : default;
+        }
+
+        &.disabled {
+            color : $container;
+            cursor: no-drop;
+        }
+
+        &:hover:not(.active) {
+            background: rgba($color: $menu-active, $alpha: 0.1);
+        }
+
+        i.bx {
+            font-size: 25px;
+        }
+
+        &.right {
+            border-radius: 50%;
+            width        : 40px;
+            height       : 40px;
+            min-width    : 40px;
+        }
+
+        &.left {
+            border-radius: 50%;
+            width        : 40px;
+            height       : 40px;
+            min-width    : 40px;
+        }
+    }
+}
+
+//2
+.paginationLayout2 {
     height         : 90px;
+    height         : fit-content;
     margin-top     : 0px;
     border-radius  : 20px;
     width          : 100%;
     display        : flex;
     justify-content: flex-end;
     align-items    : center;
+    margin         : 20px 0 8px;
 }
 
 .pagination {

@@ -655,13 +655,14 @@ li.completed {
 
 .content.isScrolled {
     .scroll {
-        right: 35px;
+        right: 20px;
     }
 
     .content-wrapper {
         .content-body {
             .paginationLayout {
-                width: calc(100% - 60px);
+                width   : calc(100% - 37px);
+                // width: 100%;
             }
         }
     }

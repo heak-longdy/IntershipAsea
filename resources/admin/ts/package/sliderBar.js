@@ -168,7 +168,6 @@ MenuDropDown.forEach(function (item) {
 //slidBarScrollActive
 const menu_activeDom = document.querySelector("#sidebar .side-menu .li .active");
 // const menu_activeDom = document.querySelector("#sidebar .side-menu .navItemSiderbarGroup .navSidber li.active")
-console.log(menu_activeDom,'navSidber');
 const menu_listDom = document.getElementsByClassName("side-menu")[0];
 menu_listDom?.scrollTo({
     top: menu_activeDom?.offsetTop - menu_listDom?.clientHeight / 2,

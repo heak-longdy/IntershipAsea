@@ -1,7 +1,7 @@
 @extends('website::index')
 @section('index')
     <div class="wb-container">
-        <div class="headerBg"><div class="Bg"></div></div>
+        {{-- <div class="headerBg"><div class="Bg"></div></div> --}}
         <div class="bodyBg"><div class="Bg"></div></div>
 
         <div class="container-wrapper">

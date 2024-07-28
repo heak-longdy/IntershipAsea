@@ -34,9 +34,9 @@ return [
     ],
     [
         'type'  => 'single',
-        'active' => '#',
-        'path' => 'admin/user/list/1',
-        'permission' => ['admin-view'],
+        'active' => 'admin/partner/*',
+        'path' => 'admin/partner/list/1',
+        'permission' => ['partner-view'],
         'name' => [
             'en' => 'Partner',
         ],
@@ -53,6 +53,26 @@ return [
             'en' => 'Admin',
         ],
         'icon' => 'bx-briefcase',
+    ],
+    [
+        'type'  => 'single',
+        'active' => 'admin/job/*',
+        'path' => 'admin/job/list/1',
+        'permission' => ['job-view'],
+        'name' => [
+            'en' => 'Job',
+        ],
+        'icon' => 'bx-briefcase',
+    ],
+    [
+        'type'  => 'single',
+        'active' => 'admin/position/*',
+        'path' => 'admin/position/list/1',
+        'permission' => ['position-view'],
+        'name' => [
+            'en' => 'Position',
+        ],
+        'icon' => 'bxl-ok-ru',
     ],
     [
         'type'  => 'dropdown-single',
