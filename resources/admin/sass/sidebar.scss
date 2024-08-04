@@ -262,7 +262,8 @@ li {
     align-items           : center;
     font-size             : 14px;
     // color              : var(--dark);
-    color                 : var(--nav-group-title-color, $sidebar-color);
+    // color                 : var(--nav-group-title-color, $sidebar-color);
+    color: rgba(255, 255, 255, .7);
     // color           : #fff;
     padding               : 5px 12px 5px 12px;
     transition            : all .3s ease;

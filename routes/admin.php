@@ -297,8 +297,11 @@ Route::middleware(['AdminGuard'])
             Route::get('list/{status?}', [PartnerController::class, 'index'])->name('list');
             Route::get('create', [PartnerController::class, 'onCreate'])->name('create');
             Route::get('edit/{id?}', [PartnerController::class, 'onEdit'])->name('edit');
-            Route::post('save/{id?}', [PartnerController::class, 'onSave'])->name('save');
+            Route::post('save/{id?}', [PartnerController::class, 'Save'])->name('save');
             Route::match(['get', 'post'], 'status/{id}/{status}', [PartnerController::class, 'onUpdateStatus'])->name('status');
+            Route::post('delete/{id?}', [PartnerController::class, 'delete'])->name('delete');
+            Route::post('restore/{id?}', [PartnerController::class, 'Restore'])->name('restore');
+            Route::post('destroy/{id?}', [PartnerController::class, 'Destroy'])->name('destroy');
         });
 
 

@@ -1,8 +1,8 @@
 <template x-if="$store.{{ $dialog }}.show">
-    <div x-data="{{ $dialog }}_component" x-bind:style="{ zIndex: $store.libs.getLastIndex() + 1 }" class="dialog"
+    <div x-data="{{ $dialog }}_component" x-bind:style="{ zIndex: $store.libs.getLastIndex() + 1 }" class="dialog" :class="data?.digPosition"
         x-bind:onload="dialogInit">
         <div class="dialog-wrapper">
-            <div class="dialog-container">
+            <div class="dialog-container" :class="data?.class">
                 {{ $slot }}
             </div>
         </div>
@@ -10,6 +10,10 @@
 </template>
 <script>
     Alpine.data('{{ $dialog }}_component', () => ({
+        data:{},
+        init(){
+            this.data = this.$store.{{ $dialog }}.data;
+        },
         dialogInit() {
             feather.replace();
             const target = this.$root.querySelector('.dialog-container');

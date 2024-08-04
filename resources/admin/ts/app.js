@@ -18,7 +18,7 @@ const { default: anime } = require("animejs");
 window.anime = anime;
 // import Choices from "choices.js";
 // window.Choices = Choices;
-// require("./libs");
+require("./libs");
 // require("./package/animation/index");
 
 // import ApexCharts from "apexcharts";

@@ -7,7 +7,7 @@
             <div class="form-header">
                 <h3>
                     <i data-feather="arrow-left" s-click-link="{!! route('admin-partner-list', 1) !!}"></i>
-                    {{ $id ? 'Update Partner' : 'Create Partner' }}
+                    {{  request('id') ? 'Update Partner' : 'Create Partner' }}
                 </h3>
             </div>
             {{ csrf_field() }}

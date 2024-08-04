@@ -546,6 +546,7 @@ nav .divider {
                         box-sizing  : border-box;
                         width       : calc(100% - 24px);
                         font-size   : 14px;
+                        height      : 100%;
 
                         &:focus {
                             outline: none;
@@ -700,6 +701,7 @@ nav .divider {
         border-radius: 10px !important;
     }
 }
-.box-shadow-bottom{
+
+.box-shadow-bottom {
     box-shadow: 0 3px 3px 0 rgb(181 181 181 / 13%);
 }

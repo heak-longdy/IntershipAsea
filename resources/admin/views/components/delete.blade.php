@@ -1,0 +1,71 @@
+@component('admin::components.dialog', ['dialog' => 'confirmDialog'])
+    <div x-data="confirmDialog" class="dialog-form"  x-bind:style="{ width: data?.width }"  style="text-align: center;align-items: center;">
+        <div class="dialog-form-header" style="justify-content: center;">
+            <i class='bx bx-question-mark' style="font-size: 55px;margin-bottom: 15px; border: 1px solid rgba(255, 0, 0, 0.8); color:rgb(255 0 0 / 61%); border-radius: 50%;"></i>
+        </div>
+        <div class="dialog-form-body" style="padding: 15px 30px;">
+            <div class="form-row" style="margin-bottom: 10px;">
+                <p x-html="data?.message" style="text-align: left;font-weight: 600;"></p>
+            </div>
+            <div style="display: flex; align-items: center;grid-gap: 10px;margin: 0 5px; font-size: 14px;">
+                <label class="containerInputCheckBox">
+                    <input :checked="statusTrash" type="checkbox">
+                    <div class="checkmark"></div>
+                  </label>
+                <label>Move to trash.</label>
+            </div>
+        </div>
+        <div class="dialog-form-footer" style="padding: 0px 30px 15px;width: 100%;">
+            <button type="button" class="close" @click="$store.confirmDialog.close(false)"
+                x-text="data?.btnClose || 'Close'" x-bind:disabled="disabled || loading" style="margin-right: 10px;background: none !important;"></button>
+            <button type="button" @click="onConfirm" x-bind:disabled="disabled || loading" style="border-radius: 25px;">
+                <span class='bx bx-loader-alt spinLoading bx-spin' x-show="loading" style="margin-right: 10px;display: none;"></span>
+                <span x-text="data?.btnSave || 'Save'"></span>
+            </button>
+        </div>
+    </div>
+    <script>
+        Alpine.data("confirmDialog", () => ({
+            data: null,
+            disabled: false,
+            loading: false,
+            statusTrash:true,
+            urlRute:"#",
+            init() {
+                console.log('confirmDialog');
+                this.data = this.$store.confirmDialog.data;
+                const urlDelete = `/admin/${this.data.urlName}/delete/${this.data?.item?.id}`;
+                const urlDestory = `/admin/${this.data.urlName}/destroy/${this.data?.item?.id}`;
+                const urlRestore = `/admin-${this.data.urlName}-restore`;
+                this.urlRute = this.statusTrash ? urlDelete : urlDestory;
+                console.log(this.data,'data----');
+            },
+            onConfirm() {
+                this.disabled = true;
+                this.loading = true;
+                
+                setTimeout(async () => {
+                    Axios({
+                       url: this.urlRute,
+                        method: 'POST',
+                        data: {
+                            ...this.data?.item
+                        }
+                    }).then((res) => {
+                        console.log(res);
+                        if (res.data.message == "success") {
+                            this.$store.confirmDialog.close(true);
+                        }
+                    }).catch((e) => {
+                        this.validate = e.response.data.errors;
+                        this.disabled = false;
+                        this.loading = false;
+                    }).finally(() => {
+                        this.disabled = false;
+                        this.loading = false;
+                    });
+                }, 500);
+            }
+        }))
+    </script>
+@endcomponent

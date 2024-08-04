@@ -9,7 +9,7 @@
             
             <div class="content" id="content" x-data={} >
                 @yield('layout')
-                @include('admin::components.confirm-dialog')
+                {{-- @include('admin::components.confirm-dialog')  --}}
                 @include('admin::components.select-option')
                 @include('admin::components.logout')
                 <div id="jsScroll" class="scroll">

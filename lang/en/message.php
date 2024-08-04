@@ -19,4 +19,5 @@ return [
     'unique_title_en' => 'Title (English) already exists',
     'unique_phone' => 'Phone number already exists',
     'unique_id_card' => 'ID card number already exists',
+    'alert_message_delete'=>"Are you sure want to delete ?"
 ];
