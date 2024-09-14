@@ -126,15 +126,191 @@
         width: 100%;
         height: 100%;
     } */
+    /* From Uiverse.io by Shaidend */
+    .InputContainer {
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgb(255, 255, 255);
+        border-radius: 24px;
+        overflow: hidden;
+        cursor: pointer;
+        padding-left: 15px;
+        /* box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.075); */
+        /* border: 1px solid rgba(51, 51, 51, 0.2); */
+        border-radius: 10px;
+        /* border: 1px solid rgba(152, 152, 152, 0.2); */
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+    }
+
+    .input {
+        width: 95px;
+        height: 100%;
+        border: none;
+        outline: none;
+        font-size: 0.9em;
+        caret-color: rgb(255, 81, 0);
+        font-size: 15px;
+    }
+
+    .labelforsearch {
+        cursor: text;
+        padding: 0px 12px;
+        display: flex;
+        align-items: center;
+    }
+
+    .searchIcon {
+        width: 19px;
+    }
+
+    .border {
+        height: 40%;
+        width: 1.3px;
+        background-color: rgb(223, 223, 223);
+    }
+
+    .micIcon {
+        width: 12px;
+    }
+
+    .micButton {
+        padding: 0px 15px 0px 12px;
+        border: none;
+        background-color: transparent;
+        height: 40px;
+        cursor: pointer;
+        transition-duration: 0.3s;
+    }
+
+    .searchIcon path {
+        fill: rgb(114, 114, 114);
+    }
+
+    .micIcon path {
+        fill: rgb(255, 81, 0);
+    }
+
+    .micButton:hover {
+        background-color: rgb(255, 230, 230);
+        transition-duration: 0.3s;
+    }
+
+
+    /* profile */
+    /* * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    } */
+
+    /* body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f8f9fd;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    } */
+
+    .profile-card {
+        background-color: #fff;
+        min-width: 300px;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        text-align: center;
+    }
+
+    .user-details h2 {
+        font-size: 18px;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .user-details .title {
+        font-size: 14px;
+        color: #888;
+    }
+
+    .user-details .email {
+        font-size: 14px;
+        color: #4A90E2;
+    }
+
+    hr {
+        margin: 20px 0;
+        border: none;
+        height: 1px;
+        background-color: #eaeaea;
+    }
+
+    .profile-menu {
+        list-style: none;
+        text-align: left;
+    }
+
+    .profile-menu li span {
+        color: #888;
+    }
+
+    .upgrade-card {
+        background-color: #f0f4ff;
+        padding: 15px;
+        border-radius: 10px;
+        margin: 20px 0;
+        text-align: center;
+    }
+
+    .upgrade-card p {
+        margin-bottom: 10px;
+        color: #333;
+        font-weight: bold;
+    }
+
+    .upgrade-btn {
+        background-color: #4A90E2;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+    }
+
+    .upgrade-btn:hover {
+        background-color: #357ABD;
+    }
+
+    .notification-body {
+        position: absolute;
+        background: rebeccapurple;
+        top: calc(100% + 10px);
+        opacity: 0;
+        background-color: #fff;
+        width: 300px;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        text-align: center;
+    }
+
+    .notification-body.show {
+        opacity: 1;
+        pointer-events: visible;
+        top: 100%;
+        margin-top: 10px;
+        right: 0;
+    }
 </style>
-<div class="header">
+<div class="header {{isset($customClass) ? $customClass : ''}}" x-data="xHeader">
     <div class="header-wrapper">
         <div class="left">
             <nav>
                 <div class="navHeaderRight">{!! $header_name !!}
                     {{-- <input type="checkbox" id="switch-mode" hidden>
-                    <label for="switch-mode" class="switch-mode"></label> --}}
-                    {{-- <a href="#" class="notification">
+                    <label for="switch-mode" class="switch-mode"></label>
+                    <a href="#" class="notification">
                         <i class='bx bxs-bell'></i>
                         <span class="num">8</span>
                     </a> --}}
@@ -163,10 +339,69 @@
                 <div class="navHeaderRight">
                     {{-- <input type="checkbox" id="switch-mode" hidden>
                 <label for="switch-mode" class="switch-mode"></label> --}}
-                    {{-- <a href="#" class="notification">
-                    <i class='bx bxs-bell'></i>
-                    <span class="num">8</span>
-                </a> --}}
+                    <div style=" display: flex;justify-content: center;align-items: center; grid-gap: 20px;">
+                        <div class="InputContainer">
+                            <input placeholder="Search Menu" id="input" class="input" name="text" type="text"
+                                @click="selectShop()" />
+                            <label class="labelforsearch" for="input">
+                                <i class='bx bx-command' style="font-size: 20px;color: #666565;"></i>
+                            </label>
+                        </div>
+                        <div class="notificationGp" style="position: relative;">
+                            <a href="#" class="notification">
+                                <i class='bx bxs-bell'></i>
+                                <span class="num">8</span>
+                            </a>
+                            <ul class="notification-body">
+                                <div class="notification-card">
+                                    <div class="notification-header">
+                                        <h2>Notifications</h2>
+                                        <div class="badge">5 new</div>
+                                    </div>
+                                    <ul class="notification-list">
+                                        <li>
+                                            <img src="{{asset('images/user.jpg')}}" alt="Avatar">
+                                            <div class="notification-content">
+                                                <p><strong>Roman Joined the Team!</strong></p>
+                                                <p>Congratulate him</p>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <img src="{{asset('images/user.jpg')}}" alt="Avatar">
+                                            <div class="notification-content">
+                                                <p><strong>New message received</strong></p>
+                                                <p>Salma sent you a new message</p>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <img src="{{asset('images/user.jpg')}}" alt="Avatar">
+                                            <div class="notification-content">
+                                                <p><strong>New Payment received</strong></p>
+                                                <p>Check your earnings</p>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <img src="{{asset('images/user.jpg')}}" alt="Avatar">
+                                            <div class="notification-content">
+                                                <p><strong>Jolly completed tasks</strong></p>
+                                                <p>Assign her new tasks</p>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <img src="{{asset('images/user.jpg')}}" alt="Avatar">
+                                            <div class="notification-content">
+                                                <p><strong>Roman Joined the Team!</strong></p>
+                                                <p>Congratulate him</p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <div class="see-all-btn">
+                                        <button>See all Notifications</button>
+                                    </div>
+                                </div>
+                            </ul>
+                        </div>
+                    </div>
                     {{-- search --}}
                     {{-- <label class="search-label">
                         <input type="text" name="text" class="input" required="" placeholder="Type here...">
@@ -198,7 +433,51 @@
                     <div class="profile" x-data="xHeader">
                         <img src="{{ asset('admin-public/logo/profile.png') }}" alt="" />
                         <ul class="profile-link">
-                            <div class="profileImageTextLayout">
+                            <div class="profile-card">
+                                <div class="user-info">
+                                    <img class="avatar"
+                                        src="{{asset('images/user.jpg')}}"
+                                        alt="Profile Picture">
+                                    <div class="user-details">
+                                        <h2>Heak Longdy</h2>
+                                        <p class="title">Super Admin</p>
+                                        <p class="email"><i class="email-icon"></i>longdyheak@gmail.com</p>
+                                    </div>
+                                </div>
+                                <hr>
+                                <ul class="profile-menu">
+                                    <li>
+                                        <i class='bx bx-user'></i>
+                                        <div>
+                                            <p>My Profile </p>
+                                            <span>Account Settings</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <i class="material-symbols-outlined"> alternate_email</i>
+                                        <div>
+                                            <p>My Inbox </p>
+                                            <span>Messages & Emails</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <i class='bx bx-task' ></i>
+                                        <div>
+                                            <p>My Tasks </p>
+                                            <span>To-do and Daily Tasks</span>
+                                        </div>
+                                    </li>
+                                </ul>
+                                {{-- <div class="upgrade-card">
+                                    <p>Unlimited Access</p>
+                                    <button class="upgrade-btn">Upgrade</button>
+                                </div> --}}
+                                <button class="logout-btn" @click="signOut">
+                                    <i class='bx bx-log-out'></i>
+                                    <span>Logout</span>
+                                </button>
+                            </div>
+                            {{-- <div class="profileImageTextLayout">
                                 <div class="imgProfile">
                                     <img class="img" src="{{ asset('admin-public/logo/profile.png') }}"
                                         alt="" />
@@ -216,7 +495,7 @@
                             <div class="profileActionLayout" @click="signOut">
                                 <i class='bx bx-log-out'></i>
                                 <div>Sing Out</div>
-                            </div>
+                            </div> --}}
                         </ul>
                     </div>
 
@@ -225,6 +504,82 @@
         </div>
     </div>
 </div>
+<script>
+    // document.addEventListener('DOMContentLoaded', function() {
+    //     const nav = document.querySelector('.header');
+    //     const navMenu = document.querySelector('.header .nav-menu');
+    //     const toggleMenu = document.querySelector('.toggle-menu');
+    //     const sidebar = document.querySelector(".sidebar");
+    //     const closeBtn = document.querySelector(".close-btn");
+    //     const wbContainer = document.querySelector(".content");
+    //     const formAdmin = document.querySelector(".form-admin");
+
+    //     console.log(nav,'fff');
+
+    //     // Function to handle scrolling
+    //     function handleScroll() {
+    //         if (formAdmin.scrollY > 20) {
+    //             console.log('gguuuuu');
+    //             nav.classList.add('active');
+    //         } else {
+    //             nav.classList.remove('active');
+    //         }
+    //     }
+
+    //     // Initial check if the page is already scrolled
+    //     handleScroll();
+
+    //     // Add scroll event listener
+    //     window.addEventListener('scroll', handleScroll);
+
+    //     // Toggle menu visibility on click
+    //     // toggleMenu.addEventListener('click', function() {
+    //     //     navMenu.classList.toggle('show');
+    //     //     sidebar.classList.toggle("show-sidebar");
+    //     //     wbContainer.classList.toggle("ddd");
+    //     //     if (navMenu.classList.contains('show')) {
+    //     //         nav.classList.add('active');
+    //     //     } else {
+    //     //         // Only remove the 'active' class if the window scroll is less than 20
+    //     //         if (window.scrollY < 20) {
+    //     //             nav.classList.remove('active');
+    //     //         }
+    //     //     }
+    //     // });
+    //     // closeBtn.addEventListener("click", function() {
+    //     //     sidebar.classList.remove("show-sidebar");
+    //     //     navMenu.classList.remove("show");
+    //     //     wbContainer.classList.remove("ddd");
+    //     // });
+    // });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const nav = document.querySelector('.header');
+        const navMenu = document.querySelector('.header .nav-menu');
+        const toggleMenu = document.querySelector('.toggle-menu');
+        const sidebar = document.querySelector(".sidebar");
+        const closeBtn = document.querySelector(".close-btn");
+        const wbContainer = document.querySelector(".content");
+        const formAdmin = document.querySelector(".form-admin");
+
+        // Function to handle scrolling within the .form-admin element
+        function handleScroll() {
+            // Check if .form-admin is scrolled more than 20px
+            if (formAdmin?.scrollTop > 20) {
+                nav.classList.add('active');
+            } else {
+                nav.classList.remove('active');
+            }
+        }
+
+        // Initial check if the .form-admin is already scrolled
+        handleScroll();
+
+        // Add scroll event listener to .form-admin
+        formAdmin?.addEventListener('scroll', handleScroll);
+    });
+</script>
+
 <script>
     Alpine.data('xHeader', () => ({
         open: false,
@@ -323,6 +678,68 @@
                     }
                 }
             });
-        }
+        },
+        selectShop() {
+            console.log('hiiiiiiiii');
+            var queueSearch = 500;
+            SelectOption({
+                title: "Quict Search Menu",
+                placeholder: "Search Menu ...",
+                onReady: (callback_data) => {
+                    Axios({
+                            url: `#`,
+                            method: 'GET'
+                        })
+                        .then(response => {
+                            const data = response?.data?.data.map(item => {
+                                return {
+                                    _id: item.id,
+                                    _title: item?.invoice_number ? item
+                                        .invoice_number : "",
+                                    _image: this.imageLogoSelectOption,
+                                    _description: item?.purchase?.project?.name ??
+                                        '',
+                                    ...item,
+                                }
+                            });
+                            callback_data(data);
+                        });
+                },
+                onSearch: (value, callback_data) => {
+                    clearTimeout(queueSearch);
+                    queueSearch = setTimeout(() => {
+                        Axios({
+                                url: `#`,
+                                params: {
+                                    search: value
+                                },
+                                method: 'GET'
+                            })
+                            .then(response => {
+                                const data = response?.data?.data.map(
+                                    item => {
+                                        return {
+                                            _id: item.id,
+                                            _title: item?.invoice_number ? item
+                                                .invoice_number : "",
+                                            _image: this.imageLogoSelectOption,
+                                            _description: item?.purchase
+                                                ?.project?.name ?? '',
+                                            ...item,
+                                        }
+                                    });
+                                callback_data(data);
+                            });
+                    }, 500);
+                },
+                afterClose: (res) => {
+                    if (res) {
+                        console.log(res, 'ressss');
+                        this.formSubmitData.invoice_ref_id = res.id;
+                        this.formSubmitData.invoice_number = res.invoice_number;
+                    }
+                }
+            });
+        },
     }));
 </script>

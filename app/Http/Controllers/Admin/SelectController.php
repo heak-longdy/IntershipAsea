@@ -8,6 +8,7 @@ use App\Models\Brand;
 use Illuminate\Http\Request;
 use App\Models\Service;
 use App\Models\Customer;
+use App\Models\Position;
 use App\Models\Product;
 use App\Models\Shop;
 use App\Models\ShopProduct;
@@ -294,6 +295,21 @@ class SelectController extends Controller
                 $q->where('name', 'LIKE', '%' . $req->search . '%');
             }
         })->orderBy('id', 'asc')->take(12)->get();
+        try {
+            return response()->json(['data' => $data, 'message' => 200]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message'   => 'error'
+            ]);
+        }
+    }
+    public function SelectPositionSearch(Request $req){
+        $data = Position::where('status', 1)->where(function (Builder $q) use ($req) {
+            if ($req->search) {
+                $q->where('title', 'LIKE', '%' . $req->search . '%');
+            }
+        })->orderBy('created_at', 'desc')->take(12)->get();
+
         try {
             return response()->json(['data' => $data, 'message' => 200]);
         } catch (\Exception $e) {

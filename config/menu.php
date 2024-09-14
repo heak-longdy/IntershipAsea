@@ -43,6 +43,17 @@ return [
         // 'icon' => 'bx-badge-check',
         'icon' => 'bxl-redux',
     ],
+    [
+        'type'  => 'single',
+        'active' => 'admin/sector/*',
+        'path' => 'admin/sector/list/1',
+        'permission' => ['sector-view'],
+        'name' => [
+            'en' => 'Sector',
+        ],
+        // 'icon' => 'bx-badge-check',
+        'icon' => 'bxl-redux',
+    ],
     // admin
     [
         'type'  => 'single',
@@ -61,6 +72,16 @@ return [
         'permission' => ['job-view'],
         'name' => [
             'en' => 'Job',
+        ],
+        'icon' => 'bx-briefcase',
+    ],
+    [
+        'type'  => 'single',
+        'active' => 'admin/blog/*',
+        'path' => 'admin/blog/list/1',
+        'permission' => ['blog-view'],
+        'name' => [
+            'en' => 'blog',
         ],
         'icon' => 'bx-briefcase',
     ],

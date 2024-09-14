@@ -1,0 +1,28 @@
+.jobDetailLayout {
+    width: 100%;
+
+    .jobDetailGp {
+        display: flex;
+        grid-gap: 40px;
+
+        .jobDetailLeft {
+            flex: 1;
+        }
+
+        .jobDetailRight {
+            width: 350px;
+            display: grid;
+            grid-gap: 27px;
+        }
+    }
+}
+
+.jobDetailTitle {
+    display        : flex;
+    justify-content: space-between;
+    align-items    : center;
+    margin-bottom  : 20px;
+}
+.paddingJobDetail{
+    padding: 5px 20px;
+}

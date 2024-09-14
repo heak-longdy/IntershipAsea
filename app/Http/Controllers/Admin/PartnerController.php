@@ -6,8 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\PartnerRequest;
 use App\Models\Partner;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Session;
 use App\Services\Tools;
 
 class PartnerController extends Controller
@@ -55,7 +53,10 @@ class PartnerController extends Controller
     {
         return $this->tools->onSave($this->table, $req, $id, 'partner');
     }
-    public function restore($id)
+    public function updateStatus($id,$status){
+        return $this->tools->onUpdateStatus($this->table, $id, $status);
+    }
+    public function restore($id = "")
     {
         return $this->tools->onRestore($this->table, $id);
     }

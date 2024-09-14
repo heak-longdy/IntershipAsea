@@ -11,14 +11,29 @@ import { Fancybox } from "@fancyapps/ui";
 window.Fancybox = Fancybox;
 window.moment = require("moment");
 import Alpine from "alpinejs";
+
+
 const { default: Axios } = require("axios");
 window.Alpine = Alpine;
 window.Axios = Axios;
+
+
+
+
 const { default: anime } = require("animejs");
 window.anime = anime;
 // import Choices from "choices.js";
 // window.Choices = Choices;
 require("./libs");
+
+// import mask from "@alpinejs/mask";
+import intersect from "@alpinejs/intersect";
+import collapse from '@alpinejs/collapse';
+
+// Alpine.plugin(mask);
+Alpine.plugin(intersect);
+Alpine.plugin(collapse);
+
 // require("./package/animation/index");
 
 // import ApexCharts from "apexcharts";
@@ -63,6 +78,21 @@ Alpine.store("animate", {
     });
   },
 });
-window.reloadData = function(url) {
-    window.location.href = url;
+
+window.$select2Data = function(attributeID="",position_id="",title=""){
+  var option = "<option selected></option>";
+  var selectOptionHTML = $(option).val(position_id).text(title);
+  $(attributeID).append(selectOptionHTML).trigger('change');
+}
+
+window.$select2FocusInputSearch = function () {
+  var inputSearch = document.querySelectorAll('.select2-search__field');
+  inputSearch.forEach(val => {
+      val.focus();
+      val.setAttribute('placeholder', 'Search ...');
+  });
+}
+
+window.reloadData = function (url) {
+  window.location.href = url;
 };

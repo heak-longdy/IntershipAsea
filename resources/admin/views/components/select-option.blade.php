@@ -1,58 +1,236 @@
+<style>
+    /* body {
+        font-family: Arial, sans-serif;
+        background-color: #2E2E2E;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    } */
+
+    .command-palette {
+        width: 350px;
+        /* background-color: #3E3E3E;
+        border-radius: 10px; */
+        /* padding: 20px; */
+        /* box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); */
+    }
+
+    .search-input {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 10px;
+        color: #4f4f4f;
+        font-size: 15px;
+        border: 1px solid rgba(152, 152, 152, 0.2);
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.1)
+    }
+
+    .section {
+        margin-bottom: 20px;
+    }
+
+    .section-title {
+        font-size: 14px;
+        color: #888;
+        margin-bottom: 10px;
+    }
+
+    .option {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        border-radius: 5px;
+        /* background-color: #4E4E4E; */
+        /* margin-bottom: 10px; */
+    }
+
+    .option.selected {
+        background-color: #6E6E6E;
+        color: #fff;
+    }
+
+    .option .left {
+        display: flex;
+        align-items: center;
+    }
+
+    .option .label {
+        margin-left: 10px;
+    }
+
+    .option .title {
+        font-size: 14px;
+        /* color: white; */
+    }
+
+    .option .subtitle {
+        font-size: 12px;
+        color: #aaa;
+    }
+
+    .option .right {
+        font-size: 12px;
+        color: #aaa;
+    }
+
+    .shortcut {
+        background-color: #5E5E5E;
+        padding: 4px 8px;
+        border-radius: 5px;
+    }
+
+    .icon-folder,
+    .icon-document,
+    .icon-profile,
+    .icon-team,
+    .icon-invite,
+    .icon-project,
+    .icon-support {
+        width: 20px;
+        height: 20px;
+        background-color: #888;
+        border-radius: 5px;
+    }
+
+    .icon-invite {
+        background-color: unset !important;
+        width: auto;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+    }
+
+    .icon-invite i {
+        font-size: 25px;
+    }
+
+    /* Customize icons here with background images if needed */
+</style>
 <template x-data="{}" x-if="$store.components.active">
-    <div class="dialog" x-data="selectOption" x-bind:style="{ zIndex: $store.libs.getLastIndex() + 1 }">
+    <div class="dialog" x-data="selectOption" x-bind:style="{ zIndex: $store.libs.getLastIndex() + 1 }"
+        style="padding-top: 25px;align-items: flex-start;">
         <div class="dialog-container">
-            <div class="select-option" id="select-option" style="width: 350px">
+            <div class="select-option" id="select-option">
                 <div class="select-option-header">
                     <h3 x-text="options?.title"></h3>
                     <button x-show="options?.allow_close" style="display: none" class="btn-close" @click="close(false)">
                         <i data-feather="x"></i>
                     </button>
                 </div>
-                <div class="select-option-body">
-                    <div class="form-row no-label">
-                        <input x-on:input="onInput($event)" type="text" name="search"
-                            x-bind:placeholder="options?.placeholder" autocomplete="off">
-                    </div>
-                    <template x-if="data?.length > 0">
-                        <div class="data-list">
-                            <template x-for="(item,index) in data">
-                                <div class="data-list-item" x-bind:class="isSelected(item, 'selected')"
-                                    @click="onSelect(item)">
-                                    <template x-if="options.multiple">
-                                        <div class="selected-file-icon">
-                                            <template x-if="isSelected(item)">
-                                                <div class="selected" x-text="selectedIndex(item)"></div>
-                                            </template>
-                                            <template x-if="!isSelected(item)">
-                                                <div></div>
-                                            </template>
-                                        </div>
-                                    </template>
-                                    <div class="img">
-                                        <img x-bind:src="item._image" x-bind:alt="item._image" onerror="(this).src='{{ asset('images/logo/default.png') }}'">
-                                    </div>
-                                    <div class="title">
-                                        <p x-text="item._title"></p>
-                                        <span x-text="item._description"></span>
-                                        <span x-text="item?._category"></span>
+                <div class="select-option-body" style="padding: 25px 0 0;">
+
+                    <div class="command-palette">
+                        <div style="    display: flex;
+    align-items: center;
+    position: relative;
+    margin-bottom: 20px;">
+                            <input type="text" placeholder="Type a command or search" class="search-input">
+                            <i class='bx bx-command' style="    position: absolute;
+    right: 11px;
+    font-size: 18px;"></i>
+                        </div>
+
+
+                        <div class="section recent">
+                            <div class="section-title">Recent</div>
+                            <div class="option">
+                                <div class="left">
+                                    <div class="icon-invite"><i class='bx bx-landscape'></i></div>
+                                    <div class="label">
+                                        <div class="title">Marketing site redesign</div>
+                                        <div class="subtitle">Project by Olivia Rhye in Notion migration</div>
                                     </div>
                                 </div>
-                            </template>
+                            </div>
+
+                            <div class="option selected">
+                                <div class="left">
+                                    <div class="icon-invite"><i class='bx bxs-file'></i></div>
+                                    <div class="label">
+                                        <div class="title">New document</div>
+                                        <div class="subtitle">Create a new blank document</div>
+                                    </div>
+                                </div>
+                                <div class="right">
+                                    {{-- <div class="shortcut">⌘N</div> --}}
+                                </div>
+                            </div>
                         </div>
-                    </template>
-                    <template x-if="!loading && (!data || data?.length == 0)">
-                        @component('admin::components.empty',
-                            [
-                                'name' => 'No data found!',
-                                'msg' => 'Sorry, please try other keyword.',
-                                'style' => 'padding: 50px 0',
-                                'image_style' => 'height: 120px',
-                            ])
-                        @endcomponent
-                    </template>
-                    <template x-if="loading">
-                        @include('admin::components.progress-bar')
-                    </template>
+
+                        <div class="section common" style="margin-bottom: 0;">
+                            <div class="section-title">Common actions</div>
+                            <div class="option">
+                                <div class="left">
+                                    <div class="icon-invite"><i class='bx bx-badge-check'></i></div>
+                                    <div class="label">
+                                        <div class="title">My profile</div>
+                                        <div class="subtitle">View and edit your personal profile</div>
+                                    </div>
+                                </div>
+                                <div class="right">
+                                    {{-- <div class="shortcut">⌘K → P</div> --}}
+                                </div>
+                            </div>
+
+                            <div class="option">
+                                <div class="left">
+                                    <div class="icon-invite"><i class='bx bx-cast'></i></div>
+                                    <div class="label">
+                                        <div class="title">Team profile</div>
+                                        <div class="subtitle">View and edit your team profile</div>
+                                    </div>
+                                </div>
+                                <div class="right">
+                                    {{-- <div class="shortcut">⌘K → T</div> --}}
+                                </div>
+                            </div>
+
+                            <div class="option">
+                                <div class="left">
+                                    <div class="icon-invite"><i class='bx bx-badge-check'></i></div>
+                                    <div class="label">
+                                        <div class="title">Invite colleagues</div>
+                                        <div class="subtitle">Collaborate with your team on projects</div>
+                                    </div>
+                                </div>
+                                <div class="right">
+                                    {{-- <div class="shortcut">⌘I</div> --}}
+                                </div>
+                            </div>
+
+                            <div class="option">
+                                <div class="left">
+                                    <div class="icon-invite"><i class='bx bxl-whatsapp'></i></div>
+                                    <div class="label">
+                                        <div class="title">Create new project</div>
+                                        <div class="subtitle">Create a new blank project</div>
+                                    </div>
+                                </div>
+                                <div class="right">
+                                    {{-- <div class="shortcut">⌘P</div> --}}
+                                </div>
+                            </div>
+
+                            <div class="option">
+                                <div class="left">
+                                    <div class="icon-invite"><i class='bx bxs-key'></i></div>
+                                    <div class="label">
+                                        <div class="title">Support</div>
+                                        <div class="subtitle">Our team is here to help if you get stuck</div>
+                                    </div>
+                                </div>
+                                <div class="right">
+                                    {{-- <div class="shortcut">⌘H</div> --}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="select-option-footer">
                     <template x-if="options.multiple">

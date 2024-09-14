@@ -5,7 +5,9 @@ namespace App\Http\Controllers\website;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\JobApplicationReceived;
+use App\Models\Blog;
 use App\Models\Booking;
+use App\Models\Job;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -14,10 +16,24 @@ use Illuminate\Support\Facades\Http;
 class HomeController extends Controller
 {
     protected $layout = 'website::pages.home.';
+    protected $layouts = 'website::pages.';
     public function index(Request $req)
     {
-        $data['data'] = Booking::limit(100)->get();
+        $data['jobs'] = Job::limit(5)->orderBy('id','desc')->get();
         return view($this->layout . 'index', $data);
+    }
+    public function job(Request $req)
+    {
+        $data['data'] = Blog::limit(5)->orderBy('id','desc')->get();
+        return view($this->layouts . 'blogs', $data);
+    }
+    public function jobDetail($id="65541"){
+        $data['data'] = Job::find($id);
+        $data['blogRelates'] = Job::limit(3)->orderBy('id','desc')->get();
+        return view($this->layouts . 'jobDetail', $data);
+    }
+    public function applyForm(){
+        return view($this->layouts . 'applyForm');
     }
     public function apply(){
         $application = [
@@ -63,4 +79,7 @@ class HomeController extends Controller
         return strpos($contentType, 'image/') === 0;
     }
 
+    public function contact(){
+        return view($this->layouts . 'contact');
+    }
 }

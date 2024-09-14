@@ -18,29 +18,39 @@
     z-index   : 999;
 
     &.active {
+        background-color          : var(--header-bg);
+        // border-radius          : 1.75rem;
+        // border-top-left-radius : 0 !important;
+        // border-top-right-radius: 0 !important;
+        box-shadow                : 0 0.125rem 0.5rem 0 rgba(0, 0, 0, 0.03), 0 0.125rem 2rem -0.5rem rgba(23, 43, 61, 0.2);
+        height                    : 67px !important;
+
+
         .header {
-            background-color       : var(--header-bg);
-            border-radius          : 1.75rem;
-            border-top-left-radius : 0 !important;
-            border-top-right-radius: 0 !important;
-            box-shadow             : 0 0.125rem 0.5rem 0 rgba(0, 0, 0, 0.03), 0 0.125rem 2rem -0.5rem rgba(23, 43, 61, 0.2);
-            color                  : #545454;
+            // background-color       : var(--header-bg);
+            // border-radius          : 1.75rem;
+            // border-top-left-radius : 0 !important;
+            // border-top-right-radius: 0 !important;
+            // box-shadow             : 0 0.125rem 0.5rem 0 rgba(0, 0, 0, 0.03), 0 0.125rem 2rem -0.5rem rgba(23, 43, 61, 0.2);
+            // color                  : #545454;
+            color: #545454;
         }
     }
 
     .header {
-        display        : flex;
-        justify-content: flex-start;
-        align-items    : center;
-        color          : #fff;
-        height         : 100%;
-        max-width      : 63rem;
-        width          : 58rem;
-        padding        : 0 1rem;
+        display            : flex;
+        justify-content    : flex-start;
+        align-items        : center;
+        height             : 100%;
+        max-width          : $widthCh;
+        width              : $widthCh;
+        // padding        : 0 1rem;
+        font-weight        : unset;
+        -webkit-text-stroke: 0.5px;
 
         .h-left {
             display: flex;
-            flex   : 1;
+            flex   : 0.7;
 
             .logo {
                 display     : flex;
@@ -62,11 +72,26 @@
                 }
             }
 
+
+        }
+
+        .h-right {
+            display        : flex;
+            flex           : 1;
+            justify-content: flex-end;
+            grid-gap       : 30px;
+
+            a {
+                display        : flex;
+                text-decoration: none;
+                color          : unset;
+            }
+
             .h-item {
-                display     : flex;
-                align-items : center;
-                margin-right: 35px;
-                cursor      : pointer;
+                display    : flex;
+                align-items: center;
+                cursor     : pointer;
+                white-space: nowrap;
 
                 i.bx {
                     font-size       : 16px;
@@ -100,12 +125,140 @@
                     font-size   : 14px;
                     // color    : #545454;
                     cursor      : pointer;
+                    position    : relative;
+
+                    &.active::after {
+                        content      : "";
+                        display      : flex;
+                        width        : 100%;
+                        border-bottom: 2px solid #ff9900;
+                        position     : absolute;
+                        bottom       : 0;
+                    }
                 }
+
 
             }
         }
 
-        .h-right {}
-
     }
+}
+
+
+
+// sidebar-toggle
+:root {
+    /* dark shades of primary color*/
+    --clr-primary-5 : hsl(205, 78%, 60%);
+    --transition    : all 0.3s linear;
+    --clr-primary-7 : hsl(205, 90%, 76%);
+    --clr-red-dark  : hsl(360, 67%, 44%);
+    --clr-red-light : hsl(360, 71%, 66%);
+    --clr-green-dark: hsl(125, 67%, 44%);
+    --clr-primary-8 : hsl(205, 86%, 81%);
+    --clr-white     : #fff;
+}
+
+.sidebar-toggle {
+    position    : fixed;
+    top         : 2rem;
+    right       : 3rem;
+    font-size   : 2rem;
+    background  : transparent;
+    border-color: transparent;
+    color       : var(--clr-primary-5);
+    transition  : var(--transition);
+    cursor      : pointer;
+    animation   : bounce 2s ease-in-out infinite;
+}
+
+.sidebar-toggle:hover {
+    color: var(--clr-primary-7);
+}
+
+@keyframes bounce {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.5);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.sidebar-header {
+    display        : flex;
+    justify-content: space-between;
+    align-items    : center;
+    padding        : 1rem 1.5rem;
+}
+
+.close-btn {
+    font-size   : 1.75rem;
+    background  : transparent;
+    border-color: transparent;
+    color       : var(--clr-primary-5);
+    transition  : var(--transition);
+    cursor      : pointer;
+    color       : var(--clr-red-dark);
+}
+
+.close-btn:hover {
+    color    : var(--clr-red-light);
+    transform: rotate(360deg);
+}
+
+.links a {
+    display       : block;
+    font-size     : 1.5rem;
+    text-transform: capitalize;
+    padding       : 1rem 1.5rem;
+    color         : var(--clr-grey-5);
+    transition    : var(--transition);
+}
+
+.links a:hover {
+    background  : var(--clr-primary-8);
+    color       : var(--clr-primary-5);
+    padding-left: 1.75rem;
+}
+
+.sidebar {
+    position          : fixed;
+    top               : 0;
+    left              : 0;
+    width             : 100%;
+    height            : 100%;
+    background        : var(--clr-white);
+    display           : grid;
+    grid-template-rows: auto 1fr auto;
+    row-gap           : 1rem;
+    box-shadow        : var(--clr-red-dark);
+    transition        : var(--transition);
+    transform         : translate(-100%);
+}
+
+.show-sidebar {
+    transform: translate(0);
+}
+
+@media screen and (min-width: 676px) {
+    .sidebar {
+        width: 400px;
+    }
+}
+
+.bx-menu {
+    width          : 24px;
+    height         : 24px;
+    border-radius  : 7px;
+    border         : 1px solid #9e9e9e73;
+    display        : flex;
+    align-items    : center;
+    justify-content: center;
+    cursor         : pointer;
 }

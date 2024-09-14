@@ -10,16 +10,20 @@ class Blog extends Model
 {
     use HasFactory, SoftDeletes;
     protected $table = 'blogs';
-    protected $fillable = [
-        'id', 'user_id', 'title', 'des', 'image', 'ads_image' ,'slug', 'status', 'post_date'
+    protected $fillable = ['user', 'title', 'des', 'image', 'ads_image' ,'slug', 'status', 'post_date'
     ];
-    protected $appends = ['path'];
-    public function getPathAttribute()
+    
+    protected $appends = ['image_url','created_date'];
+    public function getImageUrlAttribute()
     {
         if ($this->image != null) {
-            return url('uploads/filemanager/' . $this->image);
+            return url('file_manager' . $this->image);
         }
         return null;
+    }
+    public function getCreatedDateAttribute()
+    {
+        return $this->created_at ? \Carbon\Carbon::parse($this->created_at)->format('Y/m/d h:i A') : null;
     }
     // public function advPosition()
     // {

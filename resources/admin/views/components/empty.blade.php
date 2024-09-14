@@ -15,7 +15,7 @@
             auth()->user()->can($permission))))
                 <button s-click-link="{!! url($url) !!}">
                     <i class='bx bx-plus' ></i>
-                    <span>{!! $button !!}</span>
+                    <span>{{ $button }}</span>
                 </button>
             @endif
         </div>

@@ -7,7 +7,7 @@
             <div class="form-header">
                 <h3>
                     <i data-feather="arrow-left" s-click-link="{!! route('admin-partner-list', 1) !!}"></i>
-                    {{  request('id') ? 'Update Partner' : 'Create Partner' }}
+                    {{ request('id') ? 'Update Partner' : 'Create Partner' }}
                 </h3>
             </div>
             {{ csrf_field() }}
@@ -30,6 +30,10 @@
                             @endforeach
                         </select>
                     </div>
+                </div>
+                <div class="form-row">
+                    <label>Image<span>*</span></label>
+                    <input x-mask="99/99/9999" placeholder="MM/DD/YYYY">
                 </div>
                 <div class="row-2">
                     <div class="form-row">
@@ -68,12 +72,15 @@
             </div>
             <div class="form-footer"></div>
         </form>
+        
     </div>
     @include('admin::file-manager.popup')
 @stop
 
 @section('script')
+
     <script>
+        
         document.addEventListener('alpine:init', () => {
             Alpine.data("xComponent", () => ({
                 baseImageUrl: "{{ asset('file_manager') }}",

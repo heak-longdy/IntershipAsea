@@ -1,164 +1,140 @@
 @extends('admin::shared.layout')
 @section('layout')
-    <div class="content-wrapper" x-data="xData">
-        <div class="header">
-            <div class="header-wrapper marginBottom">
-                <div class="btn-toggle-sidebar">
-                    <span>Admin Management</span>
-                </div>
-                <div class="navHeaderRight">
-                    @can('barber-create')
-                        <button class="btn btn-create" @click="createDialog()">
-                            <i class='bx bx-plus-circle'></i>
-                            <span>@lang('user.button.create')</span>
-                        </button>
-                    @endcan
-                    {{-- <button s-click-link="{!! url()->current() !!}" class="refresh">
-                        <i data-feather="refresh-ccw"></i>
-                        <span>Reload</span>
-                    </button> --}}
-                </div>
-            </div>
-            <div class="header-tab">
-                @include('admin::components.tabListing', [
-                    'data' => [
+    @include('admin::shared.header', ['header_name' => 'User Management'])
+    <div class="content-wrapper" id="app" x-data="xIndex">
+        @component('admin::components.listingData', [
+            'routeName' => $routeName,
+            'createName' => 'Create User',
+            'filterStatus' => true,
+            'data' => $data,
+            'status' => $status,
+            'tbHeader' => [
+                ['field' => 'index', 'title' => 'Nº', 'class' => '', 'colVal' => 5],
+                ['field' => 'image_url', 'title' => 'Image', 'class' => 'text left', 'colVal' => 10],
+                ['field' => 'name', 'title' => 'Name', 'class' => 'text left', 'colVal' => 30],
+                ['field' => 'email', 'title' => 'Email', 'class' => 'text left', 'colVal' => 40],
+                ['field' => 'created_date', 'title' => 'Post Date', 'class' => '', 'colVal' => 10],
+                [
+                    'field' => 'action',
+                    'title' => '',
+                    'class' => '',
+                    'colVal' => 5,
+                    'actions' => [
                         [
-                            'name' => 'Active',
-                            'url' => 'admin/user/list/1',
+                            'key' => 'active',
+                            'action' => [
+                                ['url' => 'edit', 'title' => 'Edit', 'icon' => 'edit', 'type' => 'link'],
+                                ['url' => 'change-password', 'title' => 'Change Password', 'icon' => 'password', 'type' => 'link'],
+                                [
+                                    'url' => 'delete',
+                                    'title' => 'Delete',
+                                    'icon' => 'Delete',
+                                    'class' => 'text-danger',
+                                ],
+                            ],
                         ],
                         [
-                            'name' => 'Disable',
-                            'url' => 'admin/user/list/2',
+                            'key' => 'disable',
+                            'action' => [
+                                [
+                                    'url' => 'status',
+                                    'title' => 'Disable',
+                                    'icon' => 'hide_source',
+                                    'class' => 'text-danger',
+                                ],
+                            ],
+                        ],
+                        [
+                            'key' => 'enable',
+                            'action' => [['url' => 'status', 'title' => 'Enable', 'icon' => 'refresh']],
+                        ],
+                        [
+                            'key' => 'trash',
+                            'action' => [
+                                [
+                                    'url' => 'restore',
+                                    'title' => 'Restore',
+                                    'icon' => 'settings_backup_restore',
+                                ],
+                                [
+                                    'url' => 'destroy',
+                                    'title' => 'Destroy',
+                                    'icon' => 'Delete',
+                                    'class' => 'text-danger',
+                                ],
+                            ],
                         ],
                     ],
-                ])
-                <div class="header-action-button">
-                    <form class="filter" action="{!! url()->current() !!}" method="GET">
-                        <div class="form-row w80">
-                            <select name="payment_status">
-                                <option value="">All Status</option>
-                                <option value="Pending" {!! request('payment_status') == 'Pending' ? 'selected' : '' !!}> Pending</option>
-                                <option value="Paid" {!! request('payment_status') == 'Pending' ? 'selected' : '' !!}> Paid</option>
-                            </select>
-                        </div>
-
-                        <button mat-flat-button type="submit" class="btn-create bg-success btnSearch">
-                            <i data-feather="search" style="margin-right: 0;"></i>
-                        </button>
-                    </form>
-                    <button type="button" @click="excel()" class="btnExcel">
-                        <i class="material-symbols-outlined">upgrade</i>
-                        <span>Excel</span>
-                    </button>
-                    <button s-click-link="{!! url()->current() !!}">
-                        <i data-feather="refresh-ccw"></i>
-                        <span>Reload</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div class="content-body">
-            @include('admin::pages.user.table')
-        </div>
+                ],
+            ],
+        ])
+        @endcomponent
     </div>
-    @include('admin::pages.user.form.create')
-    @include('admin::pages.user.form.changePassword')
-    @include('admin::pages.user.form.permission')
-    @include('admin::file-manager.popup')
 @stop
+
 @section('script')
-    <script>
-        Alpine.data('xData', () => ({
-            loading: false,
-            loadingSubmit: false,
-            dataError: {
-                payment_type: [],
-                price: [],
-            },
-            dataClosePrint: false,
-            total: 0,
-            serviceTotal: 0,
-            packageType: '',
-            formData: {
-                price: null,
-                labor_charge: null,
-                payment_type: null,
-            },
-            paymentPopup: false,
-            data: [],
-            dataCheckAcc: [],
-            async init() {
-                this.loading = true;
-                console.log('hiiiiii24424');
-            },
-            createDialog() {
-                create({
-                    data: null,
-                });
-            },
-            editDialog(item) {
-                create({
-                    data: item,
-                });
-            },
-            changePassword(item) {
-                changePassword({
-                    data: item,
-                });
-            },
-            setPermission($item) {
-                userPermission({
-                    data: {
-                        item: $item,
-                        status: $item?.status,
-                        id: $item.id,
-                        full_name: $item.name
-                    },
-                });
-            },
-            paymentSubmit() {
-                const data = this.$store.paymentDialogStore?.data;
-                this.btnSubmit = 'Payment';
-                Swal.fire({
-                    customClass: "confirm-message",
-                    icon: "warning",
-                    html: `Are you sure to ${this.btnSubmit} car. ?`,
-                    confirmButtonText: `${this.btnSubmit}`,
-                    cancelButtonText: "Cancel",
-                    focusConfirm: false,
-                    focusCancel: true,
-                }).then(result => {
-                    if (result.isConfirmed) {
-                        if (result.value == 1) {
-                            this.loadingSubmit = true;
-                            this.dataError = null;
-                            let url = `/admin/payment/submit/${data?.id}`;
-                            let dataForm = this.formData;
-                            setTimeout(() => {
-                                Axios({
-                                        method: 'post',
-                                        url: url,
-                                        data: dataForm
-                                    })
-                                    .then((response) => {
-                                        if (response?.data?.data ==
-                                            "your_amount_not_enough") {
-                                            alert("Your amount not enough to payment");
-                                        } else {
-                                            this.paymentPopup = true;
-                                        }
-                                        this.loadingSubmit = false;
-                                    })
-                                    .catch((error) => {
-                                        this.loadingSubmit = false;
-                                        this.dataError = error?.response?.data
-                                            ?.errors;
-                                    });
-                            }, 1000);
+    <script lang="ts">
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('xIndex', () => ({
+                loading: null,
+                selected_id: null,
+                groupClassList: [],
+                professionList: [],
+                async init() {
+                    this.loading = true;
+                    // await this.fetchData('/admin/select/group-class', (res) => {
+                    //     this.groupClassList = res;
+                    // });
+                    // await this.fetchData('/admin/select/profession', (res) => {
+                    //     this.professionList = res;
+                    // });
+                    this.loading = false;
+                },
+                async fetchData(url, callback) {
+                    await fetch(url, {
+                            method: "GET",
+                            headers: {
+                                "Content-Type": "application/json",
+                                "Accept": "application/json",
+                            }
+                        })
+                        .then(response => response.json())
+                        .then(response => {
+                            callback(response);
+                        })
+                        .catch((e) => {})
+                        .finally(async (res) => {});
+                },
+                storeDialog(data = null, type = null) {
+                    this.$store.store.open({
+                        data: data,
+                        type: type
+                    });
+                },
+                verifyDialog(data, typeAction, btn) {
+                    console.log(btn, 'btn');
+                    this.$store.confirmDialog.open({
+                        data: {
+                            message: `Are you sure want to ${btn} ?`,
+                            btnClose: `{{ __('action_button.cancel') }}`,
+                            btnSave: btn,
+                            item: data,
+                            urlName: 'partner',
+                            typeAction: typeAction,
+                            digPosition: "posTop",
+                            class: "deleteDialog",
+                            width: "18rem"
+                        },
+                        afterClosed: (result) => {
+                            if (result) {
+                                let Url = `{{ url()->full() }}`;
+                                reloadData(Url)
+                            }
                         }
-                    }
-                });
-            },
-        }));
+                    });
+                },
+                
+            }))
+        });
     </script>
 @stop

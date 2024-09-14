@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles.css">
+        <title>Job Listings</title>
+        <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+
+.job-container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.job-card {
+    background-color: #fff;
+    border-radius: 8px;
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+    border: 1px solid #9e9e9e1c;
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    overflow: hidden;
+    padding: 20px;
+}
+
+.job-card img {
+    width: 240px;
+    height: 165px;
+    object-fit: cover;
+    border-radius: 8px;
+    /* margin-right: 20px; */
+}
+
+.job-details {
+    flex: 1;
+    margin-left: 20px;
+}
+
+.job-details h3 {
+    font-size: 20px;
+    color: #333;
+    margin: 0 0 10px;
+}
+
+.job-details p {
+    font-size: 16px;
+    color: #666;
+    margin: 0 0 10px;
+}
+
+.job-duration {
+    display: block;
+    font-size: 14px;
+    color: #999;
+    margin-bottom: 20px;
+}
+
+.job-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.view-job {
+    background-color: #ff9900;
+    color: #fff;
+}
+
+.apply {
+    background-color: #ff9900;
+    color: #fff;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+    </style>
+    </head>
+    <body>
+        <div class="job-container">
+            <!-- Job Card 1 -->
+            <div class="job-card">
+                <img src="https://via.placeholder.com/150" alt="Job Image">
+                <div class="job-details">
+                    <h3>Graphic Designer at KPMG</h3>
+                    <p>Perfect for academics and designers who can produce good
+                        graphics and want to be part of an amazing company that
+                        is pushing the boundaries in graphic designs.</p>
+                    <span class="job-duration">3 - 6 months</span>
+                    <div class="job-buttons">
+                        <button class="btn view-job">View Job</button>
+                        <button class="btn apply">Apply</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Repeat for each job card -->
+
+            <!-- Job Card 2 -->
+            <div class="job-card">
+                <img src="https://via.placeholder.com/150" alt="Job Image">
+                <div class="job-details">
+                    <h3>Research Analyst - Knight Frank</h3>
+                    <p>Perfect for academics and designers who can produce good
+                        graphics and want to be part of an amazing company that
+                        is pushing the boundaries in graphic designs.</p>
+                    <span class="job-duration">3 - 6 months</span>
+                    <div class="job-buttons">
+                        <button class="btn view-job">View Job</button>
+                        <button class="btn apply">Apply</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Job Card 3 -->
+            <div class="job-card">
+                <img src="https://via.placeholder.com/150" alt="Job Image">
+                <div class="job-details">
+                    <h3>Graphic Designer at KPMG</h3>
+                    <p>Perfect for academics and designers who can produce good
+                        graphics and want to be part of an amazing company that
+                        is pushing the boundaries in graphic designs.</p>
+                    <span class="job-duration">3 - 6 months</span>
+                    <div class="job-buttons">
+                        <button class="btn view-job">View Job</button>
+                        <button class="btn apply">Apply</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

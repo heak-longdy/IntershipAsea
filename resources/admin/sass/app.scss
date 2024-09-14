@@ -80,7 +80,7 @@ sans-serif;
 // @import "./cutomize/order.scss";
 // @import "./cutomize/invoice.scss";
 // @import "./components/index.component.scss";
-// @import './components/select-option.component.scss';
+@import './components/select-option.component.scss';
 
 @import "./dialog/dialog.scss";
 @import "./dialog/popUp.scss";
@@ -146,6 +146,8 @@ sans-serif;
 
 @import "./select2.scss";
 @import "./input.scss";
+
+@import "./notificationMenu.scss";
 
 // @import './swal.scss';
 

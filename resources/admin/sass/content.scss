@@ -21,6 +21,7 @@
 #content nav a {
     color  : var(--light);
     display: flex;
+    color  : #0000008f;
 }
 
 #content nav .bx.bx-menu {
@@ -83,8 +84,8 @@
 
 #content nav .notification .num {
     position       : absolute;
-    top            : -6px;
-    right          : -6px;
+    top            : -11px;
+    right          : -11px;
     width          : 20px;
     height         : 20px;
     border-radius  : 50%;
@@ -104,6 +105,8 @@
     object-fit     : cover;
     border-radius  : 50%;
     object-position: top;
+    box-shadow     : 0 0 3px rgba(0, 0, 0, 0.1);
+    border         : 1px solid rgba(152, 152, 152, 0.2);
 }
 
 #content nav .switch-mode {
@@ -544,13 +547,14 @@ li.completed {
 
             .content-wrapper {
                 width         : 100%;
-                height        : calc(100% - ($heightHeaderSidebar));
+                height        : calc(100% - ($heightHeaderSidebarRight));
                 display       : flex;
                 flex-direction: column;
                 position      : relative;
 
                 .content-body {
-                    padding   : 0 20px;
+                    // padding   : 0 20px;
+                    padding   : 0px;
                     height    : calc(100% - ($rightHeightHeader));
                     overflow-y: auto;
 

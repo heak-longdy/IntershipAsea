@@ -1,0 +1,18 @@
+.applyContainer {
+    margin: 150px 0;
+    width : 100%;
+
+    .applyGp {
+        display : flex;
+        grid-gap: 70px;
+        ;
+
+        .appLeft {
+            flex: 1;
+        }
+
+        .appRight {
+            width: 300px;
+        }
+    }
+}

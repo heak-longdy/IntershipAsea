@@ -11,10 +11,6 @@ use App\Models\User;
 
 class DashboardController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('permission:dashboard-view', ['only' => ['index']]);
-    }
     public function index()
     {
         $data['totalRevenueUsd'] = 23;

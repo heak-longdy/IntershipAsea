@@ -20,7 +20,10 @@ const mix = require("laravel-mix");
 
 // mix.js('src/app.js', 'dist').vue();
 mix.copyDirectory("vendor/tinymce/tinymce", "public/admin-public/js/tinymce");
-mix.ts("resources/admin/ts/app.js", "public/admin-public/js").sass(
+mix
+.ts("resources/admin/ts/app.js", "public/admin-public/js")
+.ts("resources/admin/ts/body.js", "public/admin-public/js")
+.sass(
     "resources/admin/sass/app.scss",
     "public/admin-public/css"
 );

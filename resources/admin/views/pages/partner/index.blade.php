@@ -2,22 +2,73 @@
 @section('layout')
     @include('admin::shared.header', ['header_name' => 'Partner Management'])
     <div class="content-wrapper" id="app" x-data="xIndex">
-
-        @include('admin::components.listHeaderComponent', [
+        @component('admin::components.listingData', [
             'routeName' => 'partner',
             'createName' => 'Create Partner',
             'filterStatus' => true,
+            'data' => $data,
+            'status' => $status,
+            'routeName' => 'partner',
+            'tbHeader' => [
+                ['field' => 'index', 'title' => 'Nº', 'class' => '', 'colVal' => 5],
+                ['field' => 'image_url', 'title' => 'Image', 'class' => 'text left', 'colVal' => 10],
+                ['field' => 'title', 'title' => 'Title', 'class' => 'text left', 'colVal' => 70],
+                ['field' => 'created_date', 'title' => 'Post Date', 'class' => '', 'colVal' => 10],
+                [
+                    'field' => 'action',
+                    'title' => '',
+                    'class' => '',
+                    'colVal' => 5,
+                    'actions' => [
+                        [
+                            'key' => 'active',
+                            'action' => [
+                                ['url' => 'edit', 'title' => 'Edit', 'icon' => 'edit', 'type' => 'link'],
+                                [
+                                    'url' => 'delete',
+                                    'title' => 'Delete',
+                                    'icon' => 'Delete',
+                                    'class' => 'text-danger',
+                                ],
+                            ],
+                        ],
+                        [
+                            'key' => 'disable',
+                            'action' => [
+                                [
+                                    'url' => 'status',
+                                    'title' => 'Disable',
+                                    'icon' => 'hide_source',
+                                    'class' => 'text-danger',
+                                ],
+                            ],
+                        ],
+                        [
+                            'key' => 'enable',
+                            'action' => [['url' => 'status', 'title' => 'Enable', 'icon' => 'refresh']],
+                        ],
+                        [
+                            'key' => 'trash',
+                            'action' => [
+                                [
+                                    'url' => 'restore',
+                                    'title' => 'Restore',
+                                    'icon' => 'settings_backup_restore',
+                                ],
+                                [
+                                    'url' => 'destroy',
+                                    'title' => 'Destroy',
+                                    'icon' => 'Delete',
+                                    'class' => 'text-danger',
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ])
-
-        <div class="content-body">
-            @include('admin::pages.partner.table', [
-                'routeName' => 'partner',
-                'createName' => 'Create Partner',
-            ])
-        </div>
-
+        @endcomponent
     </div>
-    @include('admin::components.delete')
 @stop
 
 @section('script')
@@ -60,7 +111,6 @@
                     });
                 },
                 // statusDialog(data) {
-
                 //     this.$store.confirmDialog.open({
                 //         data: {
                 //             title: `{{ __('message.title') }}`,
@@ -78,20 +128,23 @@
                 //         }
                 //     });
                 // },
-                deleteDialog(data) {
-                    console.log(data, 'data');
+                verifyDialog(data, typeAction, btn) {
+                    console.log(btn, 'btn');
+
+                    //    const btn = 'action_button.'+typeAction;
+                    //    console.log(`@lang('${btn}')`,'ddddd');
+                    //    const btnSave = translations.action_button[typeAction];
                     this.$store.confirmDialog.open({
                         data: {
-                            title: `gggg`,
-                            message: `{{ __('message.alert_message_delete') }}`,
+                            message: `Are you sure want to ${btn} ?`,
                             btnClose: `{{ __('action_button.cancel') }}`,
-                            btnSave: `{{ __('action_button.delete') }}`,
+                            btnSave: btn,
                             item: data,
                             urlName: 'partner',
-                            typeAction: 'delete',
-                            digPosition:"posTop",
-                            class:"deleteDialog",
-                            width:"18rem"
+                            typeAction: typeAction,
+                            digPosition: "posTop",
+                            class: "deleteDialog",
+                            width: "18rem"
                         },
                         afterClosed: (result) => {
                             if (result) {

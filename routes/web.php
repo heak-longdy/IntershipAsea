@@ -20,12 +20,20 @@ Route::prefix('/')
 ->name('/')
 ->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('index');
+    Route::get('/job', [HomeController::class, 'job'])->name('job');
+    Route::get('/job/detail/{id}', [HomeController::class, 'jobDetail'])->name('job-detail');
+    Route::get('/apply/form', [HomeController::class, 'applyForm'])->name('apply-form');
     Route::post('/apply', [HomeController::class, 'apply'])->name('apply');
+    Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 });
 
 Route::get('/pusher', function () {
     return view("admin::pusher");
 });
+
+// Route::get('/pusher', function () {
+//     return view("admin::pusher");
+// });
 
 Route::get('booking', [BookingController::class, 'export_booking'])->name('booking');
 

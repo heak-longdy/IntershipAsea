@@ -12,7 +12,7 @@
     {!! HTML::style('admin-public/css/Material_Symbols.css') !!}
     {!! HTML::style('plugin/toastr.min.css') !!}
     {!! HTML::style('css/iziToast.css') !!}
-    {!! HTML::style('admin-public/css/multiple-select.css') !!}
+    {{-- {!! HTML::style('admin-public/css/multiple-select.css') !!} --}}
 
     {!! HTML::script('admin-public/js/app.js') !!}
 

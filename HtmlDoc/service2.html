@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Internship Process</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 36px;
+    color: #333;
+}
+
+.timeline {
+    position: relative;
+    margin: 0 auto;
+    padding: 20px 0;
+    width: 80%;
+}
+
+.step {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.circle {
+    background-color: #ff9900;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.circle img {
+    width: 50px;
+    height: 50px;
+}
+
+.content {
+    width: 45%;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1;
+}
+
+.step:nth-child(even) .content {
+    order: 1;
+}
+
+.step:nth-child(odd) .content {
+    order: 2;
+    text-align: right;
+}
+
+.step:nth-child(even) .circle {
+    margin-left: -50px;
+}
+
+.step:nth-child(odd) .circle {
+    margin-right: -50px;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 100%;
+    background-color: #ff9900;
+    z-index: 0;
+}
+
+.step::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 15px;
+    height: 15px;
+    background-color: #fff;
+    border: 4px solid #ff9900;
+    border-radius: 50%;
+    z-index: 2;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>For Interns</h1>
+        <div class="timeline">
+            <!-- Step 1 -->
+            <div class="step">
+                <div class="content left">
+                    <h2>1. Easy Application Process</h2>
+                    <p><strong>Simple Online Booking:</strong> Our user-friendly website allows you to browse through a diverse range of internship opportunities and apply with ease. You can search by industry, company, and location to find the perfect match for your skills and interests.</p>
+                    <p><strong>Optional Consultation:</strong> To ensure the best fit, we offer an optional consultation with a British national residing in Cambodia. This personalized session helps you understand the specifics of the internship, cultural expectations, and daily life in Cambodia.</p>
+                </div>
+                <div class="circle">
+                    <img src="https://img.icons8.com/ios-filled/50/ffffff/application-window.png" alt="Application Icon">
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="step">
+                <div class="content right">
+                    <h2>2. Pre-Departure Support</h2>
+                    <p><strong>Flight and Visa Arrangements:</strong> We assist you with booking flights and handling visa applications, ensuring all necessary documents are in order.</p>
+                    <p><strong>Pre-Departure Orientation:</strong> We provide detailed pre-departure information, including cultural insights, packing tips, and travel advice to prepare you for your journey.</p>
+                </div>
+                <div class="circle">
+                    <img src="https://img.icons8.com/ios-filled/50/ffffff/passport.png" alt="Pre-Departure Icon">
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="step">
+                <div class="content left">
+                    <h2>3. Post-Arrival Assistance</h2>
+                    <p><strong>Airport Pickup:</strong> Upon arrival in Cambodia, you will be greeted by our team and provided with transportation to your accommodation.</p>
+                    <p><strong>Accommodation Arrangements:</strong> We offer a range of housing options to suit different preferences and budgets, ensuring you have a comfortable place to stay.</p>
+                </div>
+                <div class="circle">
+                    <img src="https://img.icons8.com/ios-filled/50/ffffff/luggage.png" alt="Post-Arrival Icon">
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="step">
+                <div class="content right">
+                    <h2>4. In-Country Support</h2>
+                    <p><strong>Orientation Program:</strong> We conduct a comprehensive orientation program to help you acclimate to your new environment. This includes language basics, cultural norms, and practical information about living in Cambodia.</p>
+                    <p><strong>24/7 Support:</strong> Our team is available around the clock to provide assistance and address any concerns you may have during your stay.</p>
+                    <p><strong>Networking Opportunities:</strong> We organize events and activities to help you network with other interns, professionals, and local communities, enhancing your overall experience.</p>
+                </div>
+                <div class="circle">
+                    <img src="https://img.icons8.com/ios-filled/50/ffffff/support.png" alt="In-Country Support Icon">
+                </div>
+            </div>
+
+            <!-- Step 5 -->
+            <div class="step">
+                <div class="content left">
+                    <h2>5. Post-Internship Support</h2>
+                    <p><strong>Career Guidance:</strong> We offer career counseling and support to help you leverage your internship experience in your future career.</p>
+                    <p><strong>Certificate of Completion:</strong> Upon successful completion of your internship, you will receive a certificate recognizing your achievements and contributions.</p>
+                </div>
+                <div class="circle">
+                    <img src="https://img.icons8.com/ios-filled/50/ffffff/certificate.png" alt="Post-Internship Support Icon">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

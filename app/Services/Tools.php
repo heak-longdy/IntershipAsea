@@ -5,7 +5,7 @@ namespace App\Services;
 use Exception;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
-
+use Illuminate\Support\Facades\Auth;
 class Tools
 {
     public function onSave($table, $req, $id = "", $routerName)
@@ -14,20 +14,47 @@ class Tools
         DB::beginTransaction();
         try {
             $item = $req->all();
+            $item["user"] = Auth::user()->id;
             $table::updateOrCreate(['id' => $id], $item);
             DB::commit();
             Session::flash('success', $status);
             return redirect()->route('admin-'.$routerName.'-list', 1);
-        } catch (\Exception $error) {
+        } catch (\Exception $e) {
+            dd($e);
             DB::rollback();
             Session::flash('warning', $status);
             return redirect()->back();
         }
     }
+    public function onUpdateStatus($table, $id, $status){
+        DB::beginTransaction();
+        try {
+            $item = [
+                "status" => $status,
+                "user"=>Auth::user()->id
+            ];
+            $status = $status == 2 ? "Disable successful!" : "Enable successful!";
+            $table::where("id", $id)->update($item);
+            DB::commit();
+            Session::flash('success', $status);
+            return response()->json([
+                'message'=>'success',
+                'status'=>200
+            ]);
+        } catch (\Exception $e) {
+            DB::rollback();
+            Session::flash('warning', 'Status unsuccess!');
+            return response()->json([
+                'message'=>'unsuccess',
+                'status'=>404,
+                'error'=>$e
+            ]);
+        }
+    }
     public function onRestore($table,$id)
     {
+        DB::beginTransaction();
         try {
-            DB::beginTransaction();
             $table::withTrashed()->where('id', $id)->restore();
             DB::commit();
             Session::flash('success', 'Restore success!');

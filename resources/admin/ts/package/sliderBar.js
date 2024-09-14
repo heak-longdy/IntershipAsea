@@ -121,6 +121,8 @@ imgProfile.addEventListener("click", function (e) {
     dropdownProfile.classList.toggle("show");
 });
 window.addEventListener("click", function (e) {
+    console.log(e.target,'666');
+    console.log(imgProfile,'imgProfile');
     if (e.target !== imgProfile) {
         if (e.target !== dropdownProfile) {
             if (dropdownProfile.classList.contains("show")) {
@@ -129,18 +131,35 @@ window.addEventListener("click", function (e) {
         }
     }
 
-    allMenu.forEach((item) => {
-        const icon = item.querySelector(".icon");
-        const menuLink = item.querySelector(".menu-link");
+    // allMenu.forEach((item) => {
+    //     const icon = item.querySelector(".icon");
+    //     const menuLink = item.querySelector(".menu-link");
 
-        if (e.target !== icon) {
-            if (e.target !== menuLink) {
-                if (menuLink.classList.contains("show")) {
-                    menuLink.classList.remove("show");
-                }
-            }
+    //     if (e.target !== icon) {
+    //         if (e.target !== menuLink) {
+    //             if (menuLink.classList.contains("show")) {
+    //                 menuLink.classList.remove("show");
+    //             }
+    //         }
+    //     }
+    // });
+});
+
+// Notification DROPDOWN
+const notification = document.querySelector(".notificationGp");
+const eventNotification = notification.querySelector(".notification");
+const dropdownNotification = notification.querySelector(".notification-body");
+
+eventNotification.addEventListener("click", function (e) {
+    e.preventDefault();
+    dropdownNotification.classList.toggle("show");
+});
+window.addEventListener("click", function (e) {
+    if (!e.target.closest(".notificationGp")) {
+        if (dropdownNotification.classList.contains("show")) {
+            dropdownNotification.classList.remove("show");
         }
-    });
+    }
 });
 
 // MENU

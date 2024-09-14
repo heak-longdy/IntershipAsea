@@ -8,6 +8,7 @@
             <div class="content" id="content" x-data={} >
                 @include('website::shared.header', ['header_name' => ''])
                 @yield('layout')
+                @include('website::shared.footer')
             </div>
         </div>
     </div>

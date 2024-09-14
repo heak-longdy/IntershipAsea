@@ -1,5 +1,6 @@
 {
     "/admin-public/js/app.js": "/admin-public/js/app.js",
+    "/admin-public/js/body.js": "/admin-public/js/body.js",
     "/website/js/app.js": "/website/js/app.js",
     "/website/js/body.js": "/website/js/body.js",
     "/admin-public/css/app.css": "/admin-public/css/app.css",

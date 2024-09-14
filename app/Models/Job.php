@@ -35,6 +35,8 @@ class Job extends Model
                     'sex',
                     'job_level',
                     'job_type',
+                    'position_id',
+                    'sector_id',
                     'hr_name',
                     'hr_phone_number',
                     'hr_email',

@@ -1,61 +1,13 @@
-<style>
-.jobLayout{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-}
-.jobLayout>.jobGp{
-    margin: 30px;
-    width: 1200px;
-}
-.jobLayout>.jobGp>.jobItem{
-    display: flex;
-    grid-gap: 20px;
-    margin-bottom: 20px;
-}
-.jobLayout>.jobGp>.jobItem>.jobLeft>.imgGp{
-    width: 350px;
-    height: fit-content;
-    border-radius: 24px;
-    overflow: hidden;
-    height: 225px;
-    object-fit: cover;
-}
-.jobLayout>.jobGp>.jobItem>.jobLeft>.imgGp>img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-.jobLayout>.jobGp>.jobItem>.jobRight{
-
-}
-.jobLayout>.jobGp>.jobItem>.jobRight>.jobText{
-
-}
-.jobLayout>.jobGp>.jobItem>.jobRight>.jobText>.link-post{
-    font-weight: 600;
-    color: var(--black);
-    font-size: 20px;
-}
-.viewMore{
-    margin: 30px;
-    width: 1200px;
-    display: flex;
-    justify-content: center;
-}
-.viewMore>a>div{
-    width: fit-content;
-    height: 40px;
-    background: #9e9e9e00;
-    align-items: center;
-    display: flex;
-    padding: 0 15px;
-    border-radius: 10px;
-    border: 1px solid #80808054;
-}
-</style>
-<div class="jobLayout">
-    <div class="jobGp">
+<div class="jobLayout" style="background: url('../../website/img/homeProgram.png');background-size: cover;">
+    <div class="jobListing">
+        <h3 class="jobTitle">Intership Programmer</h3>
+        <div class="jobContainer">
+            @foreach ($jobs as $index => $item)
+                @include('website::components.jobItem',['item' => $item])
+            @endforeach
+        </div>
+    </div>
+    {{-- <div class="jobGp">
         <div class="jobItem">
             <div class="jobLeft">
                 <div class="imgGp">
@@ -134,15 +86,10 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <div class="viewMore">
-       <a href=""><div>See More<i class='bx bx-chevron-right'></i></div></a>
+        <a href="">
+            <div>See More<i class='bx bx-chevron-right'></i></div>
+        </a>
     </div>
 </div>
-
-<h1>Enter Image URL</h1>
-    <form id="imageForm" method="POST" action="{{ route('image.upload') }}">
-        @csrf
-        <input type="text" id="imageURL" name="imageURL" placeholder="Enter image URL here">
-        <button type="submit">Upload Image</button>
-    </form>

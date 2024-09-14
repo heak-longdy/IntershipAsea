@@ -21,12 +21,14 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\UomController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\BarberController;
+use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\CustomerPointController;
 use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Admin\DiscountController;
 use App\Http\Controllers\Admin\JobController;
 use App\Http\Controllers\Admin\PartnerController;
 use App\Http\Controllers\Admin\PositionController;
+use App\Http\Controllers\Admin\SectorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +41,29 @@ use App\Http\Controllers\Admin\PositionController;
 |
 */
 // Auth
+
+function CRUD($Controller, $routeName)
+{
+    Route::group([
+        'prefix' => $routeName,
+        'as'     => $routeName . '-'
+    ], function () use ($Controller) {
+        Route::get('list/{status?}', [$Controller, 'index'])->name('list');
+        Route::get('create', [$Controller, 'onCreate'])->name('create');
+        Route::get('edit/{id?}', [$Controller, 'onEdit'])->name('edit');
+        Route::post('save/{id?}', [$Controller, 'Save'])->name('save');
+        Route::match(['get', 'post'], 'status/{id}/{status}', [$Controller, 'updateStatus'])->name('status');
+        Route::post('delete/{id?}', [$Controller, 'delete'])->name('delete');
+        Route::post('restore/{id?}', [$Controller, 'restore'])->name('restore');
+        Route::post('destroy/{id?}', [$Controller, 'destroy'])->name('destroy');
+
+        Route::get('change-password/{id?}', [$Controller, 'onChangePassword'])->name('change-password');
+        Route::post('save-password/{id?}', [$Controller, 'onSavePassword'])->name('save-password');
+
+        Route::get('permission/{id?}', [$Controller, 'onPermission'])->name('permission');
+        Route::post('save-permission/{id?}', [$Controller, 'onSavePermission'])->name('save-permission');
+    });
+}
 
 
 Route::prefix('auth')->group(function () {
@@ -60,16 +85,16 @@ Route::middleware(['AdminGuard'])
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
         //Position
-        Route::group([
-            'prefix' => 'position',
-            'as'     => 'position-'
-        ], function () {
-            Route::get('list/{status?}', [PositionController::class, 'index'])->name('list');
-            Route::get('create', [PositionController::class, 'onCreate'])->name('create');
-            Route::get('edit/{id?}', [PositionController::class, 'onEdit'])->name('edit');
-            Route::post('save/{id?}', [PositionController::class, 'onSave'])->name('save');
-            Route::match(['get', 'post'], 'status/{id}/{status}', [PositionController::class, 'onUpdateStatus'])->name('status');
-        });
+        // Route::group([
+        //     'prefix' => 'position',
+        //     'as'     => 'position-'
+        // ], function () {
+        //     Route::get('list/{status?}', [PositionController::class, 'index'])->name('list');
+        //     Route::get('create', [PositionController::class, 'onCreate'])->name('create');
+        //     Route::get('edit/{id?}', [PositionController::class, 'onEdit'])->name('edit');
+        //     Route::post('save/{id?}', [PositionController::class, 'onSave'])->name('save');
+        //     Route::match(['get', 'post'], 'status/{id}/{status}', [PositionController::class, 'onUpdateStatus'])->name('status');
+        // });
 
         //Job
         Route::group([
@@ -81,90 +106,6 @@ Route::middleware(['AdminGuard'])
             Route::get('edit/{id?}', [JobController::class, 'onEdit'])->name('edit');
             Route::post('save/{id?}', [JobController::class, 'onSave'])->name('save');
             Route::match(['get', 'post'], 'status/{id}/{status}', [JobController::class, 'onUpdateStatus'])->name('status');
-        });
-
-        // User
-        Route::prefix('user')
-            ->name('user-')
-            ->group(function () {
-                Route::get('list/{id?}', [UserController::class, 'index'])->name('list');
-                Route::get('create/{id?}', [UserController::class, 'onCreate'])->name('create');
-                Route::post('save/{id?}', [UserController::class, 'onSave'])->name('save');
-                Route::match(['get', 'post'], 'status/{id}/{status}', [UserController::class, 'onUpdateStatus'])->name('status');
-                Route::get('change-password/{id}', [UserController::class, 'onChangePassword'])->name('change-password');
-                Route::post('save-password/{id?}', [UserController::class, 'onSavePassword'])->name('save-password');
-                // Route::get('permission/{id?}', [UserController::class, 'setPermission'])->name('permission');
-                // Route::post('save-permission/{id?}', [UserController::class, 'savePermission'])->name('save-permission');
-                //userPermission
-                Route::get('permission/{id?}', [UserController::class, 'userPermission'])->name('permission');
-                Route::post('save-permission/{id?}', [UserController::class, 'userPermissionSave'])->name('save-permission');
-            });
-
-        //Customer
-        Route::group([
-            'prefix' => 'customer',
-            'as'     => 'customer-'
-        ], function () {
-            Route::get('list/{status?}', [CustomerController::class, 'index'])->name('list');
-            Route::get('create', [CustomerController::class, 'onCreate'])->name('create');
-            Route::get('edit/{id?}', [CustomerController::class, 'onEdit'])->name('edit');
-            Route::post('save/{id?}', [CustomerController::class, 'onSave'])->name('save');
-            //Route::post('status', [CustomerController::class, 'onUpdateStatus'])->name('status');
-            Route::match(['get', 'post'], 'status/{id}/{status}', [CustomerController::class, 'onUpdateStatus'])->name('status');
-            Route::get('history/{id?}', [CustomerController::class, 'bookingHistory'])->name('history');
-            Route::get('booking-detail/{id?}', [CustomerController::class, 'bookingDetail'])->name('booking-detail');
-            Route::get('point-history/{id?}', [CustomerController::class, 'pointHistory'])->name('point-history');
-            Route::get('redeem-history/{id?}', [CustomerController::class, 'redeemHistory'])->name('redeem-history');
-        });
-
-        //Shop
-        Route::group([
-            'prefix' => 'shop',
-            'as'     => 'shop-'
-        ], function () {
-            Route::get('list/{status?}', [ShopController::class, 'index'])->name('list');
-            Route::get('create/{id?}', [ShopController::class, 'onCreate'])->name('create');
-            Route::post('save/{id?}', [ShopController::class, 'onSave'])->name('save');
-            Route::match(['get', 'post'], 'status/{id}/{status}', [ShopController::class, 'onUpdateStatus'])->name('status');
-
-            Route::get('change-password/{id}', [ShopController::class, 'onChangePassword'])->name('change-password');
-            Route::post('save-password/{id}', [ShopController::class, 'onSavePassword'])->name('save-password');
-
-
-            Route::get('service-list/{id?}', [ShopController::class, 'shopService'])->name('service-list');
-            Route::get('service-shop-create/{id?}', [ShopController::class, 'shopServiceCreate'])->name('service-shop-create');
-            Route::post('service-shop-save/{id?}', [ShopController::class, 'saveService'])->name('service-shop-save');
-            Route::match(['get', 'post'], 'service-shop-status/{id}/{status}', [ShopController::class, 'onUpdateStatusService'])->name('service-shop-status');
-            Route::get('edit-service/{id?}', [ShopController::class, 'onEditService'])->name('edit-service');
-
-            //Product shop
-            Route::get('shop-product/{id?}', [ShopController::class, 'shopProduct'])->name('shop-product');
-            Route::get('product-shop-create/{id?}', [ShopController::class, 'shopProductCreate'])->name('product-shop-create');
-            Route::post('product-shop-save/{id?}', [ShopController::class, 'saveProduct'])->name('product-shop-save');
-            Route::match(['get', 'post'], 'product-shop-status/{id}/{status}', [ShopController::class, 'onUpdateStatusProduct'])->name('product-shop-status');
-            Route::get('edit-product/{id?}', [ShopController::class, 'onEditProduct'])->name('edit-product');
-        });
-        //Barber
-        Route::group([
-            'prefix' => 'barber',
-            'as'     => 'barber-'
-        ], function () {
-            Route::get('list/{status?}', [BarberController::class, 'index'])->name('list');
-            Route::get('create/{id?}', [BarberController::class, 'onCreate'])->name('create');
-            Route::post('save/{id?}', [BarberController::class, 'onSave'])->name('save');
-            Route::match(['get', 'post'], 'status/{id}/{status}', [BarberController::class, 'onUpdateStatus'])->name('status');
-            Route::get('commission-history/{id?}', [BarberController::class, 'commissionHistory'])->name('commission-history');
-            Route::get('change-password/{id}', [BarberController::class, 'onChangePassword'])->name('change-password');
-            Route::post('save-password/{id}', [BarberController::class, 'onSavePassword'])->name('save-password');
-
-            Route::get('top-up/{id?}', [BarberController::class, 'onTopUp'])->name('top-up');
-            Route::post('save-top-up/{id}', [BarberController::class, 'saveWallet'])->name('save-top-up');
-            Route::get('wallet-history/{id?}', [BarberController::class, 'walletHistory'])->name('wallet-history');
-
-            Route::get('report-excel', [BarberController::class, 'reportExcel'])->name('reportExcel');
-
-            Route::get('delete/{id}', [BarberController::class, 'delete'])->name('delete');
-            Route::get('restore/{id}', [BarberController::class, 'Restore'])->name('restore');
         });
 
         //Report
@@ -209,6 +150,11 @@ Route::middleware(['AdminGuard'])
 
             //In
             Route::get('shop-in-product', [Admin\SelectController::class, 'productInShop'])->name('shop-in-product');
+
+
+            //Position
+            Route::get('position', [Admin\SelectController::class, 'SelectPositionSearch'])->name('position');
+
         });
 
         //Wallet
@@ -262,18 +208,6 @@ Route::middleware(['AdminGuard'])
             Route::post('save/{id?}', [CategoryController::class, 'onSave'])->name('save');
             Route::match(['get', 'post'], 'status/{id}/{status}', [CategoryController::class, 'onUpdateStatus'])->name('status');
         });
-        // UOM
-        Route::group([
-            'prefix' => 'uom',
-            'as'     => 'uom-'
-        ], function () {
-            Route::get('list/{status?}', [UomController::class, 'index'])->name('list');
-            Route::get('data', [UomController::class, 'data'])->name('data');
-            Route::get('create', [UomController::class, 'onCreate'])->name('create');
-            Route::get('edit/{id?}', [UomController::class, 'onEdit'])->name('edit');
-            Route::post('save/{id?}', [UomController::class, 'onSave'])->name('save');
-            Route::match(['get', 'post'], 'status/{id}/{status}', [UomController::class, 'onUpdateStatus'])->name('status');
-        });
 
 
         // Discount
@@ -289,20 +223,12 @@ Route::middleware(['AdminGuard'])
             //Route::match(['get', 'post'], 'status/{id}/{status}', [UomController::class, 'onUpdateStatus'])->name('status');
         });
 
-         //Partner
-        Route::group([
-            'prefix' => 'partner',
-            'as'     => 'partner-'
-        ], function () {
-            Route::get('list/{status?}', [PartnerController::class, 'index'])->name('list');
-            Route::get('create', [PartnerController::class, 'onCreate'])->name('create');
-            Route::get('edit/{id?}', [PartnerController::class, 'onEdit'])->name('edit');
-            Route::post('save/{id?}', [PartnerController::class, 'Save'])->name('save');
-            Route::match(['get', 'post'], 'status/{id}/{status}', [PartnerController::class, 'onUpdateStatus'])->name('status');
-            Route::post('delete/{id?}', [PartnerController::class, 'delete'])->name('delete');
-            Route::post('restore/{id?}', [PartnerController::class, 'Restore'])->name('restore');
-            Route::post('destroy/{id?}', [PartnerController::class, 'Destroy'])->name('destroy');
-        });
+        CRUD(PartnerController::class,'partner');
+        CRUD(SectorController::class,'sector');
+        CRUD(PositionController::class,'position');
+        CRUD(UserController::class,'user');
+
+        CRUD(BlogController::class,'blog');
 
 
         //Setting

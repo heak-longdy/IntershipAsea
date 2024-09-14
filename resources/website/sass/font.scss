@@ -28,6 +28,11 @@
     src        : url('../../../public/admin-public/fonts/Kh Muol Regular.ttf');
 }
 
+@font-face {
+    font-family: CocomatPro;
+    src        : url('../../../public/admin-public/fonts/CocomatPro-Regular.ttf');
+}
+
 *:not(.material-icons):not(.material-symbols-outlined):not(mat-icon):not(.bx) {
-    font-family: 'Poppins', sans-serif, 'Urbanist', sans-serif, 'Hanuman', serif !important;
+    font-family: 'CocomatPro', sans-serif, 'Urbanist', sans-serif, 'Hanuman', serif !important;
 }
