@@ -41,6 +41,19 @@ function routeActive(string $route)
     return false;
 }
 
+function findNumberOfMonth($StartDate="",$numberOfDays=0){
+    $postDate = \Carbon\Carbon::parse($StartDate);  // Your PostDate
+    // Add the number of days to the post date
+    $endDate = $postDate->copy()->addDays($numberOfDays);
+
+    // Calculate the total difference in days between PostDate and EndDate
+    $daysDifference = $postDate->diffInDays($endDate);
+
+    // Calculate the fractional months (using 30.44 days per month for average)
+    $monthsDifference = $daysDifference / 30;
+    return $monthsDifference;
+}
+
 function resData($data = null)
 {
     return response()->json([

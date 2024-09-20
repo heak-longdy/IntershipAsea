@@ -8,8 +8,10 @@ use App\Models\Brand;
 use Illuminate\Http\Request;
 use App\Models\Service;
 use App\Models\Customer;
+use App\Models\PlacementType;
 use App\Models\Position;
 use App\Models\Product;
+use App\Models\Sector;
 use App\Models\Shop;
 use App\Models\ShopProduct;
 use App\Models\ShopService;
@@ -310,6 +312,33 @@ class SelectController extends Controller
             }
         })->orderBy('created_at', 'desc')->take(12)->get();
 
+        try {
+            return response()->json(['data' => $data, 'message' => 200]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message'   => 'error'
+            ]);
+        }
+    }
+
+    public function SelectSectorSearch(Request $req){
+        $data = Sector::where('status', 1)->where(function (Builder $q) use ($req) {
+            $q->where('position_id', $req->position_id);
+            if ($req->search) {
+                $q->where('title', 'LIKE', '%' . $req->search . '%');
+            }
+        })->orderBy('created_at', 'desc')->take(12)->get();
+
+        try {
+            return response()->json(['data' => $data, 'message' => 200]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message'   => 'error'
+            ]);
+        }
+    }
+    public function SelectPlacementTypeSearch(){
+        $data = PlacementType::where('status', 1)->orderBy('created_at', 'desc')->take(12)->get();
         try {
             return response()->json(['data' => $data, 'message' => 200]);
         } catch (\Exception $e) {

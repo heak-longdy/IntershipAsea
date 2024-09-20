@@ -1,13 +1,13 @@
 @extends('admin::shared.layout')
 @section('layout')
-    @include('admin::shared.header', ['header_name' => ''])
+    @include('admin::shared.header', ['header_name' => 'Position Management', 'customClass' => 'headerInForm'])
     <div class="form-admin" x-data="xComponent">
         <div class="form-bg"></div>
         <form id="form" class="form-wrapper" action="{!! route('admin-position-save', request('id')) !!}" method="POST" enctype="multipart/form-data">
             <div class="form-header">
                 <h3>
-                    <i data-feather="arrow-left" s-click-link="{!! route('admin-position-list', 1) !!}"></i>
-                    {{ request('id') ? 'Update Position' : 'Create Position' }}
+                    <i data-feather="arrow-left" s-click-link="{!! route('admin-'.$routeName.'-list', 1) !!}"></i>
+                    {{ $id ? 'Update' : 'Create' }}
                 </h3>
             </div>
             {{ csrf_field() }}
@@ -36,7 +36,7 @@
                         <i data-feather="save"></i>
                         <span>Submit</span>
                     </button>
-                    <button color="danger" type="button" s-click-link="{!! route('admin-partner-list', 1) !!}">
+                    <button color="danger" type="button" s-click-link="{!! route('admin-'.$routeName.'-list', 1) !!}">
                         <i data-feather="x"></i>
                         <span>Cancel</span>
                     </button>

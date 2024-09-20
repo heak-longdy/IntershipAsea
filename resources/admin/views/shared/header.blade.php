@@ -353,7 +353,7 @@
                                 <span class="num">8</span>
                             </a>
                             <ul class="notification-body">
-                                <div class="notification-card">
+                                <div class="notification-card" style="width: 100%;">
                                     <div class="notification-header">
                                         <h2>Notifications</h2>
                                         <div class="badge">5 new</div>
@@ -396,7 +396,7 @@
                                         </li>
                                     </ul>
                                     <div class="see-all-btn">
-                                        <button>See all Notifications</button>
+                                        <button type="button" style="grid-gap: 10px;"><i class='bx bx-right-arrow-alt' style="font-size: 23px;"></i><span>See all Notifications</span></button>
                                     </div>
                                 </div>
                             </ul>

@@ -1,7 +1,7 @@
 <style>
     .job-card {
         background-color: #fff;
-        border-radius: 8px;
+        border-radius: 15px;
         /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
         /* border: 1px solid #9e9e9e1c; */
         display: flex;
@@ -16,7 +16,7 @@
         width: 240px;
         height: 165px;
         object-fit: cover;
-        border-radius: 8px;
+        border-radius: 15px;
         /* margin-right: 20px; */
     }
 
@@ -53,19 +53,33 @@
     .job-buttons {
         display: flex;
         gap: 10px;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 15px;
+
     }
 
-    .btn {
-        padding: 10px 20px;
+    .btnJob {
+        /* padding: 10px 20px; */
         border: none;
         border-radius: 4px;
         cursor: pointer;
         font-size: 14px;
+        padding: 8px 15px;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        grid-gap: 7px;
+    }
+
+    .btnJob>i {
+        font-size: 25px;
     }
 
     .view-job {
-        background-color: #ff9900;
-        color: #fff;
+        /* background-color: #ff9900; */
+        /* color: #fff; */
+
     }
 
     .apply {
@@ -73,20 +87,63 @@
         color: #fff;
     }
 
-    .btn:hover {
+    .btnJob:hover {
         opacity: 0.9;
+    }
+
+    .job-btn-left {
+        grid-gap: 15px;
+        display: flex;
+        align-items: center;
+    }
+
+    .job-btn-left>a {
+        text-decoration: unset;
     }
 </style>
 <!-- Job Card 1 -->
 <div class="job-card">
-    <img src="{{$item?->imageUrl}}" alt="Job Image" onerror="(this).src='{{ asset('https://via.placeholder.com/150') }}'">
+    <img src="{{ $item?->imageUrl }}" alt="Job Image"
+        onerror="(this).src='{{ asset('https://via.placeholder.com/150') }}'">
     <div class="job-details">
-        <h3>{{$item?->title ?? ''}}</h3>
-        <p>{!!$item?->job_des ?? ''!!}</p>
-        <span class="job-duration">3 - 6 months</span>
+        <div
+            style="    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    margin-top: -5px;
+">
+            <h3>{{ $item?->title ?? '' }}</h3>
+            <div
+                style="    background: #49b70d;
+    color: #fff;
+    border-radius: 20px;
+    padding: 3px 15px;
+    white-space: nowrap;
+    margin-top: 5px;">
+                Full Time
+            </div>
+        </div>
+        <div style="display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    grid-gap: 10px;"
+            class="fontWeight">
+            <p>$90.00</p>
+        </div>
+
+        <p>{!! $item?->job_des ?? '' !!}</p>
+        {{-- <span class="job-duration">3 - 6 months</span> --}}
         <div class="job-buttons">
-            <button class="btn view-job">View Job</button>
-            <button class="btn apply">Apply</button>
+
+            <div class="job-btn-left">
+                <a href="{{route('web-apply-form')}}">
+                    <button type="button" class="btnJob apply"><i
+                            class='bx bx-right-top-arrow-circle bx-fade-right-hover'></i><span>Apply Now</span></button>
+                </a>
+                <button class="btnJob view-job"><i class='bx bx-show'></i><span>View Job</span></button>
+            </div>
+            <p class="">3 - 6 months</p>
         </div>
     </div>
 </div>

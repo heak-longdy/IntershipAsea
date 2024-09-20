@@ -32574,6 +32574,7 @@ nav .divider {
 
 .headerInForm {
   height: 70px;
+  z-index: 10;
 }
 
 .table {
@@ -33097,6 +33098,7 @@ nav .divider {
   line-height: 20px;
   word-break: break-all;
   -webkit-line-clamp: unset !important;
+  padding-right: 20px;
 }
 .table-body .column .row span, .table-body .column .row span > * {
   overflow: hidden;
@@ -33670,7 +33672,9 @@ nav .divider {
 }
 .form-admin .form-wrapper .form-body {
   box-sizing: border-box;
+  padding: 25px;
   border-radius: 10px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
 }
 .form-admin .form-wrapper .form-body .row {
   display: flex;
@@ -33691,10 +33695,26 @@ nav .divider {
 .form-admin .form-wrapper .form-body .row-3 {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  grid-gap: 16px;
 }
 .form-admin .form-wrapper .form-body .row-3 > * {
   width: calc(33.3333333333% - 10px);
+}
+.form-admin .form-wrapper .form-body .row-4 {
+  width: 100%;
+  display: flex;
+  grid-gap: 16px;
+}
+.form-admin .form-wrapper .form-body .row-4 > * {
+  width: calc(25% - 10px);
+}
+.form-admin .form-wrapper .form-body .row-5 {
+  width: 100%;
+  display: flex;
+  grid-gap: 16px;
+}
+.form-admin .form-wrapper .form-body .row-5 > * {
+  width: calc(20% - 10px);
 }
 .form-admin .form-wrapper .form-body .form-row {
   margin-bottom: 18px;
@@ -33731,6 +33751,19 @@ nav .divider {
   position: absolute;
   top: 100%;
   left: 0;
+}
+.form-admin .form-wrapper .form-body .form-row.iconInput i,
+.form-admin .form-wrapper .form-body .form-row.iconInput svg {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  color: rgba(90, 94, 102, 0.6392156863);
+  font-size: 25px;
+}
+.form-admin .form-wrapper .form-body .form-row.iconInput input {
+  padding: 0 40px 0 15px !important;
 }
 .form-admin .form-wrapper .form-body .form-row > input,
 .form-admin .form-wrapper .form-body .form-row select {
@@ -35277,8 +35310,24 @@ nav .divider {
     box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
   }
 }
+.inputReadOnly {
+  pointer-events: none !important;
+  background: rgba(158, 158, 158, 0.2588235294) !important;
+}
+
 .wLen1 {
   width: 150px !important;
+}
+
+.disableIcon::-webkit-inner-spin-button,
+.disableIcon::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.disableIcon {
+  -moz-appearance: textfield;
+  /* For Firefox */
 }
 
 .lt-group {
@@ -38588,35 +38637,6 @@ div button.gm-fullscreen-control {
   font-size: 11px;
 }
 
-#tinymce.mce-content-body {
-  width: calc(100% - 65px) !important;
-}
-#tinymce.mce-content-body p {
-  max-width: 100% !important;
-}
-#tinymce.mce-content-body p span iframe {
-  max-width: 100% !important;
-  width: 100% !important;
-}
-#tinymce.mce-content-body p span .mce-shim {
-  max-width: 100% !important;
-}
-#tinymce.mce-content-body p span .mce-preview-object .mce-shim {
-  max-width: 100% !important;
-}
-#tinymce.mce-content-body p iframe {
-  max-width: 100% !important;
-  width: 100% !important;
-}
-#tinymce.mce-content-body iframe {
-  max-width: 100% !important;
-  width: 100% !important;
-}
-
-.tox-promotion, .tox-statusbar__branding {
-  display: none !important;
-}
-
 .inventoryLayoutCus {
   display: flex;
   flex-wrap: wrap;
@@ -40799,6 +40819,51 @@ div button.gm-fullscreen-control {
   color: #fff;
 }
 
+#tinymce.mce-content-body {
+  width: calc(100% - 65px) !important;
+}
+#tinymce.mce-content-body p {
+  max-width: 100% !important;
+  margin: 0 !important;
+}
+#tinymce.mce-content-body p span iframe {
+  max-width: 100% !important;
+  width: 100% !important;
+}
+#tinymce.mce-content-body p span .mce-shim {
+  max-width: 100% !important;
+}
+#tinymce.mce-content-body p span .mce-preview-object .mce-shim {
+  max-width: 100% !important;
+}
+#tinymce.mce-content-body p iframe {
+  max-width: 100% !important;
+  width: 100% !important;
+}
+#tinymce.mce-content-body iframe {
+  max-width: 100% !important;
+  width: 100% !important;
+}
+
+.mce-content-body p {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.tox-edit-area p {
+  margin: 5px 0;
+  /* Adjust the margin as needed */
+}
+
+.tox-tinymce .tox-editor-container {
+  z-index: 1;
+}
+
+.tox-promotion,
+.tox-statusbar__branding {
+  display: none !important;
+}
+
 ::-webkit-scrollbar {
   width: 5px;
   height: 5px;
@@ -40938,4 +41003,9 @@ select:disabled,
 
 .dropdown-menu {
   border-radius: 10px;
+}
+
+.mce-content-body p {
+  padding: 0 !important;
+  margin: 0 !important;
 }

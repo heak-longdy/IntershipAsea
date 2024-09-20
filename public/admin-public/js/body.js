@@ -34,7 +34,6 @@ allDropdown.forEach(function (item) {
 //     switchMode.checked = true;
 // }
 // switchMode.addEventListener("change", function () {
-//     console.log(switchMode, "switchMode");
 //     if (this.checked) {
 //         document.body.classList.add("dark");
 //         localStorage.setItem("switchDarkMode", 1);
@@ -67,7 +66,6 @@ if (sidebar.classList.contains("hide")) {
 
 toggleSidebar.addEventListener("click", function () {
   sidebar.classList.toggle("hide");
-  console.log(sidebar.classList, "sidebar.classList");
   sidebar.classList[1] ? localStorage.setItem("menu", 0) : localStorage.setItem("menu", 1);
 
   if (sidebar.classList.contains("hide")) {
@@ -118,9 +116,6 @@ imgProfile.addEventListener("click", function (e) {
   dropdownProfile.classList.toggle("show");
 });
 window.addEventListener("click", function (e) {
-  console.log(e.target, '666');
-  console.log(imgProfile, 'imgProfile');
-
   if (e.target !== imgProfile) {
     if (e.target !== dropdownProfile) {
       if (dropdownProfile.classList.contains("show")) {

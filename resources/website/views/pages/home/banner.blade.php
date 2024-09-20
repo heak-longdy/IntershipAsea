@@ -46,7 +46,7 @@
                 </div>
             </div>
             <div class="bannerTextGp">
-                <h3>Are you looking for interns?</h3>
+                <h3 style="line-height: 0;">Are you looking for interns?</h3>
                 <a href="" style="    width: fit-content;
     height: 40px;
     padding: 0 15px;
@@ -54,7 +54,8 @@
     align-items: center;
     color: #fff;
     text-decoration: none;
-    border-radius: 8px;" class="bgYellow">click here</a>
+    border-radius: 25px;
+    grid-gap: 5px;" class="bgYellow"><i class='bx bxs-hand-right' style="font-size: 25px;"></i><span>click here</span></a>
             </div>
         </div>
     </div>

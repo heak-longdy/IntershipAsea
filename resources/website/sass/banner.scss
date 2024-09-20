@@ -32,9 +32,17 @@
     text-align   : center;
     overflow     : hidden;
     position     : relative;
-    width        : 60%;
-    border-radius: 7px;
+    width        : 70%;
+    border-radius: 30px;
     background   : #fff;
+    height       : 60px;
+    padding      : 30px;
+
+    .select2-container {
+        .select2-selection {
+            height: 60px !important;
+        }
+    }
 }
 
 .search__input {

@@ -96,6 +96,16 @@ return [
         'icon' => 'bxl-ok-ru',
     ],
     [
+        'type'  => 'single',
+        'active' => 'admin/placement-type/*',
+        'path' => 'admin/placement-type/list/1',
+        'permission' => ['placement-type-view'],
+        'name' => [
+            'en' => 'placement-type',
+        ],
+        'icon' => 'bxl-ok-ru',
+    ],
+    [
         'type'  => 'dropdown-single',
         'label' => 'Application',
         'active' => 'admin/contact/*,admin/about/privacy*',

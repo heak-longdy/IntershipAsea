@@ -13,7 +13,11 @@
                 <div class="table-header">
                     @foreach ($tbHeader as $item)
                         <div class="row table-row-{{ $item['colVal'] }} {{ $item['class'] }}">
-                            <span>{{ $item['title'] }}</span>
+                            @if(isset($item['title']) && $item['title'])
+                                <span>{{ $item['title'] }}</span>
+                            @else
+                                <span></span>
+                            @endif
                         </div>
                     @endforeach
                 </div>

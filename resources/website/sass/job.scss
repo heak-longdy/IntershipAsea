@@ -17,10 +17,10 @@
 }
 
 .viewMore {
-    margin: 30px;
-    width: 1200px;
+    margin: 20px 0;
+    width: 65%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
 }
 .viewMore>a{
     text-decoration: none;
@@ -32,9 +32,15 @@
     background: #9e9e9e00;
     align-items: center;
     display: flex;
-    padding: 0 15px;
-    border-radius: 10px;
+    padding: 0 10px 0 17px;
+    border-radius: 22px;
     border: 1px solid #80808054;
+
+    background-color: #ff9900;
+    color: #fff;
+    i{
+        font-size: 25px;
+    }
 }
 
 .jobTitle {

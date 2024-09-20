@@ -6,15 +6,22 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\JobRequest;
 use App\Models\Job;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\DB;
+use App\Services\Tools;
 
 class JobController extends Controller
 {
     protected $layout = 'admin::pages.job.';
+    private $tools;
+    private $table = Job::class;
+    private $routeName = "job";
+    public function __construct(Tools $serTool)
+    {
+        $this->tools = $serTool;
+    }
     public function index(Request $req)
     {
         $data['status'] = $req->status;
+        $data['routeName'] = $this->routeName;
         if (!$req->status) {
             return redirect()->route('admin-job-list', 1);
         }
@@ -29,28 +36,35 @@ class JobController extends Controller
     public function onCreate()
     {
         $data['id'] = "";
+        $data['routeName'] = $this->routeName;
         return view($this->layout . 'store', $data);
     }
     public function onEdit(Request $req)
     {
         $data['id'] = $req->id;
         $data['data'] = Job::find($req->id);
+        $data['routeName'] = $this->routeName;
         return view($this->layout . 'store', $data);
     }
-    public function onSave(JobRequest $req, $id = "")
+    public function Save(JobRequest $req, $id = "")
     {
-        $status = $id ? "Update success." : "Create success.";
-        DB::beginTransaction();
-        try {
-            $item = $req->all();
-            Job::updateOrCreate(['id' => $id], $item);
-            DB::commit();
-            Session::flash('success', $status);
-            return redirect()->route('admin-job-list', 1);
-        } catch (\Exception $error) {
-            DB::rollback();
-            Session::flash('warning', $status);
-            return redirect()->back();
-        }
+        return $this->tools->onSave($this->table, $req, $id, $this->routeName);
+    }
+    public function updateStatus($id, $status)
+    {
+        return $this->tools->onUpdateStatus($this->table, $id, $status);
+    }
+    public function restore($id = "")
+    {
+        return $this->tools->onRestore($this->table, $id);
+    }
+    public function destroy($id = "")
+    {
+        return $this->tools->onDestroy($this->table, $id);
+    }
+
+    public function delete($id = "")
+    {
+        return $this->tools->onDelete($this->table, $id);
     }
 }

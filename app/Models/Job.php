@@ -12,38 +12,24 @@ class Job extends Model
 {
     use HasFactory, SoftDeletes;
     protected $table = 'jobs';
+    // protected $guarded = [];
     protected $fillable = [
-                    'post_date',
-                    'close_date',
-                    'user_id',
-                    'company_id',
-                    'country_id',
-                    'job_category_id',
-                    'location_id',
-                    'title',
-                    'term',
-                    'salary_from',
-                    'salary_to',
-                    'year_experience',
-                    'number_of_hire',
-                    'job_des',
-                    'job_res',
-                    'job_requirement',
-                    'image',
-                    'slug',
-                    'status',
-                    'sex',
-                    'job_level',
-                    'job_type',
-                    'position_id',
-                    'sector_id',
-                    'hr_name',
-                    'hr_phone_number',
-                    'hr_email',
-                    'is_negotiate',
-                    'is_premium',
+        'post_date',
+        'close_date',
+        'user_id',
+        'title',
+        'salary_from',
+        'job_des',
+        'job_res',
+        'job_requirement',
+        'image',
+        'status',
+        'position_id',
+        'sector_id',
+        'number_of_day',
+        'placement_type_id'
     ];
-    protected $appends = ['image_url','PostDateFor'];
+    protected $appends = ['image_url', 'post_date_for', 'close_date_for', 'pos_title','sector_title'];
     public function getImageUrlAttribute()
     {
         if ($this->image != null) {
@@ -59,7 +45,31 @@ class Job extends Model
 
     public function getPostDateForAttribute()
     {
-        return $this->post_date;
+        return $this->post_date ? \Carbon\Carbon::parse($this->post_date)->format('Y/m/d') : null;
+    }
+    public function getCloseDateForAttribute()
+    {
+        return $this->close_date ? \Carbon\Carbon::parse($this->close_date)->format('Y/m/d') : null;
+    }
+    public function Position()
+    {
+        return $this->belongsTo(Position::class, 'position_id', 'id');
+    }
+    public function Sector()
+    {
+        return $this->belongsTo(Sector::class, 'sector_id', 'id');
+    }
+    public function getPosTitleAttribute()
+    {
+        if ($this->Position()) {
+            return $this->Position?->title ?? "";
+        }
+    }
+    public function getSectorTitleAttribute()
+    {
+        if ($this->Sector()) {
+            return $this->Sector?->title ?? "";
+        }
     }
 
     // public function categoryBlogs()

@@ -27,6 +27,7 @@ use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Admin\DiscountController;
 use App\Http\Controllers\Admin\JobController;
 use App\Http\Controllers\Admin\PartnerController;
+use App\Http\Controllers\Admin\PlacementTypeController;
 use App\Http\Controllers\Admin\PositionController;
 use App\Http\Controllers\Admin\SectorController;
 
@@ -95,18 +96,7 @@ Route::middleware(['AdminGuard'])
         //     Route::post('save/{id?}', [PositionController::class, 'onSave'])->name('save');
         //     Route::match(['get', 'post'], 'status/{id}/{status}', [PositionController::class, 'onUpdateStatus'])->name('status');
         // });
-
-        //Job
-        Route::group([
-            'prefix' => 'job',
-            'as'     => 'job-'
-        ], function () {
-            Route::get('list/{status?}', [JobController::class, 'index'])->name('list');
-            Route::get('create', [JobController::class, 'onCreate'])->name('create');
-            Route::get('edit/{id?}', [JobController::class, 'onEdit'])->name('edit');
-            Route::post('save/{id?}', [JobController::class, 'onSave'])->name('save');
-            Route::match(['get', 'post'], 'status/{id}/{status}', [JobController::class, 'onUpdateStatus'])->name('status');
-        });
+        
 
         //Report
         Route::group([
@@ -117,45 +107,7 @@ Route::middleware(['AdminGuard'])
             Route::get('shop/{status?}', [ReportController::class, 'shopReport'])->name('shop');
         });
 
-        //Select
-        Route::group([
-            'prefix' => 'select',
-            'as'     => 'select-'
-        ], function () {
-
-            Route::get('product', [Admin\SelectController::class, 'selectProduct'])->name('product');
-            Route::get('customer', [Admin\SelectController::class, 'selectCustomer'])->name('customer');
-            Route::get('supplier', [Admin\SelectController::class, 'selectSupplier'])->name('supplier');
-
-            Route::get('stock-product', [Admin\SelectController::class, 'stockSelectProduct'])->name('stock-product');
-            Route::get('stock-shop', [Admin\SelectController::class, 'stockSelectShop'])->name('stock-shop');
-            Route::get('shopNotIn', [Admin\SelectController::class, 'stockSelectShopNotInID'])->name('shopNotIn');
-
-            //shopProduct
-            Route::get('shop-product', [Admin\SelectController::class, 'selectShopProduct'])->name('shop-product');
-
-            //findProductStock
-            Route::get('find-shop-product', [Admin\SelectController::class, 'findShopProduct'])->name('find-shop-product');
-
-            //selectBarber
-            Route::get('barber', [Admin\SelectController::class, 'SelectBarber'])->name('barber');
-
-            //selectShop
-            Route::get('shop', [Admin\SelectController::class, 'SelectShop'])->name('shop');
-
-            //product
-            Route::get('type-product', [Admin\SelectController::class, 'SelectProductSearch'])->name('product');
-            //service
-            Route::get('type-service', [Admin\SelectController::class, 'SelectServiceSearch'])->name('service');
-
-            //In
-            Route::get('shop-in-product', [Admin\SelectController::class, 'productInShop'])->name('shop-in-product');
-
-
-            //Position
-            Route::get('position', [Admin\SelectController::class, 'SelectPositionSearch'])->name('position');
-
-        });
+        
 
         //Wallet
         Route::group([
@@ -228,7 +180,55 @@ Route::middleware(['AdminGuard'])
         CRUD(PositionController::class,'position');
         CRUD(UserController::class,'user');
 
+        CRUD(JobController::class,'job');
         CRUD(BlogController::class,'blog');
+
+        CRUD(PlacementTypeController::class,'placement-type');
+
+
+        //Select
+        Route::group([
+            'prefix' => 'select',
+            'as'     => 'select-'
+        ], function () {
+
+            Route::get('product', [Admin\SelectController::class, 'selectProduct'])->name('product');
+            Route::get('customer', [Admin\SelectController::class, 'selectCustomer'])->name('customer');
+            Route::get('supplier', [Admin\SelectController::class, 'selectSupplier'])->name('supplier');
+
+            Route::get('stock-product', [Admin\SelectController::class, 'stockSelectProduct'])->name('stock-product');
+            Route::get('stock-shop', [Admin\SelectController::class, 'stockSelectShop'])->name('stock-shop');
+            Route::get('shopNotIn', [Admin\SelectController::class, 'stockSelectShopNotInID'])->name('shopNotIn');
+
+            //shopProduct
+            Route::get('shop-product', [Admin\SelectController::class, 'selectShopProduct'])->name('shop-product');
+
+            //findProductStock
+            Route::get('find-shop-product', [Admin\SelectController::class, 'findShopProduct'])->name('find-shop-product');
+
+            //selectBarber
+            Route::get('barber', [Admin\SelectController::class, 'SelectBarber'])->name('barber');
+
+            //selectShop
+            Route::get('shop', [Admin\SelectController::class, 'SelectShop'])->name('shop');
+
+            //product
+            Route::get('type-product', [Admin\SelectController::class, 'SelectProductSearch'])->name('product');
+            //service
+            Route::get('type-service', [Admin\SelectController::class, 'SelectServiceSearch'])->name('service');
+
+            //In
+            Route::get('shop-in-product', [Admin\SelectController::class, 'productInShop'])->name('shop-in-product');
+
+            //Position
+            Route::get('position', [Admin\SelectController::class, 'SelectPositionSearch'])->name('position');
+            //Sector
+            Route::get('sector', [Admin\SelectController::class, 'SelectSectorSearch'])->name('sector');
+
+            //placement type
+            Route::get('placement-type', [Admin\SelectController::class, 'SelectPlacementTypeSearch'])->name('placement-type');
+
+        });
 
 
         //Setting

@@ -82,8 +82,11 @@
     align-items: center;
     color: #fff;
     text-decoration: none;
-    border-radius: 8px;">
-                            Contact Us</div>
+    border-radius: 25px;
+    align-items: center;
+    display: flex;
+    grid-gap: 5px;">
+                            <i class='bx bx-phone' style="font-size: 25px;"></i><spna>Contact Us</span></div>
                     </a>
                 </div>
             </div>

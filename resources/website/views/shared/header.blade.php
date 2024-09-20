@@ -1,6 +1,7 @@
 <div class="wb-header" style="height: 85px;">
     <div class="header nav-menu">
         <div class="h-left" style="height: 100%;">
+            <a href="{{ route('web-index') }}">
             <div class="logo" style="position: relative;
     display: flex;
     align-items: center;
@@ -14,6 +15,7 @@
     font-size: 25px;
     width: fit-content">ISEA</label>
             </div>
+            </a>
 
         </div>
         <div class="h-right">
@@ -27,12 +29,12 @@
             <div class="h-item">
                 <label>About</label>
             </div>
-            <a href="{!! route('/job') !!}">
+            <a href="{{ route('web-job') }}">
                 <div class="h-item">
                     <label class="active">Blogs</label>
                 </div>
             </a>
-            <a href="{!! route('/contact') !!}">
+            <a href="{!! route('web-contact') !!}">
                 <div class="h-item">
                     <label>Contact</label>
                 </div>

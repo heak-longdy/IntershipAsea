@@ -16,6 +16,7 @@
     height    : 64px;
     transition: all .3s ease;
     z-index   : 999;
+    color     : #fff;
 
     &.active {
         background-color          : var(--header-bg);

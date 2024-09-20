@@ -12,27 +12,23 @@ window.Fancybox = Fancybox;
 window.moment = require("moment");
 import Alpine from "alpinejs";
 
-
 const { default: Axios } = require("axios");
 window.Alpine = Alpine;
 window.Axios = Axios;
 
+// import mask from "@alpinejs/mask";
+// import intersect from "@alpinejs/intersect";
+// import collapse from "@alpinejs/collapse";
 
-
+// Alpine.plugin(intersect);
+// Alpine.plugin(collapse);
+// Alpine.plugin(mask);
 
 const { default: anime } = require("animejs");
 window.anime = anime;
 // import Choices from "choices.js";
 // window.Choices = Choices;
 require("./libs");
-
-// import mask from "@alpinejs/mask";
-import intersect from "@alpinejs/intersect";
-import collapse from '@alpinejs/collapse';
-
-// Alpine.plugin(mask);
-Alpine.plugin(intersect);
-Alpine.plugin(collapse);
 
 // require("./package/animation/index");
 
@@ -79,20 +75,52 @@ Alpine.store("animate", {
   },
 });
 
-window.$select2Data = function(attributeID="",position_id="",title=""){
+window.$select2Data = function (
+  attributeID = "",
+  position_id = "",
+  title = ""
+) {
   var option = "<option selected></option>";
   var selectOptionHTML = $(option).val(position_id).text(title);
-  $(attributeID).append(selectOptionHTML).trigger('change');
-}
+  $(attributeID).append(selectOptionHTML).trigger("change");
+};
 
 window.$select2FocusInputSearch = function () {
-  var inputSearch = document.querySelectorAll('.select2-search__field');
-  inputSearch.forEach(val => {
-      val.focus();
-      val.setAttribute('placeholder', 'Search ...');
+  var inputSearch = document.querySelectorAll(".select2-search__field");
+  inputSearch.forEach((val) => {
+    val.focus();
+    val.setAttribute("placeholder", "Search ...");
   });
-}
+};
 
 window.reloadData = function (url) {
   window.location.href = url;
+};
+
+window.FindEnDate = function (startDate = "", numberOfDays = 0) {
+  let data = "";
+  if (numberOfDays <= 0) {
+    numberOfDays = 0;
+  }
+  if (startDate && numberOfDays) {
+    const date = new Date(startDate);
+    date.setDate(date.getDate() + parseInt(numberOfDays) - 1);
+    return date.toISOString().split("T")[0];
+  }
+  return data;
+};
+window.$fetchData = async function (url, callback) {
+  await fetch(url, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+  })
+    .then((response) => response.json())
+    .then((response) => {
+      callback(response);
+    })
+    .catch((e) => {})
+    .finally(async (res) => {});
 };

@@ -1,105 +1,144 @@
 @extends('admin::shared.layout')
 @section('layout')
     @include('admin::shared.header', ['header_name' => 'Job Management'])
-    <div class="content-wrapper" id="app">
-        <div class="header box-shadow-bottom">
-            <div class="header-tab">
-                <div class="header-tab-wrapper">
-                    <div class="menu-row">
-                        <div class="tabs">
-                            <a href="{!! route('admin-job-list', 1) !!}" class="{!! Request::is('admin/job/list/1') ? 'tabActive' : '' !!}">
-                                <i class='bx bx-data'></i>
-                                Active
-                            </a>
-                            <a href="{!! route('admin-job-list', 2) !!}" class="{!! Request::is('admin/job/list/2') ? 'tabActive' : '' !!}">
-                                <i class='bx bx-navigation'></i>
-                                Disable
-                            </a>
-                            <a href="{!! route('admin-job-list', 'trash') !!}" class="{!! Request::is('admin/job/list/trash') ? 'tabActive' : '' !!}">
-                                <i class='bx bx-trash-alt'></i>
-                                Trash
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="header-action-button">
-                    <form class="filter" action="{!! url()->current() !!}" method="GET">
-                        <div class="form-row w80">
-                            <select name="payment_status">
-                                <option value="">All Status</option>
-                                <option value="Pending" {!! request('payment_status') == 'Pending' ? 'selected' : '' !!}> Pending</option>
-                                <option value="Paid" {!! request('payment_status') == 'Pending' ? 'selected' : '' !!}> Paid</option>
-                            </select>
-                        </div>
-                        <button mat-flat-button type="submit" class="bg-success btnSearch">
-                            <i class='bx bx-search' ></i>
-                        </button>
-                    </form>
-                    <button s-click-link="{!! url()->current() !!}">
-                        <i class='bx bx-revision'></i>
-                        <span>Reload</span>
-                    </button>
-                    <button class="btn btn-create" s-click-link="{!! route('admin-job-create') !!}">
-                        <i class='bx bx-plus' ></i>
-                        <span>Create Job</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div class="content-body">
-            @include('admin::pages.job.table')
-        </div>
+    <div class="content-wrapper" id="app" x-data="xIndex">
+        @component('admin::components.listingData', [
+            'routeName' => $routeName,
+            'createName' => 'Create Job',
+            'filterStatus' => true,
+            'data' => $data,
+            'status' => $status,
+            'tbHeader' => [
+                ['field' => 'index', 'title' => 'Nº', 'class' => '', 'colVal' => 5],
+                ['field' => 'image_url', 'title' => 'Image', 'class' => 'text left', 'colVal' => 10],
+                ['field' => 'title', 'title' => 'Title', 'class' => 'text left', 'colVal' => 25],
+                ['field' => 'pos_title', 'title' => 'Position', 'class' => 'text left', 'colVal' => 15],
+                ['field' => 'number_of_day', 'title' => 'Number Of Day', 'class' => 'text left', 'colVal' => 10],
+                ['field' => 'post_date_for', 'title' => 'Post Date', 'class' => 'text left', 'colVal' => 10],
+                ['field' => 'close_date_for', 'title' => 'Close Date', 'class' => 'text left', 'colVal' => 10],
+                ['field' => 'salary_from', 'title' => 'Amount ($)', 'class' => 'text left', 'colVal' => 10],
+                [
+                    'field' => 'action',
+                    'title' => "",
+                    'class' => '',
+                    'colVal' => 5,
+                    'actions' => [
+                        [
+                            'key' => 'active',
+                            'action' => [
+                                ['url' => 'edit', 'title' => 'Edit', 'icon' => 'edit', 'type' => 'link'],
+                                [
+                                    'url' => 'delete',
+                                    'title' => 'Delete',
+                                    'icon' => 'Delete',
+                                    'class' => 'text-danger',
+                                ],
+                            ],
+                        ],
+                        [
+                            'key' => 'disable',
+                            'action' => [
+                                [
+                                    'url' => 'status',
+                                    'title' => 'Disable',
+                                    'icon' => 'hide_source',
+                                    'class' => 'text-danger',
+                                ],
+                            ],
+                        ],
+                        [
+                            'key' => 'enable',
+                            'action' => [['url' => 'status', 'title' => 'Enable', 'icon' => 'refresh']],
+                        ],
+                        [
+                            'key' => 'trash',
+                            'action' => [
+                                [
+                                    'url' => 'restore',
+                                    'title' => 'Restore',
+                                    'icon' => 'settings_backup_restore',
+                                ],
+                                [
+                                    'url' => 'destroy',
+                                    'title' => 'Destroy',
+                                    'icon' => 'Delete',
+                                    'class' => 'text-danger',
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ])
+        @endcomponent
     </div>
 @stop
 
 @section('script')
     <script lang="ts">
-        $("body").on("click", ".trash-btn", function() {
-            let url = $(this).data('url');
-            let id = url.split('/').pop();
-            let row = $(this).closest('.column');
-            Swal.fire({
-                customClass: "confirm-message",
-                icon: "warning",
-                html: `Are you sure to delete <b>${$(this).data('name')}</b>?`,
-                input: 'checkbox',
-                inputValue: 1,
-                inputPlaceholder: 'Move to trash.',
-                confirmButtonText: "Delete",
-                cancelButtonText: "Cancel",
-            }).then(result => {
-                if (result.isConfirmed) {
-                    if (result.value == 1) {
-                        $.ajax({
-                            url: `/admin/job/delete/${id}`,
-                            method: 'GET',
-                            success: function(data) {
-                                row.remove();
-                                Toast({
-                                    title: 'Success Message',
-                                    message: 'Delete Successfully',
-                                    status: 'success',
-                                    duration: 5000,
-                                });
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('xIndex', () => ({
+                loading: null,
+                selected_id: null,
+                groupClassList: [],
+                professionList: [],
+                async init() {
+                    this.loading = true;
+                    // const data = @json($data ?? '');
+                    // console.log(data,'dd');
+                    // await this.fetchData('/admin/select/group-class', (res) => {
+                    //     this.groupClassList = res;
+                    // });
+                    // await this.fetchData('/admin/select/profession', (res) => {
+                    //     this.professionList = res;
+                    // });
+                    this.loading = false;
+                },
+                async fetchData(url, callback) {
+                    await fetch(url, {
+                            method: "GET",
+                            headers: {
+                                "Content-Type": "application/json",
+                                "Accept": "application/json",
                             }
-                        });
-                    } else {
-                        $.ajax({
-                            url: url,
-                            method: 'GET',
-                            success: function(data) {
-                                row.remove();
-                                Toast({
-                                    title: 'Success Message',
-                                    message: 'Delete Successfully',
-                                    status: 'success',
-                                    duration: 5000,
-                                });
+                        })
+                        .then(response => response.json())
+                        .then(response => {
+                            callback(response);
+                        })
+                        .catch((e) => {})
+                        .finally(async (res) => {});
+                },
+                storeDialog(data = null, type = null) {
+                    this.$store.store.open({
+                        data: data,
+                        type: type
+                    });
+                },
+                verifyDialog(data, typeAction, btn) {
+                    console.log(btn, 'btn');
+                    this.$store.confirmDialog.open({
+                        data: {
+                            message: `Are you sure want to ${btn} ?`,
+                            btnClose: `{{ __('action_button.cancel') }}`,
+                            btnSave: btn,
+                            item: data,
+                            urlName: 'partner',
+                            typeAction: typeAction,
+                            digPosition: "posTop",
+                            class: "deleteDialog",
+                            width: "18rem"
+                        },
+                        afterClosed: (result) => {
+                            if (result) {
+                                let Url = `{{ url()->full() }}`;
+                                reloadData(Url)
                             }
-                        });
-                    }
-                }
-            });
+                        }
+                    });
+                },
+                
+            }))
         });
     </script>
 @stop

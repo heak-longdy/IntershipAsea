@@ -108,8 +108,6 @@ sans-serif;
 // @import "./carHistory/invoice.scss";
 // @import "./carHistory/payment.scss";
 
-//tiny
-@import "./tinymce/listing.scss";
 
 //product
 // @import "./product/form.scss";
@@ -150,6 +148,10 @@ sans-serif;
 @import "./notificationMenu.scss";
 
 // @import './swal.scss';
+
+
+//tiny
+@import "./tinymce/listing.scss";
 
 ::-webkit-scrollbar {
     width : 5px;
@@ -303,4 +305,11 @@ select:disabled,
 
 .dropdown-menu{
     border-radius: 10px;
+}
+
+.mce-content-body {
+    p {
+        padding: 0 !important;
+        margin : 0 !important;
+    }
 }
