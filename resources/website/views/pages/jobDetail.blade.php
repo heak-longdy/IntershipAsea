@@ -1,7 +1,7 @@
 @extends('website::shared.layout')
 @section('layout')
     <div class="wb-home-layout">
-        @include('website::pages.home.banner', ['header_name' => ''])
+        @include('website::pages.home.banner', ['header_name' => '','search'=>'disable','clickhere'=>'disable'])
 
         {{-- WHO WE ARE --}}
         {{-- <div class="homeLayout paddingTop_Bot60">
@@ -23,30 +23,30 @@
         </div> --}}
         <div class="webContentListLayout marginTop_Bot30">
             <div class="webContentList">
-                <div class="jobDetailLayout">
-                    <div class="jobDetailGp">
-                        <div class="jobDetailLeft">
-                            <div class="jobDetailTitle">
+                <div class="itemDetailLayout">
+                    <div class="itemDetailGp">
+                        <div class="itemDetailLeft">
+                            <div class="itemDetailTitle">
                                 <h3>Internship details</h3>
                                 <a href="">
                                     <button type="button" class="btnApply">Apply</button>
                                 </a>
                             </div>
-                            <div class="jobDetailBody">
+                            <div class="itemDetailBody">
                                 <div class="fontWeight">Placement Name:&nbsp;Marketing Intern at Cambodia Life Style</div>
                                 <div><span class="fontWeight">Role:</span>&nbsp;Marketing Intern</div>
                                 <div><span class="fontWeight">Type of Placement:</span>&nbsp;Full-Time Internship</div>
                                 <div><span class="fontWeight">Duration:</span>&nbsp;6 Months</div>
                                 <div>
                                     <p class="fontWeight">Dates Available:</p>
-                                    <div class="paddingJobDetail">
+                                    <div class="paddingItemDetail">
                                         <p>Start Date: August 1, 2024</p>
                                         <p>End Date: January 31, 2025</p>
                                     </div>
                                 </div>
                                 <div>
                                     <p class="fontWeight">Company Description:</p>
-                                    <div class="paddingJobDetail">
+                                    <div class="paddingItemDetail">
                                         <p>
                                             Join Cambodia Lifestyle, a leading lifestyle and media platform, as a Marketing
                                             Intern and gain hands-on
@@ -60,7 +60,7 @@
                                 </div>
                                 <div>
                                     <p class="fontWeight">Intern Benefits:</p>
-                                    <div class="paddingJobDetail">
+                                    <div class="paddingItemDetail">
                                         <p>
                                             Professional Growth & ROI: Gain practical experience in marketing and build a
                                             diverse skill set
@@ -79,7 +79,7 @@
                                 </div>
                                 <div>
                                     <p class="fontWeight">Qualifications:</p>
-                                    <div class="paddingJobDetail">
+                                    <div class="paddingItemDetail">
                                         <p>
                                             Education: Pursuing or recently completed a degree in Marketing, Communications,
                                             Business,
@@ -98,7 +98,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="jobDetailRight">
+                        <div class="itemDetailRight">
                             <h3>Similar Posts</h3>
                             @foreach ($blogRelates as $index => $item)
                                 @include('website::components.blogItem', [

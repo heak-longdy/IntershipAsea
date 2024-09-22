@@ -70,7 +70,7 @@
                             </label>
 
                             <button [disabled]="loading" class="buttonApply" (click)="sendEmail($event)">
-                                Send Message
+                                Apply Now
                                 {{-- <i class='bx bx-loader-alt bx-spin' *ngIf="loading"></i> --}}
                                 <svg class="button__icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" fill="none" *ngIf="!loading">

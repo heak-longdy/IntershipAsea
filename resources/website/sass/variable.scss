@@ -3,7 +3,8 @@ $widthCh      :65%;
 // Color
 $primary      : #024de3;
 $border-radius:8px;
-
+$menu-active  : #3A3A3C;
+$container        : #fff;
 *,
 ::after,
 ::before {
@@ -69,5 +70,11 @@ h3 {
 
 .fontWeight {
     font-weight        : unset;
-    -webkit-text-stroke: 0.7px;
+    -webkit-text-stroke: 1.3px;
+}
+
+.underLine {
+    height    : 1px;
+    background: #00000017;
+    width     : 100%;
 }

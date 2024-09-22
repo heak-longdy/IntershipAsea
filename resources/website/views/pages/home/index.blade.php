@@ -1,7 +1,13 @@
 @extends('website::shared.layout')
 @section('layout')
     <div class="wb-home-layout">
-        @include('website::pages.home.banner', ['header_name' => ''])
+        @include('website::pages.home.banner', [
+            'header_name' => '',
+            'imgUrl' => '../../website/img/ourService01.png',
+            'text1' => 'Find once in lifetime Internships Programmes in Southeast Asia',
+            'text2' => 'Are you looking for interns?',
+            'btnText' => 'click here',
+        ])
 
         {{-- WHO WE ARE --}}
         <div class="homeLayout paddingTop_Bot60">
@@ -86,14 +92,30 @@
     align-items: center;
     display: flex;
     grid-gap: 5px;">
-                            <i class='bx bx-phone' style="font-size: 25px;"></i><spna>Contact Us</span></div>
+                            <i class='bx bx-phone' style="font-size: 25px;"></i>
+                            <spna>Contact Us</span>
+                        </div>
                     </a>
                 </div>
             </div>
         </div>
 
         {{-- listJob --}}
-        @include('website::pages.job', ['header_name' => ''])
+        <div class="jobLayout" style="background: url('../../website/img/homeProgram.png');background-size: cover;">
+            <div class="jobListing">
+                <h3 class="jobTitle">Intership Programmer</h3>
+                <div class="jobContainer">
+                    @foreach ($jobs as $index => $item)
+                        @include('website::components.jobItem', ['item' => $item])
+                    @endforeach
+                </div>
+            </div>
+            <div class="viewMore">
+                <a href="">
+                    <div>See More<i class='bx bx-chevron-right'></i></div>
+                </a>
+            </div>
+        </div>
 
 
         {{-- View our testimonials --}}
@@ -148,7 +170,7 @@
                         <div class="partnerItem">
                             <div class="partnerImg">
                                 {{-- <img src="{{ asset('website/img/partner01.png') }}" alt="post-1"> --}}
-                                <i class='bx bxl-whatsapp' ></i>
+                                <i class='bx bxl-whatsapp'></i>
                             </div>
                             <div class="partnerText">
                                 <p>1. Easy Application Process</p>
@@ -159,7 +181,7 @@
                         <div class="partnerItem">
                             <div class="partnerImg">
                                 {{-- <img src="{{ asset('website/img/partner01.png') }}" alt="post-1"> --}}
-                                <i class='bx bxl-facebook-circle' ></i>
+                                <i class='bx bxl-facebook-circle'></i>
                             </div>
                             <div class="partnerText">
                                 <p>1. Easy Application Process</p>
@@ -170,7 +192,7 @@
                         <div class="partnerItem">
                             <div class="partnerImg">
                                 {{-- <img src="{{ asset('website/img/partner01.png') }}" alt="post-1"> --}}
-                                <i class='bx bxl-youtube' ></i>
+                                <i class='bx bxl-youtube'></i>
                             </div>
                             <div class="partnerText">
                                 <p>1. Easy Application Process</p>
@@ -181,7 +203,7 @@
                         <div class="partnerItem">
                             <div class="partnerImg">
                                 {{-- <img src="{{ asset('website/img/partner01.png') }}" alt="post-1"> --}}
-                                <i class='bx bxl-linkedin' ></i>
+                                <i class='bx bxl-linkedin'></i>
                             </div>
                             <div class="partnerText">
                                 <p>1. Easy Application Process</p>

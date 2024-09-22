@@ -40274,7 +40274,7 @@ div button.gm-fullscreen-control {
   width: 40px;
   height: 40px;
   position: fixed;
-  bottom: 27px;
+  bottom: 45px;
   right: -80px;
   border-radius: 100%;
   background-image: radial-gradient(circle farthest-corner at 10% 20%, rgb(90, 92, 106) 0%, rgb(32, 45, 58) 81.3%);
@@ -40375,6 +40375,15 @@ div button.gm-fullscreen-control {
   margin: 0 3px;
   border-radius: 50px;
   cursor: pointer;
+  text-decoration: none;
+  color: #333;
+}
+.paginationLayout .pagination-right .pagination-wrapper .pagination-item svg {
+  fill: #333;
+  min-width: 30px !important;
+  min-height: 30px !important;
+  color: #333;
+  stroke: #ffffff;
 }
 .paginationLayout .pagination-right .pagination-wrapper .pagination-item.active {
   background: #024de3;
@@ -40389,19 +40398,21 @@ div button.gm-fullscreen-control {
   background: rgba(58, 58, 60, 0.1);
 }
 .paginationLayout .pagination-right .pagination-wrapper .pagination-item i.bx {
-  font-size: 25px;
+  font-size: 35px;
 }
 .paginationLayout .pagination-right .pagination-wrapper .pagination-item.right {
   border-radius: 50%;
   width: 35px;
   height: 35px !important;
   min-width: 35px;
+  text-decoration: none;
 }
 .paginationLayout .pagination-right .pagination-wrapper .pagination-item.left {
   border-radius: 50%;
   width: 35px;
   height: 35px !important;
   min-width: 35px;
+  text-decoration: none;
 }
 
 .paginationHeader {

@@ -2,40 +2,53 @@
     <div class="header nav-menu">
         <div class="h-left" style="height: 100%;">
             <a href="{{ route('web-index') }}">
-            <div class="logo" style="position: relative;
+                <div class="logo"
+                    style="position: relative;
     display: flex;
     align-items: center;
     height: 100%;">
-                <img src="{{ asset('images/logo/Logo.png') }}" style="
+                    <img src="{{ asset('images/logo/Logo.png') }}" style="
     height: 50px;
     object-fit: contain;">
-                <label
-                    style="position: absolute;
+                    <label
+                        style="position: absolute;
     right: -25px;
     font-size: 25px;
     width: fit-content">ISEA</label>
-            </div>
+                </div>
             </a>
 
         </div>
         <div class="h-right">
-            <div class="h-item">
-                <i class='bx bx-search'></i>
-                <label>Search Jobs</label>
-            </div>
-            <div class="h-item">
-                <label>Our Service</label>
-            </div>
-            <div class="h-item">
-                <label>About</label>
-            </div>
+            <a href="{{ route('web-index') }}">
+                <div class="h-item {{ routeActive('/') ? 'active' : '' }}">
+                    <i class='bx bx-home-alt-2' ></i>
+                    <label>Home</label>
+                </div>
+            </a>
             <a href="{{ route('web-job') }}">
-                <div class="h-item">
-                    <label class="active">Blogs</label>
+                <div class="h-item {{ routeActive('job') ? 'active' : '' }}">
+                    <i class='bx bx-search'></i>
+                    <label>Search Jobs</label>
+                </div>
+            </a>
+            <a href="{!! route('web-our-service') !!}">
+                <div class="h-item {{ routeActive('our-service') ? 'active' : '' }}">
+                    <label>Our Service</label>
+                </div>
+            </a>
+            <a href="{!! route('web-about') !!}">
+                <div class="h-item {{ routeActive('about') ? 'active' : '' }}">
+                    <label>About</label>
+                </div>
+            </a>
+            <a href="{{ route('web-blog') }}">
+                <div class="h-item {{ routeActive('blog') ? 'active' : '' }}">
+                    <label>Blogs</label>
                 </div>
             </a>
             <a href="{!! route('web-contact') !!}">
-                <div class="h-item">
+                <div class="h-item {{ routeActive('contact') ? 'active' : '' }}">
                     <label>Contact</label>
                 </div>
             </a>

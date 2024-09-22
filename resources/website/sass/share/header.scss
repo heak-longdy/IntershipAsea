@@ -94,6 +94,11 @@
                 cursor     : pointer;
                 white-space: nowrap;
 
+                &.active {
+                    color : #ff9900;
+                    filter: drop-shadow(2px 4px 6px #ff9900);
+                }
+
                 i.bx {
                     font-size       : 16px;
                     margin-right    : 5px;

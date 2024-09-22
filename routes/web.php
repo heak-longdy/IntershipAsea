@@ -34,9 +34,13 @@ Route::group(
         Route::get('/', [HomeController::class, 'index'])->name('index');
         Route::get('/job', [HomeController::class, 'job'])->name('job');
         Route::get('/job/detail/{id}', [HomeController::class, 'jobDetail'])->name('job-detail');
+        Route::get('/blog', [HomeController::class, 'blog'])->name('blog');
+        Route::get('/blog/detail/{id}', [HomeController::class, 'blogDetail'])->name('blog-detail');
         Route::get('/apply/form', [HomeController::class, 'applyForm'])->name('apply-form');
         Route::post('/apply', [HomeController::class, 'apply'])->name('apply');
         Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+        Route::get('/our-service', [HomeController::class, 'ourService'])->name('our-service');
+        Route::get('/about', [HomeController::class, 'about'])->name('about');
     }
 );
 

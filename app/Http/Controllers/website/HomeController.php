@@ -24,13 +24,23 @@ class HomeController extends Controller
     }
     public function job(Request $req)
     {
-        $data['data'] = Blog::limit(5)->orderBy('id','desc')->get();
-        return view($this->layouts . 'blogs', $data);
+        $data['data'] = Job::orderBy('id','desc')->paginate(15);
+        return view($this->layouts . 'job', $data);
     }
     public function jobDetail($id="65541"){
         $data['data'] = Job::find($id);
         $data['blogRelates'] = Job::limit(3)->orderBy('id','desc')->get();
         return view($this->layouts . 'jobDetail', $data);
+    }
+    public function blog(Request $req)
+    {
+        $data['data'] = Blog::limit(5)->orderBy('id','desc')->get();
+        return view($this->layouts . 'blogs', $data);
+    }
+    public function blogDetail($id="65541"){
+        $data['data'] = Job::find($id);
+        $data['blogRelates'] = Job::limit(3)->orderBy('id','desc')->get();
+        return view($this->layouts . 'blogDetail', $data);
     }
     public function applyForm(){
         return view($this->layouts . 'applyForm');
@@ -81,5 +91,11 @@ class HomeController extends Controller
 
     public function contact(){
         return view($this->layouts . 'contact');
+    }
+    public function ourService(){
+        return view($this->layouts . 'ourService');
+    }
+    public function about(){
+        return view($this->layouts . 'about');
     }
 }

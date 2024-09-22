@@ -60,6 +60,8 @@
             @endif
 
             <a href="{!! customUrl($paginate->nextPageUrl(), request()->all()) !!}" class="pagination-item right {!! $paginate->currentPage() == $paginate->lastPage() ? 'disabled' : '' !!}" href="">
+                {{-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M536.92-480.62 342.77-675.15l32.61-32.62 226.77 227.15-226.77 226.77-32.61-32.61 194.15-194.16Z"/></svg> --}}
+                {{-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M536.92-480.62 342.77-675.15l32.61-32.62 226.77 227.15-226.77 226.77-32.61-32.61 194.15-194.16Z"/></svg> --}}
                 <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 -960 960 960"><path d="M530-481 332-679l43-43 241 241-241 241-43-43 198-198Z"/></svg>
             </a>
         </div>

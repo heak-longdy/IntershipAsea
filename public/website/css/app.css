@@ -5870,7 +5870,13 @@ h3 {
 
 .fontWeight {
   font-weight: unset;
-  -webkit-text-stroke: 0.7px;
+  -webkit-text-stroke: 1.3px;
+}
+
+.underLine {
+  height: 1px;
+  background: rgba(0, 0, 0, 0.0901960784);
+  width: 100%;
 }
 
 :root {
@@ -6068,6 +6074,10 @@ body.dark {
   align-items: center;
   cursor: pointer;
   white-space: nowrap;
+}
+.wb-header .header .h-right .h-item.active {
+  color: #ff9900;
+  filter: drop-shadow(2px 4px 6px #ff9900);
 }
 .wb-header .header .h-right .h-item i.bx {
   font-size: 16px;
@@ -6319,7 +6329,7 @@ footer {
 
 .bannerLayout {
   width: 100%;
-  height: 630px;
+  height: 530px;
   background-color: #f3ecd3;
 }
 
@@ -6421,7 +6431,7 @@ footer {
 }
 .bannerLayout .bannerGp {
   background-repeat: no-repeat;
-  background-position: center !important;
+  background-position: top !important;
 }
 .bannerLayout .bannerGp .bannerList {
   width: 65%;
@@ -7106,31 +7116,48 @@ section .container .owl-nav button.owl-next {
   color: #ff9900;
 }
 
-.jobDetailLayout {
+.itemDetailLayout {
   width: 100%;
 }
-.jobDetailLayout .jobDetailGp {
+.itemDetailLayout .itemDetailGp {
   display: flex;
   grid-gap: 40px;
 }
-.jobDetailLayout .jobDetailGp .jobDetailLeft {
+.itemDetailLayout .itemDetailGp .itemDetailLeft {
   flex: 1;
 }
-.jobDetailLayout .jobDetailGp .jobDetailRight {
+.itemDetailLayout .itemDetailGp .itemDetailRight {
   width: 350px;
   display: grid;
   grid-gap: 27px;
 }
 
-.jobDetailTitle {
+.itemDetailTitle {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
 }
 
-.paddingJobDetail {
+.paddingItemDetail {
   padding: 5px 20px;
+}
+
+.RelateItemLayout {
+  margin: 60px 0;
+}
+.RelateItemLayout h3 {
+  margin-bottom: 25px;
+}
+
+.RelateItemGp {
+  display: flex;
+  flex-wrap: wrap;
+  grid-gap: 25px;
+  width: calc(100% + 25px);
+}
+.RelateItemGp .relateItem {
+  width: calc(33.3333333333% - 25px);
 }
 
 .blog-container {
@@ -7139,9 +7166,9 @@ section .container .owl-nav button.owl-next {
   padding: 0 20px;
 }
 
-h2 {
-  text-align: center;
-  font-size: 36px;
+.blog-container > h2 {
+  text-align: left;
+  font-size: 25px;
   color: #ff9900;
   margin-bottom: 40px;
 }
@@ -7301,24 +7328,16 @@ h2 {
 }
 
 .contact__title {
-  text-align: center;
-  font-size: var(--h3-font-size);
+  text-align: left;
   font-weight: var(--font-medium);
   margin-bottom: var(--mb-1-5);
+  color: #ff9900;
+  font-size: 25px;
 }
 
 .contact__info {
   display: grid;
   row-gap: 1rem;
-  grid-template-columns: 300px;
-}
-
-.contact__card {
-  background-color: var(--container-color);
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  padding: 1rem;
-  border-radius: 0.75rem;
-  text-align: center;
 }
 
 .contact__card-icon {
@@ -7338,7 +7357,6 @@ h2 {
 
 .contact__card-data {
   display: block;
-  margin-bottom: var(--mb-0-75);
 }
 
 .contact__button {
@@ -7813,6 +7831,8 @@ h2 {
 }
 .applyContainer h2 {
   margin-bottom: 60px;
+  font-size: 25px;
+  color: #ff9900;
 }
 .applyContainer .applyGp {
   display: flex;
@@ -7827,4 +7847,209 @@ h2 {
 }
 .applyContainer .applyGp .appRight {
   width: 300px;
+}
+
+.paginationLayout {
+  height: 65px;
+  border-radius: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.paginationLayout.pgHeader {
+  margin-top: 0 !important;
+}
+.paginationLayout .pagination {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.paginationLayout .pagination-left {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+.paginationLayout .pagination-right {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.paginationLayout .pagination-right .pagination-wrapper {
+  display: flex;
+  background: #fff;
+  background: unset;
+  height: 100%;
+  align-items: center;
+  padding: 8px 0px;
+  border-radius: 20px;
+  box-sizing: border-box;
+}
+.paginationLayout .pagination-right .pagination-wrapper .pagination-item {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  min-width: 30px;
+  min-width: 30px;
+  height: 30px !important;
+  padding: 0 5px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 3px;
+  border-radius: 50px;
+  cursor: pointer;
+  text-decoration: none;
+  color: #333;
+}
+.paginationLayout .pagination-right .pagination-wrapper .pagination-item svg {
+  fill: #333;
+  min-width: 30px !important;
+  min-height: 30px !important;
+  color: #333;
+  stroke: #ffffff;
+}
+.paginationLayout .pagination-right .pagination-wrapper .pagination-item.active {
+  background: #024de3;
+  color: #fff;
+  cursor: default;
+}
+.paginationLayout .pagination-right .pagination-wrapper .pagination-item.disabled {
+  color: rgba(69, 70, 71, 0.231372549);
+  cursor: no-drop;
+}
+.paginationLayout .pagination-right .pagination-wrapper .pagination-item:hover:not(.active) {
+  background: rgba(58, 58, 60, 0.1);
+}
+.paginationLayout .pagination-right .pagination-wrapper .pagination-item i.bx {
+  font-size: 35px;
+}
+.paginationLayout .pagination-right .pagination-wrapper .pagination-item.right {
+  border-radius: 50%;
+  width: 35px;
+  height: 35px !important;
+  min-width: 35px;
+  text-decoration: none;
+}
+.paginationLayout .pagination-right .pagination-wrapper .pagination-item.left {
+  border-radius: 50%;
+  width: 35px;
+  height: 35px !important;
+  min-width: 35px;
+  text-decoration: none;
+}
+
+.paginationHeader {
+  display: flex;
+  align-items: center;
+}
+.paginationHeader .pagination-item {
+  cursor: pointer;
+}
+.paginationHeader .pagination-item.active {
+  background: #024de3;
+  color: #fff;
+  cursor: default;
+}
+.paginationHeader .pagination-item.disabled {
+  color: #fff;
+  cursor: no-drop;
+}
+.paginationHeader .pagination-item:hover:not(.active) {
+  background: rgba(58, 58, 60, 0.1);
+}
+.paginationHeader .pagination-item i.bx {
+  font-size: 25px;
+}
+.paginationHeader .pagination-item.right {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+}
+.paginationHeader .pagination-item.left {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+}
+
+.paginationLayout2 {
+  height: 90px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  margin-top: 0px;
+  border-radius: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 20px 0 8px;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.rows-per-page {
+  display: flex;
+  align-items: center;
+}
+.rows-per-page select {
+  border: none;
+  border-radius: 5px;
+  padding: 0px 0px;
+  background: none;
+  cursor: pointer;
+}
+
+.rows-per-page span {
+  margin-right: 8px;
+}
+
+.rows-per-page select {
+  padding: 4px;
+  font-size: 14px;
+}
+
+.page-info {
+  margin: 0 20px;
+}
+
+.page-controls-tb {
+  display: flex;
+}
+
+.page-controls-tb .btn {
+  background: none !important;
+  border: none !important;
+  cursor: pointer !important;
+  padding: 0 5px !important;
+  font-size: 16px !important;
+  box-shadow: none !important;
+  color: black !important;
+  width: -webkit-fit-content !important;
+  width: -moz-fit-content !important;
+  width: fit-content !important;
+  min-width: -webkit-fit-content !important;
+  min-width: -moz-fit-content !important;
+  min-width: fit-content !important;
+}
+
+.page-controls-tb .btn:disabled {
+  color: #ccc;
+  cursor: not-allowed;
+}
+
+.page-controls-tb button:hover:not(:disabled) {
+  color: #000;
 }
