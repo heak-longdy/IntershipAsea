@@ -6249,18 +6249,45 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  max-width: 65%;
   width: 65%;
   margin: 0 auto;
+  grid-gap: 25px;
+  flex-wrap: wrap;
 }
 
-.footer-logo img {
-  width: 100px;
+.footer-logo {
+  width: 270px;
 }
 
-.footer-section {
-  flex: 1;
-  margin: 0 20px;
+.footer-logo > .logo {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-top: 13px;
+  height: 100%;
+}
+.footer-logo > .logo img {
+  width: 187px;
+  height: 87px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.footer-logo > .logo label {
+  position: absolute;
+  right: 0;
+  left: 108px;
+  font-size: 30px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.footer-container div {
+  width: calc(25% - 25px);
 }
 
 .footer-section h4 {
@@ -6299,6 +6326,10 @@ footer {
 .social-icons a {
   display: inline-block;
   margin-right: 10px;
+  min-width: 35px;
+  max-width: 35px;
+  min-height: 35px;
+  max-height: 35px;
   width: 35px;
   height: 35px;
   display: flex;
@@ -7086,7 +7117,7 @@ section .container .owl-nav button.owl-next {
 }
 
 .partnerGp {
-  width: calc(25% - 25px);
+  width: calc(20% - 25px);
   display: flex;
   flex-wrap: wrap;
 }
@@ -7097,7 +7128,7 @@ section .container .owl-nav button.owl-next {
   width: 100%;
   border: 1px solid rgba(128, 128, 128, 0.1294117647);
   border-radius: 15px;
-  padding: 50px 0;
+  padding: 25px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 .partnerGp .partnerItem .partnerImg {
@@ -7420,6 +7451,22 @@ section .container .owl-nav button.owl-next {
 }
 .contact__form-div.contact__form-area textarea {
   resize: none;
+}
+
+.btnContactUs {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: 40px;
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 25px;
+  align-items: center;
+  display: flex;
+  grid-gap: 5px;
 }
 
 /*=============== BREAKPOINTS ===============*/
@@ -8052,4 +8099,116 @@ section .container .owl-nav button.owl-next {
 
 .page-controls-tb button:hover:not(:disabled) {
   color: #000;
+}
+
+@media screen and (max-width: 1336px) {
+  .partnerLayout .partnerGp {
+    width: calc(33.3333333333% - 25px);
+  }
+}
+@media screen and (max-width: 992px) {
+  .webContentListLayout .webContentList {
+    width: 100%;
+    padding: 0 25px;
+  }
+
+  .jobListing,
+.viewMore,
+.footer-container {
+    max-width: 100%;
+    width: 100%;
+    padding: 0 25px;
+  }
+
+  .testimonialsList {
+    width: 85% !important;
+  }
+
+  .partnerLayout {
+    padding: 0 25px;
+  }
+  .partnerLayout .partnerGp {
+    width: calc(50% - 25px);
+  }
+}
+@media screen and (max-width: 700px) {
+  .job-buttons {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-start !important;
+  }
+  .job-buttons p {
+    margin-bottom: 10px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .webContentListLayout .webContentList {
+    display: flex;
+    flex-direction: column;
+  }
+  .webContentListLayout .webContentList .colLine {
+    height: 1px;
+    width: 100%;
+    margin: 20px 0;
+  }
+
+  .wwaImg {
+    width: 100%;
+    height: 250px;
+    margin-top: 30px;
+  }
+
+  .job-card {
+    flex-direction: column;
+  }
+  .job-card img {
+    width: 100% !important;
+    height: 250px !important;
+  }
+  .job-card .job-details {
+    margin: 25px 0 0;
+  }
+
+  .footer-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .footer-container div {
+    width: calc(50% - 25px);
+  }
+}
+@media screen and (max-width: 550px) {
+  .pagination {
+    display: flex;
+    justify-content: center !important;
+  }
+  .pagination .pagination-left {
+    display: none;
+  }
+}
+@media screen and (max-width: 470px) {
+  .partnerLayout .partnerGp {
+    width: calc(100% - 25px);
+  }
+
+  .footer-container div {
+    width: 100%;
+  }
+  .footer-container .footer-logo {
+    display: flex;
+    justify-content: center;
+  }
+  .footer-container .footer-logo .logo {
+    width: -webkit-max-content;
+    width: -moz-max-content;
+    width: max-content;
+  }
+  .footer-container .footer-section {
+    text-align: center;
+  }
+  .footer-container .footer-section .social-icons {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+  }
 }

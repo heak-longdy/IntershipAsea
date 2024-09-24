@@ -54,12 +54,12 @@
 }
 
 .contact__title {
-  text-align   : left;
+  text-align      : left;
   // font-size    : var(--h3-font-size);
-  font-weight  : var(--font-medium);
-  margin-bottom: var(--mb-1-5);
-  color        : #ff9900;
-  font-size    : 25px;
+  font-weight     : var(--font-medium);
+  margin-bottom   : var(--mb-1-5);
+  color           : #ff9900;
+  font-size       : 25px;
 }
 
 .contact__info {
@@ -167,6 +167,20 @@
       resize: none;
     }
   }
+}
+
+.btnContactUs {
+  width          : fit-content;
+  height         : 40px;
+  padding        : 0 15px;
+  display        : flex;
+  align-items    : center;
+  color          : #fff;
+  text-decoration: none;
+  border-radius  : 25px;
+  align-items    : center;
+  display        : flex;
+  grid-gap       : 5px;
 }
 
 

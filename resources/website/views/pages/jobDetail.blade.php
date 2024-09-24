@@ -1,7 +1,7 @@
 @extends('website::shared.layout')
 @section('layout')
     <div class="wb-home-layout">
-        @include('website::pages.home.banner', ['header_name' => '','search'=>'disable','clickhere'=>'disable'])
+        @include('website::components.banner', ['header_name' => '','search'=>'disable','clickhere'=>'disable'])
 
         {{-- WHO WE ARE --}}
         {{-- <div class="homeLayout paddingTop_Bot60">

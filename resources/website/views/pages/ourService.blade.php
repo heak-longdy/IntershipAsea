@@ -9,24 +9,26 @@
             text-align: center;
             font-size: 25px;
             color: #ff9900;
-            margin: 60px 0 110px 0;
+            margin: 60px 0 70px 0;
         }
 
         .ourSerItemLeft {
             display: flex;
             justify-content: flex-start;
-            margin-top: -50px;
+            margin-top: -70px;
         }
 
         .ourSerItemLeft>.ItemLeft {
-            width: 540px;
+            /* width: 540px; */
+            width: 100%;
             display: flex;
             /* align-items: flex-start; */
             align-items: center;
         }
 
         .ItemLeft>.ItemLeftText {
-            flex: 1;
+            /* flex: 1; */
+            width: calc(60% - 250px);
             padding-right: 50px;
         }
 
@@ -34,6 +36,17 @@
             font-size: 18px;
             color: #ff9900;
             margin-bottom: 5px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: initial;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+        }
+
+        .ourSerItemLayout {
+            width: 100%;
+            margin: 140px 0 70px 0;
         }
 
         .ourSerItemRight {
@@ -44,6 +57,7 @@
 
         .ourSerItemRight>.ourSerItem {
             width: 540px;
+            width: 100%;
             display: flex;
             flex-direction: row-reverse;
             /* align-items: flex-start; */
@@ -52,13 +66,30 @@
         }
 
         .ourSerText {
-            flex: 1;
+            /* flex: 1; */
+            width: calc(60% - 250px);
             /* padding-left: 50px; */
+        }
+
+        .ItemLeftText>.ItemText>div>span,
+        .ItemLeftText>div>.fontWeight,
+        .ItemLeftText>.ItemText>div>.fontWeight,
+        .ItemLeftText>div>span,
+        .ourSerText>div>.fontWeight,
+        .ourSerText>div>span {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: initial;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
         }
 
         .ourSerImage {
             width: 110px;
             height: 110px;
+            min-width: 110px;
+            min-height: 110px;
             position: relative;
             background: #ff9900;
             border-radius: 50%;
@@ -118,7 +149,6 @@
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            flex: 1;
             display: flex;
             align-items: flex-start;
             width: calc(100% / 3 - 30px);
@@ -160,19 +190,118 @@
         }
 
         .ItemText {}
+
+
+        @media screen and (max-width: 1650px) {
+            .ItemLeft>.ItemLeftText {
+                width: calc(55% - 200px);
+                padding-right: 15px;
+            }
+
+            .ourSerItem>.ourSerText {
+                grid-gap: 20px;
+                width: calc(65% - 250px);
+            }
+        }
+
+        @media screen and (max-width: 1315px) {
+            .OurVisionItem {
+                width: calc(100% / 2 - 30px);
+            }
+        }
+
+        @media screen and (max-width: 1210px) {
+            .ourSerItem>.ourSerText {
+                grid-gap: 20px;
+                width: calc(67% - 250px);
+            }
+        }
+
+        @media screen and (max-width: 700px) {
+            .ourSerItemLayout {
+                margin: 40px 0 70px 0;
+            }
+
+            .ourServiceContainer>h2 {
+                margin: 60px 0 40px 0;
+            }
+
+            .ourSerItemLeft {
+                display: flex;
+                justify-content: flex-start;
+                margin-top: 0;
+            }
+
+            .ourSerItemRight {
+                display: flex;
+                justify-content: flex-end;
+                margin-top: 0;
+            }
+
+            .ourSerItemLeft>.ItemLeft {
+                grid-gap: 35px;
+                flex-direction: row-reverse;
+            }
+
+            .ourSerItemRight>.ourSerItem {}
+
+            .ItemLeft>.ItemLeftText {
+                width: 100%;
+                padding-right: 0;
+            }
+
+            .ourSerItem>.ourSerText {
+                width: 100%;
+            }
+
+            .lineLeft {
+                display: none;
+            }
+
+            .ourSerItemLeft,
+            .ourSerItemRight {
+                margin-bottom: 25px;
+            }
+
+            .ItemLeftText>.ItemText>div>span,
+            .ItemLeftText>div>.fontWeight,
+            .ItemLeftText>.ItemText>div>.fontWeight,
+            .ItemLeftText>div>span,
+            .ourSerText>div>.fontWeight,
+            .ourSerText>div>span {
+                overflow: unset;
+                display: block;
+                -webkit-line-clamp: unset;
+                -webkit-box-orient: vertical;
+            }
+        }
+
+        @media screen and (max-width: 650px) {
+            .OurVisionItem {
+                width: 100%;
+            }
+        }
+
+        @media screen and (max-width: 400px) {
+
+            .ourSerItemLeft>.ItemLeft,
+            .ourSerItemRight>.ourSerItem {
+                flex-direction: column-reverse;
+            }
+        }
     </style>
     <div class="wb-home-layout">
-        @include('website::pages.home.banner', [
+        @include('website::components.banner', [
             'header_name' => '',
             'imgUrl' => '../../website/img/aboutBg.png',
-            'disableText' => 'Yes'
+            'disableText' => 'Yes',
         ])
         {{-- our service --}}
         <div class="webContentListLayout">
             <div class="webContentList">
                 <div class="ourServiceContainer">
                     <h2>Application Form</h2>
-                    <div style="width: 100%;margin-bottom: 100px;">
+                    <div class="ourSerItemLayout">
                         <div class="ourSerItemLeft">
                             <div class="ItemLeft">
                                 <div class="ItemLeftText">
@@ -308,34 +437,30 @@
                                 </div>
                                 <div class="ourSerImage">
                                     <i class='bx bx-brush'></i>
-                                    {{-- <div class="lineLeft">
-                                        <div class="chiLineTop"></div>
-                                        <div class="chiLineRight"></div>
-                                    </div> --}}
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="underLine"></div>
                     <h2>For Providers </h2>
-                    <div style="width: 100%;margin-bottom: 100px;">
+                    <div class="ourSerItemLayout">
                         <div class="ourSerItemLeft">
                             <div class="ItemLeft">
                                 <div class="ItemLeftText">
                                     <h3 class="h3">1. Partnership Development</h3>
                                     <div>
                                         <span class="fontWeight">Consultation Services:</span>
-                                        <span>We work closely with com- 
-                                            panies to identify and develop valuable internship 
-                                            opportunities. Our team provides expert advice on 
-                                            creating positions that are beneficial for both the 
+                                        <span>We work closely with com-
+                                            panies to identify and develop valuable internship
+                                            opportunities. Our team provides expert advice on
+                                            creating positions that are beneficial for both the
                                             intern and the organization.</span>
                                     </div>
                                     <div>
                                         <span class="fontWeight">Tailored Solutions:</span>
-                                        <span>We understand that each com- 
-                                            pany has unique needs. Our tailored solutions 
-                                            ensure that the internships we help create align 
+                                        <span>We understand that each com-
+                                            pany has unique needs. Our tailored solutions
+                                            ensure that the internships we help create align
                                             with your business goals and requirements.</span>
                                     </div>
                                 </div>
@@ -354,16 +479,16 @@
                                     <h3 class="h3">2. Recruitment and Selection</h3>
                                     <div>
                                         <span class="fontWeight">Vetting Process:</span>
-                                        <span>We conduct a thorough vetting 
-                                            process to ensure that interns are well-suited for 
-                                            the positions oﬀered, matching their skills and 
+                                        <span>We conduct a thorough vetting
+                                            process to ensure that interns are well-suited for
+                                            the positions oﬀered, matching their skills and
                                             interests with your organizational needs.</span>
                                     </div>
                                     <div>
                                         <span class="fontWeight">Intern Matching:</span>
-                                        <span>Our sophisticated matching 
-                                            system ensures that you receive candidates who 
-                                            are not only qualified but also passionate about 
+                                        <span>Our sophisticated matching
+                                            system ensures that you receive candidates who
+                                            are not only qualified but also passionate about
                                             the opportunity.</span>
                                     </div>
                                 </div>
@@ -383,14 +508,14 @@
                                     <div class="ItemText">
                                         <div>
                                             <span class="fontWeight">Intern Management:</span>
-                                            <span>We provide support in man- 
-                                                aging interns, including setting goals, monitoring 
+                                            <span>We provide support in man-
+                                                aging interns, including setting goals, monitoring
                                                 progress, and addressing any issues that may arise.</span>
                                         </div>
                                         <div>
                                             <span class="fontWeight">Feedback Mechanisms:</span>
-                                            <span>Regular feedback sessions 
-                                                help ensure that the internship experience is posi- 
+                                            <span>Regular feedback sessions
+                                                help ensure that the internship experience is posi-
                                                 tive for both the intern and the organization.</span>
                                         </div>
                                     </div>
@@ -469,8 +594,8 @@
             </div>
         </div>
         {{-- WHO WE ARE --}}
-        <div class="homeLayout paddingTop_Bot60">
-            <div class="homeList">
+        <div class="webContentListLayout paddingTop_Bot60">
+            <div class="webContentList">
                 <div class="hLeft">
                     <h3 class="colorYellow margin_bot20">Why ISEA?</h3>
                     <div>
@@ -491,32 +616,13 @@
 
 
         {{-- Contact Us --}}
-        <div class="homeLayout paddingTop_Bot60 bgYellow"
-            style="color: #fff;padding: 35px 0;background: url('../../website/img/home06.png');background-size: cover;    height: 350px;">
-            <div class="homeList" style="align-items: center;">
-                <div class="hLeft">
-                    <h3 class="margin_bot20">Contact us today for more information on providing or applying for internships
-                        today!</h3>
-                    <a href="" class="homeContactus" style="text-decoration: none;">
-                        <div class=" bgYellow"
-                            style="    width: fit-content;
-    height: 40px;
-    padding: 0 15px;
-    display: flex;
-    align-items: center;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 25px;
-    align-items: center;
-    display: flex;
-    grid-gap: 5px;">
-                            <i class='bx bx-phone' style="font-size: 25px;"></i>
-                            <spna>Contact Us</span>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
+        @include('website::components.contact', [
+            'header_name' => '',
+            'imgUrl' => '../../website/img/home06.png',
+            'text1' => 'Find once in lifetime Internships Programmes in Southeast Asia',
+            'text2' => 'Are you looking for interns?',
+            'btnText' => 'click here',
+        ])
 
 
     </div>

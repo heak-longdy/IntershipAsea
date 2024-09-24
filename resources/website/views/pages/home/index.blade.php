@@ -1,7 +1,7 @@
 @extends('website::shared.layout')
 @section('layout')
     <div class="wb-home-layout">
-        @include('website::pages.home.banner', [
+        @include('website::components.banner', [
             'header_name' => '',
             'imgUrl' => '../../website/img/ourService01.png',
             'text1' => 'Find once in lifetime Internships Programmes in Southeast Asia',
@@ -10,8 +10,8 @@
         ])
 
         {{-- WHO WE ARE --}}
-        <div class="homeLayout paddingTop_Bot60">
-            <div class="homeList">
+        <div class="webContentListLayout paddingTop_Bot60">
+            <div class="webContentList">
                 <div class="hLeft">
                     <h3 class="colorYellow margin_bot20">WHO WE ARE</h3>
                     <div>
@@ -29,8 +29,8 @@
         </div>
 
         {{-- Why us? --}}
-        <div class="homeLayout paddingTop_Bot60 bgYellow" style="color: #484646;padding: 35px 0;">
-            <div class="homeList">
+        <div class="webContentListLayout paddingTop_Bot60 bgYellow" style="color: #484646;padding: 35px 0;">
+            <div class="webContentList">
                 <div class="hLeft">
                     <h3 class="margin_bot20">Why us?</h3>
                     <div>
@@ -74,31 +74,13 @@
         </div>
 
         {{-- Contact Us --}}
-        <div class="homeLayout paddingTop_Bot60 bgYellow"
-            style="color: #fff;padding: 35px 0;background: url('../../website/img/home06.png');background-size: cover;    height: 350px;">
-            <div class="homeList" style="align-items: center;">
-                <div class="hLeft">
-                    <h3 class="margin_bot20">Book A Free Consultation With Our International Team</h3>
-                    <a href="" class="homeContactus" style="text-decoration: none;">
-                        <div class=" bgYellow"
-                            style="    width: fit-content;
-    height: 40px;
-    padding: 0 15px;
-    display: flex;
-    align-items: center;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 25px;
-    align-items: center;
-    display: flex;
-    grid-gap: 5px;">
-                            <i class='bx bx-phone' style="font-size: 25px;"></i>
-                            <spna>Contact Us</span>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
+        @include('website::components.contact', [
+            'header_name' => '',
+            'imgUrl' => '../../website/img/home06.png',
+            'text1' => 'Find once in lifetime Internships Programmes in Southeast Asia',
+            'text2' => 'Are you looking for interns?',
+            'btnText' => 'click here',
+        ])
 
         {{-- listJob --}}
         <div class="jobLayout" style="background: url('../../website/img/homeProgram.png');background-size: cover;">
@@ -119,8 +101,8 @@
 
 
         {{-- View our testimonials --}}
-        <div class="homeLayout" style="padding: 35px 0;">
-            <div class="homeList" style="align-items: center;flex-direction: column;">
+        <div class="webContentListLayout" style="padding: 35px 0;">
+            <div class="webContentList testimonialsList" style="align-items: center;flex-direction: column;">
                 <h3 class="colorYellow">View our testimonials</h3>
                 <section>
                     <div class="blog">
@@ -162,8 +144,8 @@
         </div>
 
         {{-- Our Partners --}}
-        <div class="homeLayout" style="padding-bottom: 60px;">
-            <div class="homeList" style="align-items: center;flex-direction: column;">
+        <div class="webContentListLayout" style="padding-bottom: 60px;">
+            <div class="webContentList" style="align-items: center;flex-direction: column;">
                 <h3 class="colorYellow" style="padding-bottom: 35px;">Our Partners</h3>
                 <div class="partnerLayout">
                     <div class="partnerGp">

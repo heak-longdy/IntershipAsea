@@ -1,21 +1,10 @@
 <footer>
     <div class="footer-container">
-        <div class="footer-logo" style="width: 270px;">
-            <div class="logo" style="position: relative;
-    display: flex;
-    align-items: center;
-    margin-top: 13px;
-    height: 100%;">
+        <div class="footer-logo">
+            <div class="logo">
                 <img src="{{ asset('images/logo/Logo.png') }}"
-                    style="    width: 187px;
-    height: 87px;
-    object-fit: contain;">
-                <label
-                    style="position: absolute;
-    right: 0;
-    left: 108px;
-    font-size: 30px;
-    width: fit-content;">ISEA</label>
+                    style="">
+                <label>ISEA</label>
             </div>
         </div>
         <div class="footer-section">

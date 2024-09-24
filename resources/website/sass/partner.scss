@@ -6,7 +6,7 @@
 }
 
 .partnerGp {
-    width    : calc(100% / 4 - 25px);
+    width    : calc(100% / 5 - 25px);
     display  : flex;
     flex-wrap: wrap;
 
@@ -18,7 +18,7 @@
         width         : 100%;
         border        : 1px solid #80808021;
         border-radius : 15px;
-        padding       : 50px 0;
+        padding       : 25px;
         box-shadow    : rgba(149, 157, 165, 0.2) 0px 8px 24px;
 
 

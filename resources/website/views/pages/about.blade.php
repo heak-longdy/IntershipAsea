@@ -117,7 +117,7 @@
         }
     </style>
     <div class="wb-home-layout">
-        @include('website::pages.home.banner', [
+        @include('website::components.banner', [
             'header_name' => '',
             'imgUrl' => '../../website/img/aboutBg.png',
             'disableText' => 'Yes'
@@ -244,33 +244,14 @@
             </div>
         </div>
 
-        {{-- Contact Us --}}
-        <div class="homeLayout paddingTop_Bot60 bgYellow"
-            style="color: #fff;padding: 35px 0;background: url('../../website/img/home06.png');background-size: cover;    height: 350px;">
-            <div class="homeList" style="align-items: center;">
-                <div class="hLeft">
-                    <h3 class="margin_bot20">Contact us today for more information on providing or applying for internships
-                        today!</h3>
-                    <a href="" class="homeContactus" style="text-decoration: none;">
-                        <div class=" bgYellow"
-                            style="    width: fit-content;
-    height: 40px;
-    padding: 0 15px;
-    display: flex;
-    align-items: center;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 25px;
-    align-items: center;
-    display: flex;
-    grid-gap: 5px;">
-                            <i class='bx bx-phone' style="font-size: 25px;"></i>
-                            <spna>Contact Us</span>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
+         {{-- Contact Us --}}
+         @include('website::components.contact', [
+            'header_name' => '',
+            'imgUrl' => '../../website/img/home06.png',
+            'text1' => 'Find once in lifetime Internships Programmes in Southeast Asia',
+            'text2' => 'Are you looking for interns?',
+            'btnText' => 'click here',
+        ])
 
 
     </div>

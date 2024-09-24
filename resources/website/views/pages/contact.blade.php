@@ -1,7 +1,7 @@
 @extends('website::shared.layout')
 @section('layout')
     <div class="wb-home-layout">
-        @include('website::pages.home.banner', [
+        @include('website::components.banner', [
             'header_name' => '',
             'imgUrl' => '../../website/img/ourService01.png',
             'text1' => 'Get in Touch',

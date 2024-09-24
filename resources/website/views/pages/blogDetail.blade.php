@@ -1,7 +1,7 @@
 @extends('website::shared.layout')
 @section('layout')
     <div class="wb-home-layout">
-        @include('website::pages.home.banner', ['header_name' => ''])
+        @include('website::components.banner', ['header_name' => ''])
 
         <div class="webContentListLayout marginTop_Bot30">
             <div class="webContentList">
