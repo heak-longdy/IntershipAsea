@@ -65,8 +65,8 @@
         border-radius: 4px;
         cursor: pointer;
         font-size: 14px;
-        padding: 8px 15px;
-        border-radius: 20px;
+        padding: 8px 15px 8px 10px;
+        border-radius: 0.75rem;
         display: flex;
         align-items: center;
         grid-gap: 7px;
@@ -117,7 +117,7 @@
             <div
                 style="    background: #49b70d;
     color: #fff;
-    border-radius: 20px;
+    border-radius: 0.75rem;
     padding: 3px 15px;
     white-space: nowrap;
     margin-top: 5px;">
@@ -129,7 +129,7 @@
     margin-bottom: 10px;
     grid-gap: 10px;"
             class="fontWeight">
-            <p>$90.00</p>
+            <p class="colorYellow">$90.00</p>
         </div>
 
         <p>{!! $item?->job_des ?? '' !!}</p>
@@ -137,11 +137,13 @@
         <div class="job-buttons">
 
             <div class="job-btn-left">
-                <a href="{{route('web-apply-form')}}">
+                <a href="{{ route('web-apply-form') }}">
                     <button type="button" class="btnJob apply"><i
                             class='bx bx-right-top-arrow-circle bx-fade-right-hover'></i><span>Apply Now</span></button>
                 </a>
-                <button class="btnJob view-job"><i class='bx bx-show'></i><span>View Job</span></button>
+                <a href="{!! isset($urlDetail) ? url($urlDetail) : '#' !!}">
+                    <button class="btnJob view-job"><i class='bx bx-show'></i><span>View Job</span></button>
+                </a>
             </div>
             <p class="">3 - 6 months</p>
         </div>

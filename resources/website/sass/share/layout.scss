@@ -145,6 +145,7 @@ sans-serif;
     .webContentList {
         display: flex;
         width  : $widthCh;
+        flex-wrap: wrap;
 
         .hLeft,
         .hRight {

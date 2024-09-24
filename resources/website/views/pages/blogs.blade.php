@@ -7,12 +7,11 @@
             'text1' => 'Our Blogs',
             'text2' => 'Our blog is your go-to resource for everything related to internships in Cambodia.',
             'search' => 'disable',
-            'clickhere'=>'disable'
+            'clickhere' => 'disable',
         ])
         {{-- listJob --}}
         <div class="webContentListLayout">
             <div class="webContentList">
-
                 <div class="blog-container">
                     <h2>Why Our Blog in Beneficial</h2>
                     <div class="whyOurBlog">
@@ -51,8 +50,10 @@
                             ])
                         @endforeach
                     </div>
+                    <div class="paginationLayout">
+                        @include('website::components.paginationNumber', ['paginate' => $data])
+                    </div>
                 </div>
-
             </div>
         </div>
     </div>

@@ -34,7 +34,7 @@ class HomeController extends Controller
     }
     public function blog(Request $req)
     {
-        $data['data'] = Blog::limit(5)->orderBy('id','desc')->get();
+        $data['data'] = Blog::orderBy('id','desc')->paginate(15);
         return view($this->layouts . 'blogs', $data);
     }
     public function blogDetail($id="65541"){

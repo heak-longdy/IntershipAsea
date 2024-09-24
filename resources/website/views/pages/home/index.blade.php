@@ -88,7 +88,10 @@
                 <h3 class="jobTitle">Intership Programmer</h3>
                 <div class="jobContainer">
                     @foreach ($jobs as $index => $item)
-                        @include('website::components.jobItem', ['item' => $item])
+                        @include('website::components.jobItem', [
+                            'item' => $item,
+                            'urlDetail' => url('/job/detail/' . $item?->id),
+                        ])
                     @endforeach
                 </div>
             </div>
@@ -192,6 +195,18 @@
                             </div>
                         </div>
                     </div>
+                    <div class="partnerGp">
+                        <div class="partnerItem">
+                            <div class="partnerImg">
+                                {{-- <img src="{{ asset('website/img/partner01.png') }}" alt="post-1"> --}}
+                                <i class='bx bxl-linkedin'></i>
+                            </div>
+                            <div class="partnerText">
+                                <p>1. Easy Application Process</p>
+                            </div>
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
         </div>

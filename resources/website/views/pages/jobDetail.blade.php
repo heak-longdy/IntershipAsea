@@ -1,7 +1,63 @@
 @extends('website::shared.layout')
 @section('layout')
     <div class="wb-home-layout">
-        @include('website::components.banner', ['header_name' => '','search'=>'disable','clickhere'=>'disable'])
+        @include('website::components.banner', [
+            'header_name' => '',
+            'imgUrl' => '../../website/img/ourService01.png',
+            'clickhere' => 'disable',
+        ])
+
+        <style>
+            .itemDetailBody {
+                margin: 25px 0;
+            }
+
+            .btnJob {
+                /* padding: 10px 20px; */
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                font-size: 14px;
+                padding: 8px 15px;
+                border-radius: 20px;
+                display: flex;
+                align-items: center;
+                grid-gap: 7px;
+                background: none;
+            }
+
+            .margin25 {
+                margin: 25px 0;
+            }
+
+            .btnJob>i {
+                font-size: 25px;
+            }
+
+            .view-job {
+                /* background-color: #ff9900; */
+                /* color: #fff; */
+
+            }
+
+            .apply {
+                background-color: #ff9900;
+                color: #fff;
+            }
+
+            .btnJob:hover {
+                opacity: 0.9;
+            }
+
+            .itemDetailLeft>a,
+            .itemDetailTitle>a {
+                text-decoration: unset;
+            }
+            .jobAmount{
+                margin: 10px 0;
+                font-size: 20px;
+            }
+        </style>
 
         {{-- WHO WE ARE --}}
         {{-- <div class="homeLayout paddingTop_Bot60">
@@ -28,12 +84,24 @@
                         <div class="itemDetailLeft">
                             <div class="itemDetailTitle">
                                 <h3>Internship details</h3>
-                                <a href="">
-                                    <button type="button" class="btnApply">Apply</button>
+                                <a href="{{ route('web-apply-form') }}">
+                                    <button type="button" class="btnJob apply"><i
+                                            class='bx bx-right-top-arrow-circle bx-fade-right-hover'></i><span>Apply
+                                            Now</span></button>
                                 </a>
                             </div>
+                            {{-- <a href="{{ route('web-apply-form') }}">
+                                <button type="button" class="btnJob apply"><i
+                                        class='bx bx-right-top-arrow-circle bx-fade-right-hover'></i><span>Apply
+                                        Now</span></button>
+                            </a> --}}
+
                             <div class="itemDetailBody">
+                                
                                 <div class="fontWeight">Placement Name:&nbsp;Marketing Intern at Cambodia Life Style</div>
+                                <div class="jobAmount fontWeight colorYellow">
+                                    $900.00
+                                </div>
                                 <div><span class="fontWeight">Role:</span>&nbsp;Marketing Intern</div>
                                 <div><span class="fontWeight">Type of Placement:</span>&nbsp;Full-Time Internship</div>
                                 <div><span class="fontWeight">Duration:</span>&nbsp;6 Months</div>
@@ -97,14 +165,20 @@
                                     </div>
                                 </div>
                             </div>
+                            {{-- <div class="underLine"></div> --}}
+                            <a href="{{ route('web-apply-form') }}">
+                                <button type="button" class="btnJob apply margin25"><i
+                                        class='bx bx-right-top-arrow-circle bx-fade-right-hover'></i><span>Apply
+                                        Now</span></button>
+                            </a>
                         </div>
                         <div class="itemDetailRight">
                             <h3>Similar Posts</h3>
                             @foreach ($blogRelates as $index => $item)
-                                @include('website::components.blogItem', [
+                                @include('website::components.jobItemGrid', [
                                     'item' => $item,
-                                    'url'=>'/job/detail/'.$item->id,
-                                    'classJobCus' => "wFullBlogItem"
+                                    'url' => '/job/detail/' . $item->id,
+                                    'classJobCus' => 'wFullJobItem',
                                 ])
                             @endforeach
                             {{-- <h3>Related Blogs</h3>

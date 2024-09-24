@@ -13,7 +13,10 @@
                 <h3 class="jobTitle">Intership Programmer</h3>
                 <div class="jobContainer">
                     @foreach ($data as $index => $item)
-                        @include('website::components.jobItem', ['item' => $item])
+                        @include('website::components.jobItem', [
+                            'item' => $item,
+                            'urlDetail' => url('/job/detail/' . $item?->id),
+                        ])
                     @endforeach
                 </div>
                 <div class="paginationLayout">
@@ -21,8 +24,8 @@
                 </div>
             </div>
         </div>
-         {{-- Contact Us --}}
-         @include('website::components.contact', [
+        {{-- Contact Us --}}
+        @include('website::components.contact', [
             'header_name' => '',
             'imgUrl' => '../../website/img/home06.png',
             'text1' => 'Find once in lifetime Internships Programmes in Southeast Asia',
