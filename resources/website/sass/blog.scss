@@ -4,14 +4,31 @@
     padding  : 0 20px;
 }
 
+.whyOurBlog {
+    width        : calc(100% + 25px);
+    display      : flex;
+    flex-wrap    : wrap;
+    grid-gap     : 25px;
+    margin-bottom: 70px;
+}
+
+.whyOurBlog>.whyOurBlogItem {
+    width: calc(100% / 3 - 25px);
+}
+
+.whyOurBlogItem>h3 {
+    font-size    : 20px;
+    margin-bottom: 15px;
+}
+
 .blog-container>h2 {
     // text-align   : center;
     // font-size    : 36px;
     // color        : #ff9900;
     // margin-bottom: 40px;
-    text-align: left;
-    font-size: 25px;
-    color: #ff9900;
+    text-align   : left;
+    font-size    : 25px;
+    color        : #ff9900;
     margin-bottom: 40px;
 }
 

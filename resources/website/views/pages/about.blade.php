@@ -30,8 +30,8 @@
         }
 
         /* .aboutItem:last-child {
-                margin-bottom: 0;
-            } */
+                            margin-bottom: 0;
+                        } */
 
         .aboutItem>img {
             width: 130px;
@@ -52,13 +52,14 @@
         /* OurFunders */
         .OurFunders {
             display: flex;
+            flex-wrap: wrap;
             grid-gap: 50px;
             margin-bottom: 60px;
         }
 
         .OurFunderIitem {
             text-align: center;
-            width: calc(100% / 2);
+            width: calc(100% / 2 - 50px);
         }
 
         .OurFunderIitem>img {
@@ -99,6 +100,7 @@
             grid-gap: 20px;
             margin-bottom: 20px;
         }
+
         .OurValueHeader>h3 {
             font-size: 20px;
         }
@@ -115,12 +117,33 @@
         .OurValueIitem>p {
             text-align: left;
         }
+
+        @media screen and (max-width: 1200px) {
+            .aboutContainer {
+                margin: 60px 0;
+            }
+        }
+
+        @media screen and (max-width: 700px) {
+            .OurValueIitem {
+                text-align: center;
+                width: calc(100% / 2 - 50px);
+            }
+        }
+
+        @media screen and (max-width: 550px) {
+
+            .OurFunderIitem,
+            .OurValueIitem {
+                width: calc(100% / 1);
+            }
+        }
     </style>
     <div class="wb-home-layout">
         @include('website::components.banner', [
             'header_name' => '',
             'imgUrl' => '../../website/img/aboutBg.png',
-            'disableText' => 'Yes'
+            'disableText' => 'Yes',
         ])
         <div class="webContentListLayout">
             <div class="webContentList" style="flex-direction: column;">
@@ -244,8 +267,8 @@
             </div>
         </div>
 
-         {{-- Contact Us --}}
-         @include('website::components.contact', [
+        {{-- Contact Us --}}
+        @include('website::components.contact', [
             'header_name' => '',
             'imgUrl' => '../../website/img/home06.png',
             'text1' => 'Find once in lifetime Internships Programmes in Southeast Asia',

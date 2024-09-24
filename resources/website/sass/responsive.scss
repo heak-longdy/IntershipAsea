@@ -6,6 +6,18 @@
     }
 }
 
+@media screen and (max-width: 1200px) {
+
+    .webContentListLayout>.webContentList,
+    .jobLayout>.jobListing {
+        width  : 90%;
+        padding: 0 25px;
+    }
+
+}
+
+@media screen and (max-width: 1150px) {}
+
 @media screen and (max-width: 992px) {
     .webContentListLayout {
         .webContentList {
@@ -35,6 +47,34 @@
     }
 }
 
+@media screen and (max-width: 875px) {
+    .blog-grid {
+        .blog-card {
+            width: calc(100% / 2 - 20px);
+        }
+    }
+
+    .whyOurBlog {
+        .whyOurBlogItem {
+            width: calc(100% / 2 - 25px);
+        }
+    }
+}
+
+
+@media screen and (max-width: 750px) {
+    .contact__container{
+        flex-direction: column;
+    }
+    .contact__info{
+        display: flex;
+        flex-direction: column;
+    }
+    .contact__form{
+        margin: unset;
+    }
+}
+
 @media screen and (max-width: 700px) {
     .job-buttons {
         display       : flex;
@@ -59,6 +99,20 @@
                 margin: 20px 0;
             }
         }
+    }
+
+    .blog-container{
+        padding: 0;
+    }
+
+    .whyOurBlog,
+    .blog-grid {
+        width: 100%;
+    }
+
+    .whyOurBlog>.whyOurBlogItem,
+    .blog-grid>.blog-card {
+        width: calc(100% / 1);
     }
 
     .wwaImg {

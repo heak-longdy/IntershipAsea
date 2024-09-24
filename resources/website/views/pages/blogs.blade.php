@@ -9,24 +9,6 @@
             'search' => 'disable',
             'clickhere'=>'disable'
         ])
-        <style>
-            .whyOurBlog {
-                width: calc(100% + 25px);
-                display: flex;
-                flex-wrap: wrap;
-                grid-gap: 25px;
-                margin-bottom: 70px;
-            }
-
-            .whyOurBlog>.whyOurBlogItem {
-                width: calc(100% / 3 - 25px);
-            }
-
-            .whyOurBlogItem>h3 {
-                font-size: 20px;
-                margin-bottom: 15px;
-            }
-        </style>
         {{-- listJob --}}
         <div class="webContentListLayout">
             <div class="webContentList">
